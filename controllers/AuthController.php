@@ -10,11 +10,6 @@ use App\Models\User;
 class AuthController
 {
 
-    public function login()
-    {
-        return View::render('auth/login');
-    }
-
     public function create()
     {
         return View::render('auth/create');
@@ -31,9 +26,9 @@ class AuthController
             $user = new User;
             $checkuser = $user->checkUser($data['username'], $data['password']);
             if ($checkuser) {
-                return View::redirect('clients');
+                return View::redirect('home');
             } else {
-                $errors['message'] = "Please check yoru credentials";
+                $errors['message'] = "Invalid credentials";
                 return view::render('auth/create', ['errors' => $errors, 'user' => $data]);
             }
         } else {

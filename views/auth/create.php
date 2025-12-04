@@ -1,6 +1,5 @@
-{{ include('layouts/header.php', {title:'Login'})}}
-<div class="container">
-
+{{ include ('layouts/header.php', {title:'Login'})}}
+<div class="section__login">
     {% if errors is defined %}
     <div class="error">
         <ul>
@@ -10,19 +9,15 @@
         </ul>
     </div>
     {% endif %}
-
-    <form method="post">
-        <h2>Connexion</h2>
-
-        <label>Nom d'utilisateur
-            <input type="email" name="username" value="{{user.username}}">
+    <form method="post" class="section__login__form">
+        <h2>Login</h2>
+        <label>Username
+            <input type="email" name="username" value="{{ user.username }}">
         </label>
-        <label>Mot de passe
+        <label>Password
             <input type="password" name="password">
         </label>
-
-
-        <input type="submit" class="btn bleu" value="Connexion">
+        <input type="submit" class="bouton" value="Submit">
     </form>
 </div>
-{{ include('layouts/footer.php')}}
+{{ include ('layouts/footer.php')}}

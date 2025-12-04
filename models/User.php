@@ -6,9 +6,9 @@ use App\Models\CRUD;
 
 class User extends CRUD
 {
-    protected $table = "user";
+    protected $table = "Utilisateur";
     protected $primaryKey = "id";
-    protected $fillable = ['name', 'username', 'password', 'email', 'privilege_id'];
+    protected $fillable = ['name', 'username', 'password', 'email']; //, 'privilege_id'];
 
     public function hashPassword($password, $cost = 10)
     {
@@ -25,9 +25,9 @@ class User extends CRUD
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 session_regenerate_id();
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user['idUtilisateur'];
                 $_SESSION['user_name'] = $user['name'];
-                $_SESSION['privilege_id'] = $user['privilege_id'];
+                // $_SESSION['privilege_id'] = $user['privilege_id'];
                 $_SESSION['fingerPrint'] = md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']);
                 return true;
             } else {
