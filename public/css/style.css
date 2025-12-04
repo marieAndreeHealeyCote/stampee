@@ -1,0 +1,17 @@
+/* Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display&display=swap");
+
+/* base */
+@import "base/base.css";
+
+/* components */
+@import "components/entete.css";
+@import "components/formulaire.css";
+@import "components/carte-detail-enchere.css";
+@import "components/bouton.css";
+@import "components/piedpage.css";
+@import "components/menu-deroulant.css";
+
+/* layout */
+@import "layout/aparte.css";
+@import "layout/grille.css";

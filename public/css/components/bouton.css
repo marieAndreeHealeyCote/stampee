@@ -1,0 +1,63 @@
+/* bouton.css */
+.bouton {
+  padding: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.bouton-loupe {
+  padding: 0.4rem 1rem;
+  font-size: 1.2em;
+}
+.bouton-rechercher {
+  background-color: #b22234;
+  border: none;
+  color: white;
+
+  &:hover {
+    background-color: #c2b280;
+    color: white;
+  }
+  &:hover:active {
+    background-color: #685d3b;
+  }
+}
+.bouton-action {
+  background-color: #b22234;
+  border: none;
+  color: black;
+
+  &:hover {
+    background-color: #c2b280;
+    color: white;
+  }
+  &:hover:active {
+    background-color: #685d3b;
+  }
+}
+.bouton-suivre,
+.bouton-login {
+  background-color: white;
+  border: #b22234 1px solid;
+  color: #b22234;
+
+  &:hover {
+    background-color: #c2b280;
+    color: white;
+  }
+  &:hover:active {
+    background-color: #685d3b;
+  }
+}
+.bouton-enchere {
+  background-color: #b22234;
+  border: 1px solid white;
+  color: white;
+
+  &:hover {
+    background-color: #c2b280;
+    color: white;
+  }
+  &:hover:active {
+    background-color: #685d3b;
+  }
+}

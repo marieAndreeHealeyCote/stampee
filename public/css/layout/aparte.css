@@ -1,0 +1,54 @@
+/* aparté */
+.section__aparte {
+  form {
+    label {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5em;
+    }
+  }
+  input {
+    margin-left: 3em;
+  }
+  h2 {
+    margin-top: 0.7em;
+  }
+}
+.section__aparte__conteneur{
+  display: block;
+
+    @media(min-width:1024px){ 
+    display: flex;
+    margin-left: 1em;
+  }
+}
+.section__aparte__certification {
+  border: 1px solid black;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__aparte__condition {
+  border: 1px solid black;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__aparte__couleur {
+  border: 1px solid black;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__aparte__pays {
+  border: 1px solid black;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__aparte__date {
+  border: 1px solid black;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__aparte__prix {
+  border: 1px solid black;
+  padding: 2em;
+  margin-bottom: 1em;
+}

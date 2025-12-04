@@ -1,0 +1,108 @@
+/* base.css */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* Général Fonts */
+h1 {
+  font-size: 64px;
+  font-family: playfair-display;
+  margin-block: 0.67em;
+}
+h2 {
+  font-size: 48px;
+  font-family: playfair-display;
+}
+h3 {
+  font-size: 24px;
+  font-family: lato;
+  font-weight: bold;
+}
+h4 {
+  font-size: 18px;
+  font-family: lato;
+  font-weight: bold;
+}
+a,
+p,
+ul,
+li,
+button,
+span,
+label,
+select,
+option {
+  font-size: 16px;
+  font-family: lato;
+}
+
+sup {
+  font-family: lato;
+}
+
+/* Google Font */
+.playfair-display {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
