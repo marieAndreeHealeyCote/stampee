@@ -13,7 +13,7 @@
         </div>
         {% endif %}
         <label>Username
-            <input type="email" name="username" value="{{ user.username }}" placeholder="john@doe.com">
+            <input type="email" name="email" value="{{ user.email }}">
         </label>
         <label>Password
             <input type="password" name="password">
