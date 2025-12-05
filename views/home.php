@@ -7,7 +7,10 @@
     </div>
     <img src="{{ asset }}img/Denninger.webp" alt="image timbre hero">
 </div>
-<main>
+<div class="main">
+    {%if guest is empty %}
+    Hi {{ session.user_name }} !
+    {% endif %}
     <h1>{{ data }}</h1>
     <section class="section__mission">
         <div class="section__mission__image">
@@ -15,28 +18,28 @@
         </div>
         <div class="section__mission__description">
             <h2>Mission</h2>
-            <p>La plateforme Stampee a pour mission d’offrir au monde philatélique un espace numérique prestigieux, fiable et accessible, où la passion du timbre rare rencontre la modernité. Fidèle à la vision de Lord Reginald Stampee, duc de Worcessteshear, elle vise à prolonger en ligne l’excellence et le raffinement de ses célèbres enchères, tout en les rendant disponibles aux collectionneurs du monde entier.</p>
+            <p>The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
 
-            <h3>Ouvrir les enchères au plus grand nombre, dans un cadre sécuritaire et structuré.</h3>
-            <p>Chaque membre peut créer un compte, publier des enchères, placer des offres et suivre son historique, afin de participer pleinement et en toute transparence au marché du timbre rare.</p>
+            <h3>Open up the auctions to the widest possible audience, within a safe and structured framework.</h3>
+            <p>Each member can create an account, publish auctions, place bids and track their history, in order to participate fully and transparently in the rare stamp market.</p>
 
-            <h3>Permettre de trouver rapidement les enchères désirées, qu’elles soient actives ou archivées.</h3>
-            <p>Grâce à une navigation simple et cohérente — « simple comme un timbre », selon le souhait du Lord — l’usager peut explorer les enchères selon une variété de critères : pays d’origine, année, condition, tirage, certification, et plus encore.</p>
+            <h3>To allow users to quickly find the desired auctions, whether they are active or archived.</h3>
+            <p>Thanks to simple and consistent navigation — “as simple as a stamp”, as the Lord wished — the user can explore auctions according to a variety of criteria: country of origin, year, condition, print run, certification, and more.</p>
 
-            <h3>Assurer une accessibilité universelle sur tous les appareils.</h3>
-            <p>L’interface, pensée dans un esprit classique, soigné et uniforme, est optimisée pour offrir une expérience fluide sur ordinateur, tablette et mobile, afin de permettre aux collectionneurs de partout de participer aux enchères.</p>
+            <h3>Ensure universal accessibility across all devices.</h3>
+            <p>The interface, designed in a classic, neat and uniform style, is optimized to offer a smooth experience on computer, tablet and mobile, so that collectors everywhere can participate in the auctions.</p>
 
-            <h3>Mettre en valeur les pièces d’exception.</h3>
-            <p>Les Coups de cœur de Lord Stampee, soigneusement sélectionnés, sont mis de l’avant pour guider les collectionneurs vers les timbres les plus remarquables.</p>
+            <h3>To showcase exceptional pieces.</h3>
+            <p>Lord Stampee's carefully selected "Favorites" are highlighted to guide collectors to the most remarkable stamps.</p>
 
-            <h3>Offrir une immersion visuelle fidèle aux attentes des philatélistes.</h3>
-            <p>En réponse au souhait spécial de Lord Stampee — « voir les timbres de proche » — la plateforme propose une exploration visuelle détaillée, incluant des images haute résolution et des fonctionnalités de zoom permettant d’apprécier pleinement la finesse et l’état des timbres.</p>
+            <h3>To offer a visual immersion that faithfully meets the expectations of philatelists.</h3>
+            <p>In response to Lord Stampee's special wish — "to see the stamps up close" — the platform offers a detailed visual exploration, including high-resolution images and zoom features to fully appreciate the fineness and condition of the stamps.</p>
 
-            <h3>Préserver et documenter l’histoire philatélique.</h3>
-            <p>Les enchères archivées demeurent consultables, organisées et commentables, afin de constituer une mémoire vivante des ventes, des pièces exceptionnelles et de leurs parcours.</p>
+            <h3>To preserve and document philatelic history.</h3>
+            <p>The archived auctions remain available for consultation, organization and commentary, in order to constitute a living memory of the sales, exceptional pieces and their history.</p>
 
-            <h3>Offrir un environnement cohérent, élégant et digne du prestige de Lord Stampee.</h3>
-            <p>L’esthétique du site, privilégiant le bleu ou le rouge selon le choix du Lord, reste sobre, classique et raffinée, répondant aux attentes d’une clientèle experte, exigeante et attachée aux traditions de la philatélie.</p>
+            <h3>To provide a cohesive, elegant environment worthy of Lord Stampee's prestige.</h3>
+            <p>The site's aesthetics, favoring blue or red depending on the Lord's choice, remain understated, classic and refined, meeting the expectations of an expert, demanding clientele attached to the traditions of philately.</p>
         </div>
     </section>
     <section class="section__enchere"></section>
@@ -46,13 +49,13 @@
         </div>
         <div class="section__lord__description">
             <h2>Lord Reginald Stampee III</h2>
-            <p>Depuis sa tendre enfance au milieu des années cinquante, Lord Reginald Stampee, duc de Worcessteshear, nourrit une passion inébranlable pour la philatélie. Collectionneur érudit, personnalité discrète mais influente parmi les grands amateurs de timbres rares, il a consacré sa vie à rassembler, étudier et mettre en valeur les pièces les plus précieuses de l’histoire postale.</p>
+            <p>From his early childhood in the mid-1950s, Lord Reginald Stampee, Duke of Worcesseshear, nurtured an unwavering passion for philately. A learned collector, a discreet but influential figure among great enthusiasts of rare stamps, he dedicated his life to gathering, studying and showcasing the most precious pieces of postal history.</p>
 
-            <p>Reconnu dans tout le Royaume-Uni pour ses enchères exclusives, qui attirent chaque année les philatélistes les plus prestigieux du monde, Lord Stampee souhaite aujourd’hui franchir une nouvelle étape : offrir au marché global une plateforme numérique moderne, élégante et accessible, afin d’étendre son héritage bien au-delà des frontières britanniques.</p>
+            <p>Renowned throughout the United Kingdom for its exclusive auctions, which attract the world's most prestigious philatelists every year, Lord Stampee now wishes to take a new step: to offer the global market a modern, elegant and accessible digital platform, in order to extend its legacy far beyond British borders.</p>
 
-            <p>Dans cette optique, il vous a personnellement choisi pour assurer la conception et le développement de cette plateforme d’enchères ambitieuse, reflet de son expertise, de son raffinement et de sa vision.</p>
+            <p>With this in mind, he personally chose you to oversee the design and development of this ambitious auction platform, reflecting his expertise, refinement and vision.</p>
         </div>
     </section>
-</main>
+</div>
 
 {{ include('layouts/footer.php') }}

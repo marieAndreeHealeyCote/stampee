@@ -1,3 +1,4 @@
+{{ include ('layouts/header.php', {title:'Stamp'})}}
 <div class="section__aparte__conteneur">
     <aside class="section__aparte">
         <form action="#">
@@ -576,3 +577,4 @@
         </article>
     </div>
 </section>
+{{ include ('layouts/footer.php') }}
