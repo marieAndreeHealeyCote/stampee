@@ -10,18 +10,37 @@ use App\Providers\Auth;
 class UserController
 {
 
-    public function __construct()
-    {
-        Auth::session();
-    }
     public function create()
     {
-
-        return View::render('user/create', ['' => ]);
+        return View::render('user/create');
     }
 
     public function store($data)
     {
+        $validator = new Validator;
+        $validator->field('name', $data['name'])->required()->min(2)->max(50);
+        $validator->field('email', $data['email'])->unique('User')->required()->max(50)->email();
+        $validator->field('password', $data['password'])->min(6)->max(20);
+
+        if ($validator->isSuccess()) {
+            $user = new User;
+            $data['password'] = $user->hashPassword($data['password']);
+            $insert = $user->insert($data);
+            if ($insert) {
+                die('insert succes');
+                return view::redirect('auth/create');
+            } else {
+                die('insert raté');
+            }
+        } else {
+            $errors = $validator->getErrors();
+            return view::render('user/create', ['errors' => $errors, 'user' => $data]);
+        }
+    }
+
+    public function edit($data)
+    {
+        Auth::session();
 
         $validator = new Validator;
         $validator->field('name', $data['name'])->min(2)->max(50);

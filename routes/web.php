@@ -12,8 +12,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/timbres', 'TimbreController@index');
 
-Route::get('/user/create', 'UserController@create');
-Route::post('/user/create', 'UserController@store');
+Route::get('/register', 'UserController@create');
+Route::post('/register', 'UserController@store');
 
 Route::get('/login', 'AuthController@create');
 Route::post('/login', 'AuthController@store');
