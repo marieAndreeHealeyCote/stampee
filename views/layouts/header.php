@@ -38,11 +38,12 @@
                     <ul class="section__nav-principale__connexion">
                         {%if guest %}
                         <li>
-                            <a class="section__nav-principale__connexion__lien" href="{{base}}/login">Sign In</a>
+                            <a class="section__nav-principale__connexion__lien" href="{{base}}/register">Register</a>
+                            <a class="section__nav-principale__connexion__lien" href="{{base}}/login">Sign in</a>
                         </li>
                         {% else %}
                         <li>
-                            <a class="section__nav-principale__connexion__lien" href="{{base}}/logout">Sign Out</a>
+                            <a class="section__nav-principale__connexion__lien" href="{{base}}/logout">Sign out</a>
                         </li>
                         {% endif %}
                     </ul>

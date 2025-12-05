@@ -86,6 +86,12 @@
   font-weight: bold;
 }
 
+.section__nav-principale__connexion__lien:not(:last-child) {
+  border-right: 1px solid black;
+  padding-right: 1ch;
+  margin-right: 1ch;
+}
+
 .section__nav-principale__menu {
   padding: 1rem 2rem;
   border: 1px solid black;
