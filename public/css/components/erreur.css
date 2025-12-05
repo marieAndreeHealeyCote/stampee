@@ -1,9 +1,5 @@
 .conteneur {
-  width: 300px;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
-  border: 1px solid #333333;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

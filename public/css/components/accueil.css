@@ -1,4 +1,4 @@
-main {
+.main {
   padding: 10px 20px;
 }
 .section__mission {
@@ -8,15 +8,16 @@ main {
 }
 .section__mission__image {
   padding: 10px 20px;
-  img {
-    width: 100%;
-  }
 }
 .section__mission__description {
   h2,
-  h3,
-  p {
+  p,
+  li {
     padding-bottom: 1em;
+  }
+
+  li {
+    list-style-position: inside;
   }
 }
 .section__enchere {
@@ -35,7 +36,6 @@ main {
 }
 .section__lord__description {
   h2,
-  h3,
   p {
     padding-bottom: 1em;
   }
