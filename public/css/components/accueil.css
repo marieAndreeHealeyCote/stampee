@@ -1,0 +1,42 @@
+main {
+  padding: 10px 20px;
+}
+.section__mission {
+  margin: 4em auto;
+  display: flex;
+  border: 1px solid #333333;
+}
+.section__mission__image {
+  padding: 10px 20px;
+  img {
+    width: 100%;
+  }
+}
+.section__mission__description {
+  h2,
+  h3,
+  p {
+    padding-bottom: 1em;
+  }
+}
+.section__enchere {
+  padding: 2rem;
+}
+.section__lord {
+  margin: 4em auto;
+  display: flex;
+  border: 1px solid #333333;
+}
+.section__lord__image {
+  padding: 10px 20px;
+  img {
+    width: 100%;
+  }
+}
+.section__lord__description {
+  h2,
+  h3,
+  p {
+    padding-bottom: 1em;
+  }
+}
