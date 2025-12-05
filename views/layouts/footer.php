@@ -1,3 +1,4 @@
+    </main>
     <footer class="section__piedpage">
         <div class="section__piedpage__bandeau-rouge">
             <ul class="section__piedpage__bandeau-rouge__menu-secondaire">
@@ -24,8 +25,8 @@
                     <li>
                         <h3>Membership</h3>
                         <ul>
-                            <li><a href="#">Become a member</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="{{base}}/register">Become a member</a></li>
+                            <li><a href="{{base}}/login">Login</a></li>
                             <li><a href="#">Profile</a></li>
                         </ul>
                     </li>

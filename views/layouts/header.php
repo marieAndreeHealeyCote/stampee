@@ -62,16 +62,16 @@
                     <li>
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>
-                            <li><a href="detail-enchere-liste.html">Public Stamp Auction</a></li>
-                            <li><a href="index.html">Public Stamp Auction Catalog</a></li>
+                            <li><a href="#">Public Stamp Auction</a></li>
+                            <li><a href="#">Public Stamp Auction Catalog</a></li>
                             <li><a href="#">Premium Stamp Auction</a></li>
                         </ul>
                     </li>
                     <li>
                         <button type="button" class="pseudo-hyperlien">Membership</button>
                         <ul>
-                            <li><a href="#">Become a member</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="{{base}}/register">Become a member</a></li>
+                            <li><a href="{{base}}/login">Login</a></li>
                             <li><a href="#">Profile</a></li>
                         </ul>
                     </li>
@@ -112,3 +112,4 @@
             </div>
         </nav>
     </div>
+    <main>
