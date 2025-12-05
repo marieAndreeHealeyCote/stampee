@@ -25,14 +25,6 @@
         <label>Courriel
             <input type="email" name="email" value="{{user.email}}">
         </label>
-        <label>Privilège
-            <select name="privilege_id">
-                <option value="">Select</option>
-                {% for privilege in privileges %}
-                <option value="{{privilege.id}}" {% if privilege.id == user.privilege_id %} selected {% endif %}>{{ privilege.privilege}}</option>
-                {% endfor %}
-            </select>
-        </label>
         <input type="submit" class="btn bleu" value="Sauvegarder">
     </form>
 </div>
