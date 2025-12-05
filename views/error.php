@@ -1,6 +1,5 @@
 {{ include ('layouts/header.php', {title:'Registration'})}}
 <div class="conteneur">
-    <h2>Error</h2>
-    <strong class="error">{{ message }}</strong>
+    <img src="{{ asset }}img/404.webp" alt="image erreur 404 ">
 </div>
 {{ include ('layouts/footer.php')}}
