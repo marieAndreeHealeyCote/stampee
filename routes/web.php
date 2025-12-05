@@ -15,6 +15,9 @@ Route::get('/timbres', 'TimbreController@index');
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
 
+Route::get('/user/edit', 'UserController@show');
+Route::post('/user/edit', 'UserController@store');
+
 Route::get('/login', 'AuthController@create');
 Route::post('/login', 'AuthController@store');
 Route::get('/logout', 'AuthController@delete');

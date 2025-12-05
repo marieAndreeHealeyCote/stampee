@@ -27,10 +27,9 @@ class UserController
             $data['password'] = $user->hashPassword($data['password']);
             $insert = $user->insert($data);
             if ($insert) {
-                die('insert succes');
-                return view::redirect('auth/create');
+                return view::redirect('login');
             } else {
-                die('insert raté');
+                return view::render('error');
             }
         } else {
             $errors = $validator->getErrors();
@@ -38,26 +37,30 @@ class UserController
         }
     }
 
-    public function edit($data)
+    public function edit()
     {
-        Auth::session();
+        return View::render('user/edit');
+    }
 
+    public function update($data, $id)
+    {
         $validator = new Validator;
-        $validator->field('name', $data['name'])->min(2)->max(50);
+        $validator->field('name', $data['name'])->required()->min(2)->max(50);
+        $validator->field('email', $data['email'])->unique('User')->required()->max(50)->email();
         $validator->field('password', $data['password'])->min(6)->max(20);
-        $validator->field('email', $data['email'])->required()->max(50)->email();
-
 
         if ($validator->isSuccess()) {
             $user = new User;
             $data['password'] = $user->hashPassword($data['password']);
-            $insert = $user->insert($data);
-            var_dump($insert, $data);
+            $insert = $user->update($data, $id);
             if ($insert) {
-                return view::redirect('login');
+                return view::redirect('auth/show');
             } else {
                 return view::render('error');
             }
+        } else {
+            $errors = $validator->getErrors();
+            return view::render('user/edit', ['errors' => $errors, 'user' => $data]);
         }
     }
 }
