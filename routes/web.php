@@ -2,20 +2,20 @@
 
 use App\Routes\Route;
 use App\Controllers\HomeController;
-use App\Controllers\TimbreController;
+use App\Controllers\StampController;
 use App\Controllers\UserController;
 use App\Controllers\AuthController;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/timbres', 'TimbreController@index');
-Route::get('/timbre/show', 'LivreController@show');
-Route::get('/timbre/create', 'LivreController@create');
-Route::post('/timbre/create', 'LivreController@store');
-Route::get('/timbre/edit', 'LivreController@edit');
-Route::post('/timbre/edit', 'LivreController@update');
-Route::get('/timbre/delete', 'LivreController@delete');
+Route::get('/stamps', 'StampController@index');
+Route::get('/stamp/show', 'StampController@show');
+Route::get('/stamp/create', 'StampController@create');
+Route::post('/stamp/create', 'StampController@store');
+Route::get('/stamp/edit', 'StampController@edit');
+Route::post('/stamp/edit', 'StampController@update');
+Route::get('/stamp/delete', 'StampController@delete');
 
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');

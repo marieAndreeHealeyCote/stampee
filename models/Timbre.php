@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\CRUD;
 
-class Timbre extends CRUD
+class Stamp extends CRUD
 {
     protected $table = 'stamp';
     protected $primaryKey = 'stamp_id';

@@ -5,7 +5,7 @@
         <h3>Ends Tonight | 19th Century US & Worldwide Stamps</h3>
         <button class="bouton bouton-enchere">BID NOW</button>
     </div>
-    <img src="{{ asset }}img/Denninger.webp" alt="image timbre hero">
+    <img src="{{ asset }}img/Denninger.webp" alt="image stamp hero">
 </div>
 <div class="main">
     {%if guest is empty %}
@@ -14,7 +14,7 @@
     <h1>{{ data }}</h1>
     <section class="section__mission">
         <div class="section__mission__image">
-            <img src="{{ asset }}img/collection-de-timbres.jpg" alt="Plusieurs timbres de différentes couleurs étalés">
+            <img src="{{ asset }}img/collection-de-stamps.jpg" alt="Plusieurs stamps de différentes couleurs étalés">
         </div>
         <div class="section__mission__description">
             <h2>Mission</h2>

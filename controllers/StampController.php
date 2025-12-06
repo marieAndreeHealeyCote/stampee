@@ -2,23 +2,23 @@
 
 namespace App\Controllers;
 
-use App\Models\Timbre;
+use App\Models\Stamp;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
 
-class TimbreController
+class StampController
 {
 
     public function index()
     {
-        $timbre = new Timbre;
-        $selectTimbre = $timbre->select();
+        $stamp = new Stamp;
+        $selectStamp = $stamp->select();
 
-        if ($selectTimbre) {
-            $listeTimbres = [];
+        if ($selectStamp) {
+            $listeStamps = [];
 
-            return View::render("timbre/index", ['listeTimbres' => $listeTimbres]);
+            return View::render("stamp/index", ['listeStamps' => $listeStamps]);
         }
 
         return View::render('error');
@@ -29,12 +29,12 @@ class TimbreController
     {
         if (isset($data['id']) && $data['id'] != null) {
 
-            $timbre = new Timbre;
-            $selectTimbre = $timbre->selectId($data['stamp_id']);
+            $stamp = new Stamp;
+            $selectStamp = $stamp->selectId($data['stamp_id']);
 
-            if ($selectTimbre) {
+            if ($selectStamp) {
 
-                return View::render("timbre/show", ['inputs' => $selectTimbre]);
+                return View::render("stamp/show", ['inputs' => $selectStamp]);
             } else {
                 return View::render('error', ['msg' => 'Stamp not found!']);
             }
@@ -66,10 +66,10 @@ class TimbreController
     {
         Auth::session();
 
-        $timbre = new Timbre;
-        $delete = $timbre->delete($data['stamp_id']);
+        $stamp = new Stamp;
+        $delete = $stamp->delete($data['stamp_id']);
         if ($delete) {
-            return View::redirect('timbres');
+            return View::redirect('stamps');
         }
         return View::render('error');
     }
