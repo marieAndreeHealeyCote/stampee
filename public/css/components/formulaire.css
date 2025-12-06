@@ -52,3 +52,11 @@
     color: #b22234;
   }
 }
+
+form.section__newsletter__contenu__email {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 0.5em;
+  }
+}

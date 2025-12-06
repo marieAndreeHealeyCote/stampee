@@ -14,7 +14,7 @@
     <h1>{{ data }}</h1>
     <section class="section__mission">
         <div class="section__mission__image">
-            <img src="{{ asset }}img/collection-de-stamps.jpg" alt="Plusieurs stamps de différentes couleurs étalés">
+            <img src="{{ asset }}img/collection-de-timbres.jpg" alt="Plusieurs stamps de différentes couleurs étalés">
         </div>
         <div class="section__mission__description">
             <h2>Mission</h2>
@@ -45,7 +45,168 @@
             </ul>
         </div>
     </section>
-    <section class="section__enchere"></section>
+    <div class="section__enchere">
+        <section class="section__catalogue-enchere-en-cours">
+            <h2>Current Auctions</h2>
+            <div class="section__catalogue-enchere-en-cours__grille">
+                <article class="section__catalogue-enchere-archives__grille__carte">
+                    <img class="section__catalogue-enchere-archives__grille__carte__image" src="{{ asset }}img/lotsTimbre.webp" alt="image timbre carte 1">
+                    <h3>
+                        Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
+                        Lots 1-348
+                    </h3>
+                    <ul>
+                        <li>
+                            <h4>Period of activity</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Start date: June 1st, 2025</li>
+                                <li>End Date: July, 20, 2025</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Floor price</h4>
+                            <p>CAD 1,200</p>
+                        </li>
+                        <li>
+                            <h4>Current Offer</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Price: CAD 1,200</li>
+                                <li>Member Name: Ann-Mary B.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Bet Quantity</h4>
+                            <p>1</p>
+                        </li>
+                        <li>
+                            <h4>Lord's Favorite</h4>
+                            <p>Not selected</p>
+                        </li>
+                    </ul>
+                    <button class="bouton bouton-enchere">BID NOW</button>
+                </article>
+                <article class="section__catalogue-enchere-archives__grille__carte">
+                    <img class="section__catalogue-enchere-archives__grille__carte__image" src="{{ asset }}img/lotsTimbre.webp" alt="image timbre carte 2">
+                    <h3>
+                        Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
+                        Lots 1-348
+                    </h3>
+                    <ul>
+                        <li>
+                            <h4>Period of activity</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Start date: June 1st, 2025</li>
+                                <li>End Date: July, 20, 2025</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Floor price</h4>
+                            <p>CAD 1,200</p>
+                        </li>
+                        <li>
+                            <h4>Current Offer</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Price: CAD 1,200</li>
+                                <li>Member Name: Ann-Mary B.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Bet Quantity</h4>
+                            <p>1</p>
+                        </li>
+                        <li>
+                            <h4>Lord's Favorite</h4>
+                            <p>Not selected</p>
+                        </li>
+                    </ul>
+                    <button class="bouton bouton-enchere">BID NOW</button>
+                </article>
+        </section>
+        <section class="section__catalogue-enchere-en-cours">
+            <h2>Lord's Favorites</h2>
+            <div class="section__catalogue-enchere-en-cours__grille">
+                <article class="section__catalogue-enchere-archives__grille__carte">
+                    <img class="section__catalogue-enchere-archives__grille__carte__image" src="{{ asset }}img/lotsTimbre.webp" alt="image timbre carte 1">
+                    <h3>
+                        Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
+                        Lots 1-348
+                    </h3>
+                    <ul>
+                        <li>
+                            <h4>Period of activity</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Start date: June 1st, 2025</li>
+                                <li>End Date: July, 20, 2025</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Floor price</h4>
+                            <p>CAD 1,200</p>
+                        </li>
+                        <li>
+                            <h4>Current Offer</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Price: CAD 1,200</li>
+                                <li>Member Name: Ann-Mary B.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Bet Quantity</h4>
+                            <p>1</p>
+                        </li>
+                        <li>
+                            <h4>Lord's Favorite</h4>
+                            <p>Not selected</p>
+                        </li>
+                    </ul>
+                    <button class="bouton bouton-enchere">BID NOW</button>
+                </article>
+                <article class="section__catalogue-enchere-archives__grille__carte">
+                    <img class="section__catalogue-enchere-archives__grille__carte__image" src="{{ asset }}img/lotsTimbre.webp" alt="image timbre carte 2">
+                    <h3>
+                        Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
+                        Lots 1-348
+                    </h3>
+                    <ul>
+                        <li>
+                            <h4>Period of activity</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Start date: June 1st, 2025</li>
+                                <li>End Date: July, 20, 2025</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Floor price</h4>
+                            <p>CAD 1,200</p>
+                        </li>
+                        <li>
+                            <h4>Current Offer</h4>
+                            <ul
+                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <li>Price: CAD 1,200</li>
+                                <li>Member Name: Ann-Mary B.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Bet Quantity</h4>
+                            <p>1</p>
+                        </li>
+                        <li>
+                            <h4>Lord's Favorite</h4>
+                            <p>Not selected</p>
+                        </li>
+                    </ul>
+                    <button class="bouton bouton-enchere">BID NOW</button>
+                </article>
+        </section>
+    </div>
     <section class="section__lord">
         <div class="section__lord__image">
             <img src="{{ asset }}img/Lord-Stampee.webp" alt="Lord Stampee">
@@ -57,6 +218,30 @@
             <p>Renowned throughout the United Kingdom for its exclusive auctions, which attract the world's most prestigious philatelists every year, Lord Stampee now wishes to take a new step: to offer the global market a modern, elegant and accessible digital platform, in order to extend its legacy far beyond British borders.</p>
 
             <p>With this in mind, he personally chose you to oversee the design and development of this ambitious auction platform, reflecting his expertise, refinement and vision.</p>
+        </div>
+    </section>
+    <section class="section__newsletter">
+        <h2>Newsletter</h2>
+        <div class="section__newsletter__conteneur">
+            <div class="section__newsletter__contenu">
+                <div>
+                    <img src="{{ asset }}img/newsletter-svgrepo-com.png" alt="newsletter image">
+                </div>
+                <form class="section__newsletter__contenu__email">
+                    <label for="email" class="h3">To receive our latest news and philatelic advice.</label>
+                    <input type="email" id="email" placeholder="john@doe.com">
+                    <button class="bouton" type="submit">Send</button>
+                </form>
+            </div>
+            <div class="section__newsletter__contenu">
+                <div>
+                    <img src="{{ asset }}img/newspaper-svgrepo-com.png" alt="newsletter image">
+                </div>
+                <div class="section__newsletter__contenu__news">
+                    <h3>To follow the latest news.</h3>
+                    <button class="bouton">News</button>
+                </div>
+            </div>
         </div>
     </section>
 </div>

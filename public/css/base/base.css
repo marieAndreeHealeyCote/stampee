@@ -4,21 +4,25 @@
   padding: 0;
 }
 /* Général Fonts */
-h1 {
+h1,
+.h1 {
   font-size: 64px;
   font-family: playfair-display;
   margin-block: 0.67em;
 }
-h2 {
+h2,
+.h2 {
   font-size: 48px;
   font-family: playfair-display;
 }
-h3 {
+h3,
+.h3 {
   font-size: 24px;
   font-family: lato;
   font-weight: bold;
 }
-h4 {
+h4,
+.h4 {
   font-size: 18px;
   font-family: lato;
   font-weight: bold;
