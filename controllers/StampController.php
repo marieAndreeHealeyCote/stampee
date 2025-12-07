@@ -18,6 +18,7 @@ class StampController
         if ($selectStamp) {
             $listeStamps = [];
 
+
             return View::render("stamp/index", ['listeStamps' => $listeStamps]);
         }
 

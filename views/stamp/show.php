@@ -1,4 +1,5 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
+
 <h1>Stamp created</h1>
 
 <div class="conteneur">
@@ -12,7 +13,8 @@
         <p><strong>Condition: </strong>{{ inputs.color }}</p>
         <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="btn vert">Edit</a>
         <input type="hidden" name="id" value="{{ stamp.id }}">
-        <a href="{{ base }}/livres" class="btn bleu">Back</a>
+        <a href="{{ base }}/stamps" class="btn bleu">Back</a>
     </form>
 </div>
+
 {{ include ('layouts/footer.php')}}
