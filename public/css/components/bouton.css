@@ -11,11 +11,11 @@
 .bouton-rechercher {
   background-color: var(--couleur-secondaire);
   border: none;
-  color: white;
+  color: var(--couleur-texte-inverse);
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
@@ -28,7 +28,7 @@
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
@@ -36,13 +36,13 @@
 }
 .bouton-suivre,
 .bouton-login {
-  background-color: white;
-  border: #b22234 1px solid;
+  background-color: var(--couleur-texte-inverse);
+  border: var(--couleur-secondaire) 1px solid;
   color: var(--couleur-secondaire);
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
@@ -51,13 +51,47 @@
 .bouton-enchere {
   background-color: var(--couleur-secondaire);
   border: 1px solid white;
-  color: white;
+  color: var(--couleur-texte-inverse);
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
+  }
+}
+
+/* bouton formulaire */
+.btn {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: 1px solid var(--couleur-primaire);
+  border-radius: 5px;
+
+  text-align: center;
+  font-size: inherit;
+  color: var(--couleur-texte-inverse);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.vert {
+  background-color: var(--couleur-succes-fond);
+  &:hover {
+    background-color: var(--couleur-succes-fond-hover);
+  }
+}
+.btn.rouge {
+  background-color: var(--couleur-erreur-fond);
+  &:hover {
+    background-color: var(--couleur-erreur-fond-hover);
+  }
+}
+.btn.bleu {
+  background-color: var(--couleur-favoris);
+  &:hover {
+    background-color: var(--couleur-favoris-inverse);
   }
 }
