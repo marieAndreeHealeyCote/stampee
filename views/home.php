@@ -230,7 +230,7 @@
                 <form class="section__newsletter__contenu__email">
                     <label for="email" class="h3">To receive our latest news and philatelic advice.</label>
                     <input type="email" id="email" placeholder="john@doe.com">
-                    <button class="bouton" type="submit">Send</button>
+                    <button class="bouton bouton-loupe" type="submit">Send</button>
                 </form>
             </div>
             <div class="section__newsletter__contenu">
@@ -239,7 +239,7 @@
                 </div>
                 <div class="section__newsletter__contenu__news">
                     <h3>To follow the latest news.</h3>
-                    <button class="bouton">News</button>
+                    <button class="bouton bouton-loupe">News</button>
                 </div>
             </div>
         </div>
