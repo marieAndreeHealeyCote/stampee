@@ -1,0 +1,34 @@
+:root {
+  --police-titre: "Playfair Display", serif;
+  --police-corps: "Lato", sans-serif;
+
+  --police-body: 16px;
+  --police-taille-sm: 1.125rem;
+  --police-taille-md: 1.5rem;
+  --police-taille-lg: 3rem;
+  --police-taille-xl: 4rem;
+
+  --police-mobile-body: 16px;
+  --police-mobile-taille-sm: 1rem;
+  --police-mobile-taille-md: 1.25rem;
+  --police-mobile-taille-lg: 2rem;
+  --police-mobile-taille-xl: 2.5rem;
+
+  --espace-sm: 0.5rem;
+  --espace-md: 1rem;
+  --espace-lg: 1.5rem;
+  --espace-xl: 2rem;
+
+  --couleur-primaire: #333333;
+  --couleur-secondaire: #b22234;
+  --couleur-accent: #c2b280;
+  --couleur-favoris: #002147;
+
+  --couleur-texte: #333333;
+  --couleur-texte-inverse: #f9f5ef;
+  --couleur-succes: #56b64e;
+  --couleur-erreur: #b22234;
+  --couleur-erreur-fond: #fde1e4;
+
+  --couleur-bouton: #685d3b;
+}

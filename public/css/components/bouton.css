@@ -9,55 +9,55 @@
   font-size: 1.2em;
 }
 .bouton-rechercher {
-  background-color: #b22234;
+  background-color: var(--couleur-secondaire);
   border: none;
   color: white;
 
   &:hover {
-    background-color: #c2b280;
+    background-color: var(--couleur-accent);
     color: white;
   }
   &:hover:active {
-    background-color: #685d3b;
+    background-color: var(--couleur-bouton);
   }
 }
 .bouton-action {
-  background-color: #b22234;
+  background-color: var(--couleur-secondaire);
   border: none;
-  color: black;
+  color: var(--couleur-texte);
 
   &:hover {
-    background-color: #c2b280;
+    background-color: var(--couleur-accent);
     color: white;
   }
   &:hover:active {
-    background-color: #685d3b;
+    background-color: var(--couleur-bouton);
   }
 }
 .bouton-suivre,
 .bouton-login {
   background-color: white;
   border: #b22234 1px solid;
-  color: #b22234;
+  color: var(--couleur-secondaire);
 
   &:hover {
-    background-color: #c2b280;
+    background-color: var(--couleur-accent);
     color: white;
   }
   &:hover:active {
-    background-color: #685d3b;
+    background-color: var(--couleur-bouton);
   }
 }
 .bouton-enchere {
-  background-color: #b22234;
+  background-color: var(--couleur-secondaire);
   border: 1px solid white;
   color: white;
 
   &:hover {
-    background-color: #c2b280;
+    background-color: var(--couleur-accent);
     color: white;
   }
   &:hover:active {
-    background-color: #685d3b;
+    background-color: var(--couleur-bouton);
   }
 }

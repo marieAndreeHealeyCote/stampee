@@ -17,22 +17,12 @@ class AuthController
 
     public function store($data)
     {
-        $validator = new Validator;
-        $validator->field('username', $data['username'])->required()->max(50)->email();
-        $validator->field('password', $data['password'])->min(6)->max(20);
-
-        if ($validator->isSuccess()) {
-
-            $user = new User;
-            $checkuser = $user->checkUser($data['username'], $data['password']);
-            if ($checkuser) {
-                return View::redirect('home');
-            } else {
-                $errors['message'] = "Invalid credentials";
-                return view::render('auth/create', ['errors' => $errors, 'user' => $data]);
-            }
+        $user = new User;
+        $checkuser = $user->checkUser($data['email'], $data['password']);
+        if ($checkuser) {
+            return View::redirect('home');
         } else {
-            $errors = $validator->getErrors();
+            $errors['message'] = "Invalid credentials";
             return view::render('auth/create', ['errors' => $errors, 'user' => $data]);
         }
     }

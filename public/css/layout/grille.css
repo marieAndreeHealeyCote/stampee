@@ -17,6 +17,7 @@
   border: 1px solid black;
   padding: 2rem;
   line-height: 2rem;
+  background-color: white;
 }
 .section__catalogue-enchere-en-cours__grille__carte__liste {
   li {
@@ -28,6 +29,7 @@
   border: 1px solid grey;
   padding: 2rem;
   line-height: 2rem;
+  background-color: white;
 }
 .section__catalogue-enchere-archives__grille__carte__liste {
   li {

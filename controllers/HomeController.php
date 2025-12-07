@@ -10,7 +10,7 @@ class HomeController
 
     public function index()
     {
-        $data = "Bienvenue sur la page d'accueil du site Stampee";
+        $data = "Welcome all philatelists";
         return View::render("home", ['data' => $data]);
     }
 }

@@ -27,6 +27,34 @@
     flex-direction: column;
     text-align: start;
   }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 0.5em;
+  }
+
+  ul {
+    list-style-type: none;
+    text-align: start;
+
+    li:before {
+      content: "- ";
+    }
+  }
+
+  .error {
+    padding: 5px;
+    background-color: var(--couleur-erreur-fond);
+    border-radius: 5px;
+    border: var(--couleur-erreur) 1px solid;
+    font-size: 0.9em;
+    line-height: 2;
+    color: var(--couleur-secondaire);
+  }
+}
+
+form.section__newsletter__contenu__email {
+  input[type="text"],
   input[type="email"],
   input[type="password"] {
     padding: 0.5em;

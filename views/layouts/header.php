@@ -38,11 +38,12 @@
                     <ul class="section__nav-principale__connexion">
                         {%if guest %}
                         <li>
-                            <a class="section__nav-principale__connexion__lien" href="{{base}}/login">Sign In</a>
+                            <a class="section__nav-principale__connexion__lien" href="{{base}}/register">Register</a>
+                            <a class="section__nav-principale__connexion__lien" href="{{base}}/login">Sign in</a>
                         </li>
                         {% else %}
                         <li>
-                            <a class="section__nav-principale__connexion__lien" href="{{base}}/logout">Sign Out</a>
+                            <a class="section__nav-principale__connexion__lien" href="{{base}}/logout">Sign out</a>
                         </li>
                         {% endif %}
                     </ul>
@@ -61,16 +62,16 @@
                     <li>
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>
-                            <li><a href="detail-enchere-liste.html">Public Stamp Auction</a></li>
-                            <li><a href="index.html">Public Stamp Auction Catalog</a></li>
+                            <li><a href="#">Public Stamp Auction</a></li>
+                            <li><a href="#">Public Stamp Auction Catalog</a></li>
                             <li><a href="#">Premium Stamp Auction</a></li>
                         </ul>
                     </li>
                     <li>
                         <button type="button" class="pseudo-hyperlien">Membership</button>
                         <ul>
-                            <li><a href="#">Become a member</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="{{base}}/register">Become a member</a></li>
+                            <li><a href="{{base}}/login">Login</a></li>
                             <li><a href="#">Profile</a></li>
                         </ul>
                     </li>
@@ -111,3 +112,4 @@
             </div>
         </nav>
     </div>
+    <main>

@@ -1,3 +1,4 @@
+{{ include ('layouts/header.php', {title:'Stamp'})}}
 <div class="section__aparte__conteneur">
     <aside class="section__aparte">
         <form action="#">
@@ -113,7 +114,7 @@
         <h2>Current Auctions</h2>
         <div class="section__catalogue-enchere-en-cours__grille">
             <article class="section__catalogue-enchere-archives__grille__carte">
-                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 1">
+                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 1">
                 <h3>
                     Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
                     Lots 1-348
@@ -151,7 +152,7 @@
                 <button class="bouton bouton-enchere">BID NOW</button>
             </article>
             <article class="section__catalogue-enchere-archives__grille__carte">
-                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 2">
+                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 2">
                 <h3>
                     Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
                     Lots 1-348
@@ -189,7 +190,7 @@
                 <button class="bouton bouton-enchere">BID NOW</button>
             </article>
             <article class="section__catalogue-enchere-archives__grille__carte">
-                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 3">
+                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 3">
                 <h3>
                     Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
                     Lots 1-348
@@ -227,7 +228,7 @@
                 <button class="bouton bouton-enchere">BID NOW</button>
             </article>
             <article class="section__catalogue-enchere-archives__grille__carte">
-                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 4">
+                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 4">
                 <h3>
                     Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
                     Lots 1-348
@@ -265,7 +266,7 @@
                 <button class="bouton bouton-enchere">BID NOW</button>
             </article>
             <article class="section__catalogue-enchere-archives__grille__carte">
-                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 5">
+                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 5">
                 <h3>
                     Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
                     Lots 1-348
@@ -303,7 +304,7 @@
                 <button class="bouton bouton-enchere">BID NOW</button>
             </article>
             <article class="section__catalogue-enchere-archives__grille__carte">
-                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 6">
+                <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 6">
                 <h3>
                     Public Auction – The Denninger Collection Sale 4 – Canada Part Two -
                     Lots 1-348
@@ -347,7 +348,7 @@
     <h2>Past Auctions</h2>
     <div class="section__catalogue-enchere-archives__grille">
         <article class="section__catalogue-enchere-archives__grille__carte">
-            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 7">
+            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 7">
             <h3>
                 Public Auction – The Hobart Collection of New Brunswick & Nova
                 Scotia, Part II - Lots 501-715
@@ -385,7 +386,7 @@
             <button class="bouton bouton-enchere">COMMENTS</button>
         </article>
         <article class="section__catalogue-enchere-archives__grille__carte">
-            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 8">
+            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 8">
             <h3>
                 Public Auction – The Hobart Collection of New Brunswick & Nova
                 Scotia, Part II - Lots 501-715
@@ -423,7 +424,7 @@
             <button class="bouton bouton-enchere">COMMENTS</button>
         </article>
         <article class="section__catalogue-enchere-archives__grille__carte">
-            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 9">
+            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 9">
             <h3>
                 Public Auction – The Hobart Collection of New Brunswick & Nova
                 Scotia, Part II - Lots 501-7158
@@ -461,7 +462,7 @@
             <button class="bouton bouton-enchere">COMMENTS</button>
         </article>
         <article class="section__catalogue-enchere-archives__grille__carte">
-            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 10">
+            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 10">
             <h3>
                 Public Auction – The Hobart Collection of New Brunswick & Nova
                 Scotia, Part II - Lots 501-715
@@ -499,7 +500,7 @@
             <button class="bouton bouton-enchere">COMMENTS</button>
         </article>
         <article class="section__catalogue-enchere-archives__grille__carte">
-            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 11">
+            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 11">
             <h3>
                 Public Auction – The Hobart Collection of New Brunswick & Nova
                 Scotia, Part II - Lots 501-7158
@@ -537,7 +538,7 @@
             <button class="bouton bouton-enchere">COMMENTS</button>
         </article>
         <article class="section__catalogue-enchere-archives__grille__carte">
-            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsTimbre.webp" alt="image timbre carte 12">
+            <img class="section__catalogue-enchere-archives__grille__carte__image" src="assets/img/lotsStamp.webp" alt="image stamp carte 12">
             <h3>
                 Public Auction – The Hobart Collection of New Brunswick & Nova
                 Scotia, Part II - Lots 501-7158
@@ -576,3 +577,4 @@
         </article>
     </div>
 </section>
+{{ include ('layouts/footer.php') }}

@@ -1,18 +1,19 @@
 {{ include ('layouts/header.php', {title:'Login'})}}
 <div class="section__login">
-    {% if errors is defined %}
-    <div class="error">
-        <ul>
-            {% for error in errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-    <form method="post" class="section__login__form">
+
+    <form method="post" class="section__login__form" novalidate>
         <h2>Login</h2>
-        <label>Username
-            <input type="email" name="username" value="{{ user.username }}">
+        {% if errors is defined %}
+        <div class="error">
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <label>Email
+            <input type="email" name="email" value="{{ user.email }}">
         </label>
         <label>Password
             <input type="password" name="password">
