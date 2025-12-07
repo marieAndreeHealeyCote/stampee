@@ -3,12 +3,15 @@
 namespace App\Controllers;
 
 use App\Providers\View;
+use App\Providers\Auth;
 
 class UploadController
 {
 
     public function form()
     {
+        Auth::session();
+
         require __DIR__ . '/../views/uploads/create.php';
     }
 

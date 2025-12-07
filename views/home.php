@@ -8,9 +8,6 @@
     <img src="{{ asset }}img/Denninger.webp" alt="image stamp hero">
 </div>
 <div class="main">
-    {%if guest is empty %}
-    Hi {{ session.user_name }} !
-    {% endif %}
     <h1>{{ data }}</h1>
     <section class="section__mission">
         <div class="section__mission__image">

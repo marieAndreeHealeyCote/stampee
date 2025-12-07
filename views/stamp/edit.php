@@ -1,4 +1,4 @@
-{% include 'layouts/header.php' with {'title': 'Stamp'} %}
+{{ include ('layouts/header.php', {title:'Stamp'})}}
 
 <h2>Modifier un stamp</h2>
 <form method="POST" enctype="multipart/form-data">
@@ -68,4 +68,4 @@
     <button type="submit" class="btn vert">Enregistrer</button>
     <a href="{{base}}/livres" class="btn bleu">Annuler</a>
 </form>
-{% include 'layouts/footer.php' %}
+{{ include ('layouts/footer.php')}}

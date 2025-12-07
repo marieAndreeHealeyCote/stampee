@@ -77,6 +77,10 @@
     justify-content: space-between;
     gap: 3rem;
 
+    & > li {
+      width: 20%;
+    }
+
     & > li:not(:last-child) {
       border-right: 1px solid black;
       padding-right: 3rem;
@@ -88,9 +92,9 @@
 /* bandeau gris*/
 .section__piedpage__bandeau-gris {
   background-color: var(--couleur-texte);
-  color: white;
+  color: var(--couleur-texte-inverse);
   a {
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   a:hover {
     text-decoration: underline;
