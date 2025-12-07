@@ -57,7 +57,7 @@
                         alt="icone menu mobile">
                 </label>
                 <input type="checkbox" class="section__nav-principale__menu-burger-checkbox" id="menu-mobile">
-                <ul class="section__nav-principale__menu__liste" id="menu-deroulant">
+                <ul class="section__nav-principale__menu__list" id="menu-deroulant">
                     <li>
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>

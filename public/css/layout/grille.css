@@ -14,24 +14,24 @@
   }
 }
 .section__catalogue-enchere-en-cours__grille__carte {
-  border: 1px solid black;
+  border: 1px solid var(--couleur-primaire);
   padding: 2rem;
   line-height: 2rem;
   background-color: white;
 }
-.section__catalogue-enchere-en-cours__grille__carte__liste {
+.section__catalogue-enchere-en-cours__grille__carte__list {
   li {
     padding-left: 1rem;
   }
 }
 
 .section__catalogue-enchere-archives__grille__carte {
-  border: 1px solid grey;
+  border: 1px solid var(--couleur-primaire);
   padding: 2rem;
   line-height: 2rem;
   background-color: white;
 }
-.section__catalogue-enchere-archives__grille__carte__liste {
+.section__catalogue-enchere-archives__grille__carte__list {
   li {
     padding-left: 1rem;
   }

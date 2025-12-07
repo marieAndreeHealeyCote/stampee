@@ -56,7 +56,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -68,7 +68,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
@@ -94,7 +94,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -106,7 +106,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
@@ -136,7 +136,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -148,7 +148,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
@@ -174,7 +174,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -186,7 +186,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
