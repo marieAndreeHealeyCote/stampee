@@ -1,71 +1,85 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
 
-<h2>Modifier un stamp</h2>
+<h2>Add a new stamp</h2>
 <form method="POST" enctype="multipart/form-data">
     <div>
-        <label for="titre">Titre :</label>
-        <input type="text" name="titre" id="titre" value="{{ inputs.titre }}">
+        <label for="name">Name :</label>
+        <input type="text" name="name" id="name" value="{{ inputs.name ?? stamp.name }}">
     </div>
-    {% if errors.titre is defined %}
-    <span class="error">{{ errors.titre }}</span>
+    {% if errors.name is defined %}
+    <span class="error">{{ errors.name }}</span>
     {% endif %}
+
     <div>
-        <label for="auteur_id">Auteur :</label>
-        <select name="auteur_id" id="auteur_id">
+        <label for="year">Year :</label>
+        <input type="number" name="year" id="year" min="1900" max="2030" value="{{ inputs.year }}">
+    </div>
+    {% if errors.year is defined %}
+    <span class="error">{{ errors.year }}</span>
+    {% endif %}
+
+    <div>
+        <label for="is_certified">Certification :</label>
+        <input type="text" name="is_certified" id="is_certified" value="{{ inputs.is_certified }}">
+    </div>
+    {% if errors.is_certified is defined %}
+    <span class="error">{{ errors.is_certified }}</span>
+    {% endif %}
+
+    <div>
+        <label for="country_id">Country :</label>
+        <select name="country_id" id="country_id">
             <option value="" disabled>-- Sélectionner --</option>
-            {% for auteur in listeAuteurs %}
-            <option value="{{ auteur.id }}" {% if auteur.id == inputs.auteur_id %} selected {% endif %}>
-                {{ auteur.nom }}
+            {% for country in listCountries %}
+            <option value="{{ country_id }}" {% if country_id == country_id %} selected {% endif %}>
+                {{ country.name }}
             </option>
             {% endfor %}
         </select>
     </div>
-    {% if errors.auteur is defined %}
-    <span class="error">{{ errors.auteur }}</span>
+    {% if errors.country_id is defined %}
+    <span class="error">{{ errors.country_id }}</span>
     {% endif %}
+
     <div>
-        <label for="annee_publication">Année de publication :</label>
-        <input type="number" name="annee_publication" id="annee_publication" min="1900" max="2030" value="{{ inputs.annee_publication }}">
-    </div>
-    {% if errors.annee_publication is defined %}
-    <span class="error">{{ errors.annee_publication }}</span>
-    {% endif %}
-    <div>
-        <label for="categorie_id">Catégorie :</label>
-        <select name="categorie_id" id="categorie_id">
+        <label for="color_id">Color :</label>
+        <select name="color_id" id="color_id">
             <option value="" disabled>-- Sélectionner --</option>
-            {% for categorie in listeCategories %}
-            <option value="{{ categorie.id }}" {% if categorie.id == inputs.categorie_id %} selected {% endif %}>
-                {{ categorie.nom }}
+            {% for color in listColors %}
+            <option value="{{ color_id }}" {% if editeur.id == inputs.color_id %} selected {% endif %}>
+                {{ color.name }}
             </option>
             {% endfor %}
         </select>
     </div>
-    {% if errors.categorie_id is defined %}
-    <span class="error">{{ errors.categorie_id }}</span>
+    {% if errors.color_id is defined %}
+    <span class="error">{{ errors.color_id }}</span>
     {% endif %}
+
     <div>
-        <label for="editeur_id">Éditeur :</label>
-        <select name="editeur_id" id="editeur_id">
+        <label for="conditon_id">Condition :</label>
+        <select name="conditon_id" id="conditon_id">
             <option value="" disabled>-- Sélectionner --</option>
-            {% for editeur in listeEditeurs %}
-            <option value="{{ editeur.id }}" {% if editeur.id == inputs.editeur_id %} selected {% endif %}>
-                {{ editeur.nom }}
+            {% for color in listColors %}
+            <option value="{{ conditon_id }}" {% if editeur.id == inputs.conditon_id %} selected {% endif %}>
+                {{ condition.name }}
             </option>
             {% endfor %}
         </select>
     </div>
-    {% if errors.editeur_id is defined %}
-    <span class="error">{{ errors.editeur_id }}</span>
+    {% if errors.conditon_id is defined %}
+    <span class="error">{{ errors.conditon_id }}</span>
     {% endif %}
+
     <div>
-        <label for="upload">Ajouter une image de couverture</label>
+        <label for="upload">Upload an image of your stamp</label>
         <input type="file" name="upload" id="upload">
     </div>
     {% if errors.upload is defined %}
     <span class="error">{{ errors.upload }}</span>
     {% endif %}
-    <button type="submit" class="btn vert">Enregistrer</button>
-    <a href="{{base}}/livres" class="btn bleu">Annuler</a>
+
+    <button type="submit" class="btn vert">Save</button>
+    <a href="{{base}}/stamps" class="btn bleu">Cancel</a>
 </form>
 {{ include ('layouts/footer.php')}}
