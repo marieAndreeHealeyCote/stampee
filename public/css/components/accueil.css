@@ -34,8 +34,8 @@
 .section__enchere {
   margin: 0 -20px;
   padding: 2rem;
-  background-color: #b22234;
-  color: black;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte);
 
   @media (min-width: 600px) {
     display: flex;

@@ -4,7 +4,7 @@
   padding: 2rem 2rem 0 2rem;
 
   @media (min-width: 1024px) {
-    article{
+    article {
       display: flex;
       gap: 1rem;
     }
@@ -43,7 +43,7 @@
   padding: 2rem;
   border-bottom: 1px solid black;
 
-  ul{
+  ul {
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
@@ -60,7 +60,7 @@
   }
   a {
     text-decoration: none;
-    color: black;
+    color: var(--couleur-texte);
   }
   a:hover {
     text-decoration: underline;
@@ -93,7 +93,7 @@
     margin-bottom: 1rem;
   }
   h4 {
-    color: #b22234;
+    color: var(--couleur-secondaire);
   }
 }
 
@@ -117,7 +117,7 @@
       margin-bottom: 1rem;
     }
   }
-  .bouton-action{
+  .bouton-action {
     padding: 1rem 2.5rem;
     color: white;
     text-transform: uppercase;
@@ -145,66 +145,66 @@
   .bouton-suivre {
     padding: 1rem 2rem;
     text-transform: uppercase;
-    color: #b22234;
+    color: var(--couleur-secondaire);
     border: 1px solid #b22234;
 
-    &:hover{
-      background-color: #b22234;
+    &:hover {
+      background-color: var(--couleur-secondaire);
       cursor: pointer;
     }
   }
 }
-.section__detail-enchere__carte-description__contenu__login{
+.section__detail-enchere__carte-description__contenu__login {
   padding-left: 1em;
   margin-bottom: 1em;
 }
 
-.section__detail-enchere__carte-description__menu__lien-actif{
-  font-weight:bold;
+.section__detail-enchere__carte-description__menu__lien-actif {
+  font-weight: bold;
 }
 .section__detail-enchere__carte-description__contenu__plus,
 .section__detail-enchere__carte-description__contenu__historique,
-.section__detail-enchere__carte-description__contenu__question{
-  h3{
-   border-bottom: 1px solid #3333;
-   margin-bottom: 1em;
+.section__detail-enchere__carte-description__contenu__question {
+  h3 {
+    border-bottom: 1px solid #3333;
+    margin-bottom: 1em;
   }
-    p {
+  p {
     line-height: 1.5em;
     padding-left: 1em;
     padding-bottom: 1em;
   }
 }
 .section__detail-enchere__carte-description__contenu__item-description,
-.section__detail-enchere__carte-description__contenu__item-specifiques{
-    h3{
-      border-bottom: 1px solid #3333;
-      margin-bottom: 1.5em;
-    }
-    p {
+.section__detail-enchere__carte-description__contenu__item-specifiques {
+  h3 {
+    border-bottom: 1px solid #3333;
+    margin-bottom: 1.5em;
+  }
+  p {
     line-height: 1.5em;
     padding-left: 1em;
 
-    &:last-child{
+    &:last-child {
       padding-bottom: 1em;
     }
   }
 }
-.section__detail-enchere__carte-description__contenu__plus__liens{
+.section__detail-enchere__carte-description__contenu__plus__liens {
   display: flex;
   gap: 1em;
 
-  @media (max-width:600px){
-  flex-wrap: wrap;
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
   }
 }
 
-.section__detail-enchere__carte-description__contenu__plus__lien{
+.section__detail-enchere__carte-description__contenu__plus__lien {
   img {
     display: block;
     width: 250px;
   }
   a {
-    color: #333333;
+    color: var(--couleur-texte);
   }
 }

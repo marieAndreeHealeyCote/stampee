@@ -15,8 +15,8 @@
 
 /* bandeau rouge */
 .section__piedpage__bandeau-rouge {
-  background-color: #b22234;
-  color: black;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte);
 }
 .section__piedpage__bandeau-rouge__menu-secondaire {
   padding: 1rem 2rem;
@@ -26,7 +26,7 @@
   }
 
   a {
-    color: black;
+    color: var(--couleur-texte);
   }
   a:hover {
     text-decoration: underline;
@@ -34,7 +34,7 @@
 
   @media (min-width: 600px) {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     gap: 3rem;
 
     li:not(:last-child) {
@@ -43,18 +43,17 @@
       padding-bottom: unset;
     }
   }
-  
 }
 
 /* bandeau or */
 .section__piedpage__bandeau-or {
-  background-color: #c2b280;
-  color: black;
+  background-color: var(--couleur-accent);
+  color: var(--couleur-texte);
 
   a {
     display: inline-block;
     padding: 0.5em 0;
-    color: black;
+    color: var(--couleur-texte);
   }
   a:hover {
     text-decoration: underline;
@@ -74,7 +73,7 @@
 
   @media (min-width: 600px) {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 3rem;
 
@@ -84,12 +83,11 @@
       padding-bottom: unset;
     }
   }
-  
 }
 
 /* bandeau gris*/
 .section__piedpage__bandeau-gris {
-  background-color: #333333;
+  background-color: var(--couleur-texte);
   color: white;
   a {
     color: white;

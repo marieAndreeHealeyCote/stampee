@@ -44,12 +44,12 @@
 
   .error {
     padding: 5px;
-    background-color: #fde1e4;
+    background-color: var(--couleur-erreur-fond);
     border-radius: 5px;
-    border: #b22234 1px solid;
+    border: var(--couleur-erreur) 1px solid;
     font-size: 0.9em;
     line-height: 2;
-    color: #b22234;
+    color: var(--couleur-secondaire);
   }
 }
 

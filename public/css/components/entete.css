@@ -1,7 +1,7 @@
 /* entete.css */
 /* Menu secondaire */
 .section__nav-secondaire {
-  background-color: #b22234;
+  background-color: var(--couleur-secondaire);
   padding: 1rem 2rem;
 
   /* liste */
@@ -28,7 +28,7 @@
   /* liens */
   a {
     text-decoration: none;
-    color: black;
+    color: var(--couleur-texte);
   }
   a:hover {
     text-decoration: underline;
@@ -134,7 +134,7 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
-  background-color: #b22234;
+  background-color: var(--couleur-secondaire);
   text-align: center;
   color: white;
   img {

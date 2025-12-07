@@ -3,29 +3,48 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-size: var(--police-mobile-body);
+  @media (min-width: 600px) {
+    font-size: var(--police-body);
+  }
+}
+
 /* Général Fonts */
 h1,
 .h1 {
-  font-size: 64px;
-  font-family: playfair-display;
+  font-size: var(--police-mobile-taille-xl);
+  font-family: var(--police-titre);
   margin-block: 0.67em;
+  @media (min-width: 600px) {
+    font-size: var(--police-taille-xl);
+  }
 }
 h2,
 .h2 {
-  font-size: 48px;
-  font-family: playfair-display;
+  font-size: var(--police-mobile-taille-lg);
+  font-family: var(--police-titre);
+  @media (min-width: 600px) {
+    font-size: var(--police-taille-lg);
+  }
 }
 h3,
 .h3 {
-  font-size: 24px;
-  font-family: lato;
+  font-size: var(--police-mobile-taille-md);
+  font-family: var(--police-corps);
   font-weight: bold;
+  @media (min-width: 600px) {
+    font-size: var(--police-taille-md);
+  }
 }
 h4,
 .h4 {
-  font-size: 18px;
-  font-family: lato;
+  font-size: var(--police-mobile-taille-sm);
+  font-family: var(--police-corps);
   font-weight: bold;
+  @media (min-width: 600px) {
+    font-size: var(--police-taille-sm);
+  }
 }
 a,
 p,
@@ -37,76 +56,9 @@ label,
 select,
 option {
   font-size: 16px;
-  font-family: lato;
+  font-family: var(--police-corps);
 }
 
 sup {
-  font-family: lato;
-}
-
-/* Google Font */
-.playfair-display {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-.lato-thin {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.lato-light {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.lato-regular {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.lato-bold {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.lato-black {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.lato-thin-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.lato-light-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.lato-regular-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.lato-bold-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.lato-black-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: italic;
+  font-family: var(--police-corps);
 }
