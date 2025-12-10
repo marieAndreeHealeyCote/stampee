@@ -1,39 +1,53 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
-<div class="section__detail-enchere__carte-description">
-    <div class="section__detail-enchere__carte-description__menu">
-        <!-- Les informations du timbre aurait été affichées en javascript 
-            ex: https://www.hipstamp.com/listing/british-levant-qv-sg4a-40pa-on-2-1-2-d-surch-double-fine-used-cat-lb2500-bpa-cert/61639848 -->
-        <ul>
-            <li><a href="detail-enchere-list.html">Listing</a></li>
-            <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="detail-enchere-detail.html">Details</a></li>
-            <li><a href="detail-enchere-historique.html">History</a></li>
-            <li><a href="detail-enchere-question.html">Question</a></li>
-        </ul>
-    </div>
-    <div class="section__detail-enchere__carte-description__contenu">
-        <div class="section__detail-enchere__carte-description__contenu__item-specifiques">
-            <h3>Item Specifics</h3>
-            <h4>Catalog Number: </h4>
-            <p>SG4a,SGa</p>
-            <h4>Condition:</h4>
-            <p>Used</p>
-            <h4>Centering:</h4>
-            <p>Fine</p>
-            <h4>Stamp Format:</h4>
-            <p>Single</p>
+<div class="section__detail-enchere">
+    <article>
+        <div class="section__detail-enchere__carte-image">
+            <figure class="section__detail-enchere__carte-image__timbre">
+                <img
+                    class="section__detail-enchere__carte-image__timbre-large"
+                    src="{{ base }}/{{ inputs.upload }}"
+                    alt="grand format timbre">
+                <img
+                    class="section__detail-enchere__carte-image__timbre-petit "
+                    src="{{ base }}/{{ inputs.upload }}"
+                    alt="petit format timbre">
+            </figure>
         </div>
-        <div class="section__detail-enchere__carte-description__contenu__item-description">
-            <h3>Item Description</h3>
-            <h4>Condition:</h4>
-            <p>No faults</p>
-            <h4>Grade:</h4>
-            <p>F(fine)</p>
+        <div class="section__detail-enchere__carte-description">
+            <div class="section__detail-enchere__carte-description__menu">
+                <ul>
+                    <li><a href="#">Listing</a></li>
+                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="#">Details</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Question</a></li>
+                </ul>
+            </div>
+            <div class="section__detail-enchere__carte-description__contenu">
+                <div class="section__detail-enchere__carte-description__contenu__item-specifiques">
+                    <h3>Item Specifics</h3>
+                    <h4>Stamp id: </h4>
+                    <p>{{ stamp.id }}</p>
+                    <h4>Name:</h4>
+                    <p>{{ stamp.name }}</p>
+                    <h4>Year:</h4>
+                    <p>{{ stamp.year }}</p>
+                    <h4>Certification:</h4>
+                    <p>{{ stamp.is_certified }}</p>
+                </div>
+                <div class="section__detail-enchere__carte-description__contenu__item-description">
+                    <h3>Item Description</h3>
+                    <h4>Country:</h4>
+                    <p>{{ stamp.country }}</p>
+                    <h4>Color:</h4>
+                    <p>{{ stamp.color }}</p>
+                    <h4>Condition:</h4>
+                    <p>{{ stamp.condition }}</p>
+                </div>
+                <div class="section__detail-enchere__carte-description__contenu__surveiller">
+                    <button class="bouton-suivre">WATCH ITEM</button>
+                </div>
+            </div>
         </div>
-        <div class="section__detail-enchere__carte-description__contenu__surveiller">
-            <button class="bouton-suivre">WATCH ITEM</button>
-        </div>
-    </div>
-</div>
-</article>
+    </article>
 </div>
 {{ include ('layouts/footer.php') }}
