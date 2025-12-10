@@ -9,6 +9,7 @@ use App\Controllers\AuthController;
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
+Route::get('/my-stamps', 'StampController@index');
 Route::get('/stamps', 'StampController@index');
 Route::get('/stamp/show', 'StampController@show');
 Route::get('/stamp/create', 'StampController@create');
@@ -22,6 +23,11 @@ Route::post('/register', 'UserController@store');
 
 Route::get('/user/edit', 'UserController@show');
 Route::post('/user/edit', 'UserController@store');
+
+Route::get('/my-auctions', 'AuctionController@index');
+Route::get('/auctions', 'AuctionController@index');
+Route::get('/auction/show', 'AuctionController@show');
+
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');
