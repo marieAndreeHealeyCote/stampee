@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\Stamp;
+use App\Models\Country;
+use App\Models\Color;
+use App\Models\Condition;
+use App\Models\Image;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -18,23 +22,32 @@ class StampController
         if ($selectStamp) {
             $listStamps = [];
 
-            foreach ($selectlivre as $tmp) {
-                $auteur_id = $tmp['auteur_id'];
+            foreach ($selectStamp as $stamp) {
 
-                $auteur = new Auteur;
-                $selectAuteur = $auteur->selectId($auteur_id);
-                $auteurNom = $selectAuteur['nom'];
-                // ajouter les noms des auteur, éditeur, catégorie
+                $country = new Country;
+                $selectCountry = $country->selectId($stamp['country_id']);
+
+                $color = new Color;
+                $selectColor = $color->selectId($stamp['color_id']);
+
+                $condition = new Condition;
+                $selectCondition = $condition->selectId($stamp['condition_id']);
+
+                $image = new Image;
+                $selectImage = $image->selectId($stamp['stamp_id']);
+
+                // ajouter les informations des autres tables
                 $listeLivres[] = [
-                    'id' => $tmp['id'],
-                    'titre' => $tmp['titre'],
-                    'auteur_id' => $tmp['auteur_id'],
-                    'auteur_nom' => $auteurNom,
-                    'categorie_id' => $tmp['categorie_id'],
-                    'categorie_nom' => $categorieNom,
-                    'editeur_id' => $tmp['editeur'],
-                    'editeur_nom' => $editeurNom,
-                    'annee_publication' => $tmp['annee_publication'],
+                    'id' => $stamp['id'],
+                    'name' => $stamp['name'],
+                    'stamp_id' => $stamp['stamp_id'],
+                    'name' => $stamp['name'],
+                    'year' => $stamp['year'],
+                    'is_certified' => $stamp['is_certified'],
+                    'country_name' => $selectCountry['name'],
+                    'color_name' => $selectColor['name'],
+                    'condition_name' => $selectCondition['name'],
+                    'images' => $selectImage,
                 ];
             }
 
@@ -54,14 +67,23 @@ class StampController
 
             if ($selectStamp) {
 
-                $auteur_id = $selectLivre['auteur_id'];
+                $country = new Country;
+                $selectCountry = $country->selectId($stamp['country_id']);
 
-                $auteur = new Auteur;
-                $selectAuteur = $auteur->selectId($auteur_id);
-                $auteurNom = $selectAuteur['nom'];
+                $color = new Color;
+                $selectColor = $color->selectId($stamp['color_id']);
 
-                // ajouter les noms des auteur, éditeur, catégorie
-                $selectLivre['auteur_nom'] = $auteurNom;
+                $condition = new Condition;
+                $selectCondition = $condition->selectId($stamp['condition_id']);
+
+                $image = new Image;
+                $selectImage = $image->selectId($stamp['stamp_id']);
+
+                // ajouter les informations des autres tables
+                $selectStamp['color_name'] = $color['name'];
+                $selectStamp['country_name'] = $country['name'];
+                $selectStamp['condition_name'] = $condition['name'];
+                $selectStamp['images'] = $selectImage;
 
                 return View::render("stamp/show", ['inputs' => $selectStamp]);
             } else {
@@ -75,11 +97,11 @@ class StampController
     {
         Auth::session();
 
-        $auteur = new Auteur;
-        $listeAuteurs = $auteur->select();
+        $stamp = new Stamp;
+        $selectStamp = $stamp->select();
 
-        return View::render("livre/create", [
-            'listeAuteurs' => $listeAuteurs
+        return View::render("stamp/create", [
+            'listeStamps' => $selectStamp
         ]);
     }
 
@@ -89,8 +111,12 @@ class StampController
 
         $validator = new Validator;
         $validator->field('name', $data['name'])->required()->max(100);
-        $validator->field('auteur_id', $data['auteur_id'])->required()->int();
-        $validator->field('annee_publication', $data['annee_publication'])->required()->int();
+        $validator->field('stamp_id', $data['stamp_id'])->required()->int();
+        $validator->field('year', $data['year'])->required()->year();
+        $validator->field('is_certified', $data['is_certified'])->required();
+        $validator->field('country_id', $data['country_id'])->required()->int();
+        $validator->field('color_id', $data['color_id'])->required()->int();
+        $validator->field('condition_id', $data['condition_id'])->required()->int();
 
         if (isset($files['upload'])) {
             $validator->field('upload', $files['upload'])->image()->fileType(["image/jpeg", "image/png", "image/gif"])->max(500000);
@@ -112,12 +138,12 @@ class StampController
                 }
             }
 
-            //créer un livre
-            $livre = new Livre;
-            $insert = $livre->insert($data);
+            //créer un timbre
+            $stamp = new Stamp;
+            $insert = $stamp->insert($data);
 
             if ($insert) {
-                return View::redirect('livre/show?id=' . $insert);
+                return View::redirect('stamp/show?id=' . $insert);
             } else {
                 return View::render('error');
             }
@@ -126,13 +152,13 @@ class StampController
             $inputs = $data;
 
             //récupérer à nouveau les listes pour les Select
-            $auteur = new Auteur;
-            $listeAuteurs = $auteur->select();
+            $stamp = new Stamp;
+            $listeStamps = $stamp->select();
 
-            return View::render('livre/create', [
+            return View::render('stamp/create', [
                 'errors' => $errors,
                 'inputs' => $inputs,
-                'listeAuteurs' => $listeAuteurs
+                'listeStamps' => $listeStamps
             ]);
         }
     }
@@ -140,11 +166,112 @@ class StampController
     public function edit($data = [])
     {
         Auth::session();
+
+        if (isset($data['id']) && $data['id'] != null) {
+            $stamp = new Stamp;
+            $selectStamp = $stamp->selectId($data['id']);
+            if ($selectStamp) {
+
+                $country = new Country;
+                $selectCountry = $country->selectId($stamp['country_id']);
+
+                $color = new Color;
+                $selectColor = $color->selectId($stamp['color_id']);
+
+                $condition = new Condition;
+                $selectCondition = $condition->selectId($stamp['condition_id']);
+
+                $image = new Image;
+                $selectImage = $image->selectId($stamp['stamp_id']);
+
+                // ajouter les informations des autres tables
+                $selectStamp['color_name'] = $color['name'];
+                $selectStamp['country_name'] = $country['name'];
+                $selectStamp['condition_name'] = $condition['name'];
+                $selectStamp['images'] = $selectImage;
+
+                return View::render("stamp/show", ['inputs' => $selectStamp]);
+            } else {
+                return View::render('error', ['msg' => 'Stamp not found!']);
+            }
+            return View::render('error', ['msg' => '404 page not found!']);
+        }
     }
 
     public function update($data = [], $get = [], $files = [])
     {
         Auth::session();
+
+        if (isset($get['id']) && $get['id'] != null) {
+            $validator = new Validator;
+            $validator->field('name', $data['name'])->required()->max(100);
+            $validator->field('stamp_id', $data['stamp_id'])->required()->int();
+            $validator->field('year', $data['year'])->required()->year();
+            $validator->field('is_certified', $data['is_certified'])->required();
+            $validator->field('country_id', $data['country_id'])->required()->int();
+            $validator->field('color_id', $data['color_id'])->required()->int();
+            $validator->field('condition_id', $data['condition_id'])->required()->int();
+
+            if (isset($files['upload'])) {
+                $validator->field('upload', $files['upload'])->image()->fileType(["image/jpeg", "image/png", "image/gif"])->max(500000);
+            }
+
+            if ($validator->isSuccess()) {
+
+                //téléverser l'image
+                if (isset($files['upload'])) {
+                    $target_dir = __DIR__ . '/../public/uploads/';
+                    $target_file = $target_dir . basename($files["upload"]["name"]);
+                    if (move_uploaded_file($files["upload"]["tmp_name"], $target_file)) {
+                        //mettre à jour $data avec le path du fichier
+                        $filename = basename($files["upload"]["name"]);
+                        $data['upload'] = "/public/uploads/" . $filename;
+                    } else {
+                        die('oh no...update');
+                        return View::render('error', "Sorry, there was an error uploading your file");
+                    }
+                }
+
+                //modifier le timbre
+                $stamp = new Stamp;
+                $insert = $stamp->update($data, $get['id']);
+                if ($insert) {
+                    return View::redirect('stamp/show?id=' . $get['id']);
+                } else {
+                    return View::render('error');
+                }
+            } else {
+                $errors = $validator->getErrors();
+                $inputs = $data;
+
+                //récupérer à nouveau les listes pour les Select
+                $stamp = new Stamp;
+                $listStamps = $stamp->select();
+
+                $country = new Country;
+                $listCountries = $country->select();
+
+                $color = new Color;
+                $listColors = $color->select();
+
+                $condition = new Condition;
+                $listConditions = $condition->select();
+
+                $image = new Image;
+                $listImages = $image->select();
+
+                return View::render('stamp/create', [
+                    'errors' => $errors,
+                    'inputs' => $inputs,
+                    'listStamps' => $listStamps,
+                    'listCountries' => $listCountries,
+                    'listColors' => $listColors,
+                    'listConditions' => $listConditions,
+                    'listImages' => $listImages,
+                ]);
+            }
+        }
+        return View::render('error');
     }
 
     public function delete($data = [])
