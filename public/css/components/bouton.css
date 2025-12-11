@@ -35,7 +35,9 @@
   }
 }
 .bouton-suivre,
-.bouton-login {
+.bouton-login,
+.bouton-ajouter,
+.bouton-modifier {
   background-color: var(--couleur-texte-inverse);
   border: var(--couleur-secondaire) 1px solid;
   color: var(--couleur-secondaire);
@@ -59,24 +61,5 @@
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
-  }
-}
-
-.bouton.vert {
-  background-color: var(--couleur-succes-fond);
-  &:hover {
-    background-color: var(--couleur-succes-fond-hover);
-  }
-}
-.bouton.rouge {
-  background-color: var(--couleur-erreur-fond);
-  &:hover {
-    background-color: var(--couleur-erreur-fond-hover);
-  }
-}
-.bouton.bleu {
-  background-color: var(--couleur-favoris);
-  &:hover {
-    background-color: var(--couleur-favoris-inverse);
   }
 }

@@ -1,12 +1,14 @@
 /* formulaire.css */
-/* Login */
-.section__login {
+
+.section__login,
+.section__timbre {
   margin: 4em auto;
   display: flex;
   justify-content: center;
 }
 
-.section__login__form {
+.section__login__form,
+.section__timbre__form {
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -18,8 +20,21 @@
 
   input,
   label,
-  textarea {
+  textarea,
+  select {
     font-size: inherit;
+  }
+
+  .section__timbre__certification {
+    padding: 1em;
+  }
+
+  .section__timbre__upload {
+    padding: 1em;
+    button {
+      padding: 0.4rem 1rem;
+      font-size: 1.2em;
+    }
   }
 
   label {
@@ -29,7 +44,9 @@
   }
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
+  input[type="number"],
+  input[type="password"],
+  select {
     padding: 0.5em;
   }
 
