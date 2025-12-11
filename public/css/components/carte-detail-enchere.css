@@ -1,6 +1,8 @@
 /* carte.css */
 /* carte-image */
 .section__detail-enchere {
+  display: flex;
+  flex-wrap: wrap;
   padding: 2rem 2rem 0 2rem;
 
   @media (min-width: 1024px) {

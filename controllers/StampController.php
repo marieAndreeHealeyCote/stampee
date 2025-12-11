@@ -34,7 +34,7 @@ class StampController
                 $selectCondition = $condition->selectId($stamp['condition_id']);
 
                 $image = new Image;
-                $selectImage = $image->selectId($stamp['id']);
+                $listImages = $image->selectAllWhere($stamp['id'], 'stamp_id');
 
                 $listStamps[] = [
                     'id' => $stamp['id'],
@@ -44,7 +44,7 @@ class StampController
                     'country_name' => $selectCountry['name'],
                     'color_name' => $selectColor['name'],
                     'condition_name' => $selectCondition['name'],
-                    'images' => $selectImage,
+                    'listImages' => $listImages,
                 ];
             }
 
@@ -368,7 +368,7 @@ class StampController
                             $data['upload1'] = "/public/uploads/" . $filename;
 
                             $image = new Image;
-                            $image->insert(['url' => $data['upload1'], 'stamp_id' => $insert]);
+                            $image->insert(['url' => $data['upload1'], 'stamp_id' => $get['id']]);
                         } else {
                             die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
@@ -383,7 +383,7 @@ class StampController
                             $data['upload2'] = "/public/uploads/" . $filename;
 
                             $image = new Image;
-                            $image->insert(['url' => $data['upload2'], 'stamp_id' => $insert]);
+                            $image->insert(['url' => $data['upload2'], 'stamp_id' => $get['id']]);
                         } else {
                             die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
@@ -398,7 +398,7 @@ class StampController
                             $data['upload3'] = "/public/uploads/" . $filename;
 
                             $image = new Image;
-                            $image->insert(['url' => $data['upload3'], 'stamp_id' => $insert]);
+                            $image->insert(['url' => $data['upload3'], 'stamp_id' => $get['id']]);
                         } else {
                             die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
@@ -413,7 +413,7 @@ class StampController
                             $data['upload4'] = "/public/uploads/" . $filename;
 
                             $image = new Image;
-                            $image->insert(['url' => $data['upload4'], 'stamp_id' => $insert]);
+                            $image->insert(['url' => $data['upload4'], 'stamp_id' => $get['id']]);
                         } else {
                             die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
@@ -428,7 +428,7 @@ class StampController
                             $data['upload5'] = "/public/uploads/" . $filename;
 
                             $image = new Image;
-                            $image->insert(['url' => $data['upload5'], 'stamp_id' => $insert]);
+                            $image->insert(['url' => $data['upload5'], 'stamp_id' => $get['id']]);
                         } else {
                             return View::render('error', "Sorry, there was an error with uploading your file");
                         }
