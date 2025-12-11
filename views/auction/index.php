@@ -35,9 +35,8 @@
             </div>
             <div class="section__detail-enchere__carte-description__contenu__avertissement">
                 <p>
-                    Condition: No faults. Grade: F(Fine) Please have a good look
-                    through our catalog. There is a selection of GB and British
-                    Commonwealth stamps to suit all levels of stamp collecting.
+                    Please have a good look through our catalog.
+                    There is a selection of Lord's favorite stamps to suit all levels of stamp collecting.
                     Thank you!
                 </p>
             </div>
