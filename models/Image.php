@@ -8,5 +8,5 @@ class Image extends CRUD
 {
     protected $table = 'stampee.image';
     protected $primaryKey = 'id';
-    protected $fillable = ['url'];
+    protected $fillable = ['url', 'stamp_id'];
 }

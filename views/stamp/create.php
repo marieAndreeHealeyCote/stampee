@@ -66,7 +66,7 @@
                 <select name="condition_id" id="condition_id">
                     <option value="" disabled selected>-- Select --</option>
                     {% for condition in listConditions %}
-                    <option value="{{ condition.id }}" {% if condition.id == inputs.id %} selected {% endif %}>
+                    <option value="{{ condition.id }}" {% if condition.id == inputs.condition_id %} selected {% endif %}>
                         {{ condition.name }}
                     </option>
                     {% endfor %}
@@ -83,8 +83,8 @@
                 <input type="file" name="upload1" id="upload1">
             </label>
         </div>
-        {% if errors.upload is defined %}
-        <span class="error">{{ errors.upload }}</span>
+        {% if errors.upload1 is defined %}
+        <span class="error">{{ errors.upload1 }}</span>
         {% endif %}
 
         <div class="section__timbre__upload">
@@ -92,8 +92,8 @@
                 <input type="file" name="upload2" id="upload2">
             </label>
         </div>
-        {% if errors.upload is defined %}
-        <span class="error">{{ errors.upload }}</span>
+        {% if errors.upload2 is defined %}
+        <span class="error">{{ errors.upload2 }}</span>
         {% endif %}
 
         <div class="section__timbre__upload">
@@ -101,8 +101,8 @@
                 <input type="file" name="upload3" id="upload3">
             </label>
         </div>
-        {% if errors.upload is defined %}
-        <span class="error">{{ errors.upload }}</span>
+        {% if errors.upload3 is defined %}
+        <span class="error">{{ errors.upload3 }}</span>
         {% endif %}
 
         <div class="section__timbre__upload">
@@ -110,8 +110,8 @@
                 <input type="file" name="upload4" id="upload4">
             </label>
         </div>
-        {% if errors.upload is defined %}
-        <span class="error">{{ errors.upload }}</span>
+        {% if errors.upload4 is defined %}
+        <span class="error">{{ errors.upload4 }}</span>
         {% endif %}
 
         <div class="section__timbre__upload">
@@ -119,8 +119,8 @@
                 <input type="file" name="upload5" id="upload5">
             </label>
         </div>
-        {% if errors.upload is defined %}
-        <span class="error">{{ errors.upload }}</span>
+        {% if errors.upload5 is defined %}
+        <span class="error">{{ errors.upload5 }}</span>
         {% endif %}
 
         <button type="submit" class="bouton bouton-ajouter">Add</button>
