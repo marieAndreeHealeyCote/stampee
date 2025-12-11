@@ -124,7 +124,7 @@
         {% endif %}
 
         <button type="submit" class="bouton bouton-ajouter">Add</button>
-        <a href="{{base}}/profile" class="bouton bouton-action">Cancel</a>
+        <a href="{{base}}/profile" class="bouton bouton-retour">Cancel</a>
     </form>
 </div>
 

@@ -14,8 +14,9 @@
         <img src="{{ base }}/{{ image.url }}">
         {% endfor %}
         <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="bouton bouton-modifier">Edit</a>
+        <a href="{{base}}/livre/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Supprimer ce timbre ?')">Delete</a>
         <input type="hidden" name="id" value="{{ inputs.id }}">
-        <a href="{{ base }}/profile" class="bouton bouton-action">Back</a>
+        <a href="{{ base }}/profile" class="bouton bouton-retour">Back</a>
     </form>
 </div>
 

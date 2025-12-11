@@ -50,7 +50,9 @@
     background-color: var(--couleur-bouton);
   }
 }
-.bouton-enchere {
+.bouton-enchere,
+.bouton-retour,
+.bouton-supprimer {
   background-color: var(--couleur-secondaire);
   border: 1px solid white;
   color: var(--couleur-texte-inverse);
