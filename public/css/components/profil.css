@@ -7,6 +7,14 @@
     flex-basis: 100%;
   }
 }
+.section__profil__aparte {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
 .section__profil {
   flex-grow: 1;
 }

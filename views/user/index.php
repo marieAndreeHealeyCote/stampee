@@ -1,24 +1,16 @@
 {{ include ('layouts/header.php', {title:'Profile'})}}
 <div class="page-profil">
     <h2>Welcome back, {{ session.user_name }}</h2>
-    <aside class="section__aparte">
-        <section class="section__aparte__condition">
-            <div>
-                <a href="{{ base }}/user/my-stamps">
-                    <h3>My Stamps</h3>
-                </a>
-            </div>
-            <div>
-                <a href="{{ base }}/user/my-bids">
-                    <h3>My Bids</h3>
-                </a>
-            </div>
-            <div>
-                <a href="{{ base }}/user/my-auctions">
-                    <h3>My Auctions</h3>
-                </a>
-            </div>
-        </section>
+    <aside class="section__profil__aparte">
+        <a href="{{ base }}/user/my-stamps">
+            <h3>My Stamps</h3>
+        </a>
+        <a href="{{ base }}/user/my-bids">
+            <h3>My Bids</h3>
+        </a>
+        <a href="{{ base }}/user/my-auctions">
+            <h3>My Auctions</h3>
+        </a>
     </aside>
 
     <div class="section__profil">
