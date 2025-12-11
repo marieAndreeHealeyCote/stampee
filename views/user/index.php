@@ -2,14 +2,17 @@
 <div class="page-profil">
     <h2>Welcome back, {{ session.user_name }}</h2>
     <aside class="section__profil__aparte">
-        <a href="{{ base }}/user/my-stamps">
+        <a href="{{ base }}/my-stamps">
             <h3>My stamps</h3>
         </a>
-        <a href="{{ base }}/user/my-bids">
+        <a href="{{ base }}/my-bids">
             <h3>My bids</h3>
         </a>
-        <a href="{{ base }}/user/my-auctions">
+        <a href="{{ base }}/my-auctions">
             <h3>My auctions</h3>
+        </a>
+        <a href="{{ base }}/my-favorites">
+            <h3>My favorites</h3>
         </a>
     </aside>
 
@@ -18,7 +21,11 @@
             <h3>My stamps</h3>
             {% for stamp in stamps %}
             <article>
-                <div><img src="{{ asset }}img/britishLevant.webp"></div>
+                <div>
+                    {% for image in listImages %}
+                    <img src="{{ base }}/{{ image.url }}">
+                    {% endfor %}
+                </div>
                 <ul>
                     <li><strong>Name : </strong>{{ stamp.name }}</li>
                     <li><strong>Year : </strong>{{ stamp.year }}</li>
@@ -27,8 +34,8 @@
                     <li><strong>Color : </strong>{{ stamp.color }}</li>
                     <li><strong>Condition : </strong>{{ stamp.condition }}</li>
                 </ul>
-                <a href="{{ base }}/stamp/edit?id={{stamp.id}}">Edit</a>
-                <a href="{{ base }}/stamp/delete?id={{stamp.id}}">Delete</a>
+                <a href="{{ base }}/stamp/edit?id={{stamp.id}}" class="bouton bouton-modifier" onclick="return confirm('Edit your stamp ?')">Edit</a>
+                <a href="{{base}}/stamp/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Delete your stamp  ?')">Delete</a>
             </article>
             {% else %}
             <a href="{{ base }}/stamp/create">Add a first stamp</a>

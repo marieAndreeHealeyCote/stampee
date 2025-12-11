@@ -5,6 +5,7 @@ use App\Controllers\HomeController;
 use App\Controllers\StampController;
 use App\Controllers\UserController;
 use App\Controllers\AuthController;
+use App\Controllers\AuctionController;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');

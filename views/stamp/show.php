@@ -1,20 +1,21 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
 
-<h1>Stamp created</h1>
-
-<div class="conteneur">
-    <form method="post">
+<div class="section__timbre">
+    <form method="post" class="section__timbre__form">
+        <h2>Stamp's informations</h2>
         <p><strong>Name : </strong>{{ inputs.name }}</p>
         <p><strong>Year : </strong>{{ inputs.year }}</p>
         <p><strong>Certification : </strong>{{ inputs.is_certified }}</p>
         <p><strong>Country : </strong>{{ inputs.country }}</p>
         <p><strong>Color : </strong>{{ inputs.color }}</p>
         <p><strong>Condition : </strong>{{ inputs.condition }}</p>
-        {% for image in listImages %}
-        <img src="{{ base }}/{{ image.url }}">
-        {% endfor %}
-        <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="bouton bouton-modifier">Edit</a>
-        <a href="{{base}}/livre/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Supprimer ce timbre ?')">Delete</a>
+        <div>
+            {% for image in listImages %}
+            <img src="{{ base }}/{{ image.url }}">
+            {% endfor %}
+        </div>
+        <a href="{{ base }}/stamp/edit?id={{ stamp.id }}" class="bouton bouton-modifier" onclick="return confirm('Edit your stamp ?')">Edit</a>
+        <a href="{{ base }}/stamp/delete?id={{ inputs.id }}" class="bouton bouton-supprimer" onclick="return confirm('Delete your stamp ?')">Delete</a>
         <input type="hidden" name="id" value="{{ inputs.id }}">
         <a href="{{ base }}/profile" class="bouton bouton-retour">Back</a>
     </form>

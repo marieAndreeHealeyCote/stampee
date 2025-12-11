@@ -14,6 +14,16 @@
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-inverse);
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
 .section__profil {
   flex-grow: 1;
@@ -22,19 +32,39 @@
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
 }
 .section__profil__mise {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
 }
 .section__profil__enchere {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
 }
 .section__profil__favoris {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
 }
