@@ -12,7 +12,7 @@
         <p><strong>Color : </strong>{{ inputs.color }}</p>
         <p><strong>Condition : </strong>{{ inputs.condition }}</p>
         <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="bouton bouton-modifier">Edit</a>
-        <input type="hidden" name="id" value="{{ stamp.id }}">
+        <input type="hidden" name="id" value="{{ inputs.id }}">
         <a href="{{ base }}/profile" class="bouton bouton-action">Back</a>
     </form>
 </div>

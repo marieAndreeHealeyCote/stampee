@@ -82,8 +82,8 @@ class Validator
     public function year()
     {
         $year = (int)$this->value;
-        if ($year < 1000 && $year > 2100) {
-            $this->errors[$this->key] = "$this->name must be between years 1000 and 2100.";
+        if ($year < 1900 && $year > 2100) {
+            $this->errors[$this->key] = "$this->name must be between years 1901 and 2100.";
         }
         return $this;
     }

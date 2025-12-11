@@ -34,12 +34,10 @@ class StampController
                 $selectCondition = $condition->selectId($stamp['condition_id']);
 
                 $image = new Image;
-                $selectImage = $image->selectId($stamp['stamp_id']);
+                $selectImage = $image->selectId($stamp['id']);
 
                 $listStamps[] = [
                     'id' => $stamp['id'],
-                    'name' => $stamp['name'],
-                    'stamp_id' => $stamp['stamp_id'],
                     'name' => $stamp['name'],
                     'year' => $stamp['year'],
                     'is_certified' => $stamp['is_certified'],
@@ -62,7 +60,7 @@ class StampController
         if (isset($data['id']) && $data['id'] != null) {
 
             $stamp = new Stamp;
-            $selectStamp = $stamp->selectId($data['stamp_id']);
+            $selectStamp = $stamp->selectId($data['id']);
 
             if ($selectStamp) {
 
@@ -76,7 +74,7 @@ class StampController
                 $selectCondition = $condition->selectId($selectStamp['condition_id']);
 
                 $image = new Image;
-                $listImages = $image->selectId($selectStamp['stamp_id']);
+                $listImages = $image->selectId($selectStamp['id']);
 
                 $inputs = [
                     'name' => $selectStamp['name'],
@@ -139,6 +137,12 @@ class StampController
         }
 
         if ($validator->isSuccess()) {
+            //ajouter / ajuster champs
+            $data['user_id'] = (int)$_SESSION['user_id'];
+            $data['year'] = (int)$data['year'];
+            $data['country_id'] = (int)$data['country_id'];
+            $data['color_id'] = (int)$data['color_id'];
+            $data['condition_id'] = (int)$data['condition_id'];
 
             //téléverser l'image
             if (isset($files['upload1'])) {
@@ -241,7 +245,7 @@ class StampController
         if (isset($get['id']) && $get['id'] != null) {
             $validator = new Validator;
             $validator->field('name', $data['name'])->required()->max(100);
-            $validator->field('stamp_id', $data['stamp_id'])->required()->int();
+            $validator->field('id', $data['id'])->required()->int();
             $validator->field('year', $data['year'])->required()->year();
             $validator->field('is_certified', $data['is_certified'])->required();
             $validator->field('country_id', $data['country_id'])->required()->int();
@@ -311,7 +315,7 @@ class StampController
         Auth::session();
 
         $stamp = new Stamp;
-        $delete = $stamp->delete($data['stamp_id']);
+        $delete = $stamp->delete($data['id']);
         if ($delete) {
             return View::redirect('stamps');
         }

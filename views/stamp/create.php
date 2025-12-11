@@ -13,7 +13,7 @@
 
         <div>
             <label>Year :
-                <input type="number" name="year" id="year" min="1000" max="2100" value="{{ inputs.year }}">
+                <input type="number" name="year" id="year" min="1901" max="2100" value="{{ inputs.year }}">
             </label>
         </div>
         {% if errors.year is defined %}
