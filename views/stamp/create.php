@@ -79,8 +79,8 @@
     <span class="error">{{ errors.upload }}</span>
     {% endif %}
 
-    <button type="submit" class="btn vert">Add</button>
-    <a href="{{base}}/stamps" class="btn bleu">Cancel</a>
+    <button type="submit" class="bouton bleu">Add</button>
+    <a href="{{base}}/stamps" class="bouton rouge">Cancel</a>
 </form>
 
 {{ include('layouts/footer.php') }}

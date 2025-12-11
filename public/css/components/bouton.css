@@ -62,34 +62,19 @@
   }
 }
 
-/* bouton formulaire */
-.btn {
-  display: inline-block;
-  padding: 10px;
-  margin: 5px 0 15px 0;
-  border: 1px solid var(--couleur-primaire);
-  border-radius: 5px;
-
-  text-align: center;
-  font-size: inherit;
-  color: var(--couleur-texte-inverse);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.btn.vert {
+.bouton.vert {
   background-color: var(--couleur-succes-fond);
   &:hover {
     background-color: var(--couleur-succes-fond-hover);
   }
 }
-.btn.rouge {
+.bouton.rouge {
   background-color: var(--couleur-erreur-fond);
   &:hover {
     background-color: var(--couleur-erreur-fond-hover);
   }
 }
-.btn.bleu {
+.bouton.bleu {
   background-color: var(--couleur-favoris);
   &:hover {
     background-color: var(--couleur-favoris-inverse);

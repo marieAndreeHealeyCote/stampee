@@ -11,9 +11,9 @@
         <p><strong>Country : </strong>{{ inputs.country }}</p>
         <p><strong>Color : </strong>{{ inputs.color }}</p>
         <p><strong>Condition : </strong>{{ inputs.condition }}</p>
-        <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="btn vert">Edit</a>
+        <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="bouton bleu">Edit</a>
         <input type="hidden" name="id" value="{{ stamp.id }}">
-        <a href="{{ base }}/stamps" class="btn bleu">Back</a>
+        <a href="{{ base }}/stamps" class="bouton rouge">Back</a>
     </form>
 </div>
 
