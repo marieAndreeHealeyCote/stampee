@@ -1,5 +1,14 @@
+.page-profil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 1em;
+  h2 {
+    flex-basis: 100%;
+  }
+}
 .section__profil {
-  padding: 10px 20px;
+  flex-grow: 1;
 }
 .section__profil__timbre {
   border: 1px solid var(--couleur-primaire);

@@ -14,12 +14,11 @@
     margin-top: 0.7em;
   }
 }
-.section__aparte__conteneur {
+.section__aparte {
   display: block;
 
   @media (min-width: 1024px) {
     display: flex;
-    margin-left: 1em;
   }
 }
 .section__aparte__certification {
