@@ -6,7 +6,7 @@ use App\Models\CRUD;
 
 class Image extends CRUD
 {
-    protected $table = 'image';
+    protected $table = 'stampee.image';
     protected $primaryKey = 'image_id';
     protected $fillable = ['url'];
 }

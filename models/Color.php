@@ -6,7 +6,7 @@ use App\Models\CRUD;
 
 class Color extends CRUD
 {
-    protected $table = 'color';
+    protected $table = 'stampee.color';
     protected $primaryKey = 'color_id';
     protected $fillable = ['name'];
 }

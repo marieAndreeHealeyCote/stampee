@@ -36,8 +36,7 @@ class StampController
                 $image = new Image;
                 $selectImage = $image->selectId($stamp['stamp_id']);
 
-                // ajouter les informations des autres tables
-                $listeLivres[] = [
+                $listStamps[] = [
                     'id' => $stamp['id'],
                     'name' => $stamp['name'],
                     'stamp_id' => $stamp['stamp_id'],
@@ -68,24 +67,30 @@ class StampController
             if ($selectStamp) {
 
                 $country = new Country;
-                $selectCountry = $country->selectId($stamp['country_id']);
+                $selectCountry = $country->selectId($selectStamp['country_id']);
 
                 $color = new Color;
-                $selectColor = $color->selectId($stamp['color_id']);
+                $selectColor = $color->selectId($selectStamp['color_id']);
 
                 $condition = new Condition;
-                $selectCondition = $condition->selectId($stamp['condition_id']);
+                $selectCondition = $condition->selectId($selectStamp['condition_id']);
 
                 $image = new Image;
-                $selectImage = $image->selectId($stamp['stamp_id']);
+                $listImages = $image->selectId($selectStamp['stamp_id']);
 
-                // ajouter les informations des autres tables
-                $selectStamp['color_name'] = $color['name'];
-                $selectStamp['country_name'] = $country['name'];
-                $selectStamp['condition_name'] = $condition['name'];
-                $selectStamp['images'] = $selectImage;
+                $inputs = [
+                    'name' => $selectStamp['name'],
+                    'year' => $selectStamp['year'],
+                    'is_certified' => $selectStamp['is_certified'],
+                    'country' => $selectCountry['name'],
+                    'color' => $selectColor['name'],
+                    'condition' => $selectCondition['name'],
+                ];
 
-                return View::render("stamp/show", ['inputs' => $selectStamp]);
+                return View::render("stamp/show", [
+                    'inputs' => $inputs,
+                    'listImages' => $listImages,
+                ]);
             } else {
                 return View::render('error', ['msg' => 'Stamp not found!']);
             }
@@ -97,11 +102,24 @@ class StampController
     {
         Auth::session();
 
-        $stamp = new Stamp;
-        $selectStamp = $stamp->select();
+        //récupérer les listes pour les Select
+        $country = new Country;
+        $listCountries = $country->select();
 
-        return View::render("stamp/create", [
-            'listeStamps' => $selectStamp
+        $color = new Color;
+        $listColors = $color->select();
+
+        $condition = new Condition;
+        $listConditions = $condition->select();
+
+        $image = new Image;
+        $listImages = $image->select();
+
+        return View::render('stamp/create', [
+            'listCountries' => $listCountries,
+            'listColors' => $listColors,
+            'listConditions' => $listConditions,
+            'listImages' => $listImages,
         ]);
     }
 
@@ -151,14 +169,26 @@ class StampController
             $errors = $validator->getErrors();
             $inputs = $data;
 
-            //récupérer à nouveau les listes pour les Select
-            $stamp = new Stamp;
-            $listeStamps = $stamp->select();
+            //récupérer les listes pour les Select
+            $country = new Country;
+            $listCountries = $country->select();
+
+            $color = new Color;
+            $listColors = $color->select();
+
+            $condition = new Condition;
+            $listConditions = $condition->select();
+
+            $image = new Image;
+            $listImages = $image->select();
 
             return View::render('stamp/create', [
                 'errors' => $errors,
                 'inputs' => $inputs,
-                'listeStamps' => $listeStamps
+                'listCountries' => $listCountries,
+                'listColors' => $listColors,
+                'listConditions' => $listConditions,
+                'listImages' => $listImages,
             ]);
         }
     }
@@ -171,26 +201,35 @@ class StampController
             $stamp = new Stamp;
             $selectStamp = $stamp->selectId($data['id']);
             if ($selectStamp) {
-
+                //récupérer les listes pour les Select
                 $country = new Country;
-                $selectCountry = $country->selectId($stamp['country_id']);
+                $listCountries = $country->select();
 
                 $color = new Color;
-                $selectColor = $color->selectId($stamp['color_id']);
+                $listColors = $color->select();
 
                 $condition = new Condition;
-                $selectCondition = $condition->selectId($stamp['condition_id']);
+                $listConditions = $condition->select();
 
                 $image = new Image;
-                $selectImage = $image->selectId($stamp['stamp_id']);
+                $listImages = $image->select();
 
-                // ajouter les informations des autres tables
-                $selectStamp['color_name'] = $color['name'];
-                $selectStamp['country_name'] = $country['name'];
-                $selectStamp['condition_name'] = $condition['name'];
-                $selectStamp['images'] = $selectImage;
+                $inputs = [
+                    'name' => $selectStamp['name'],
+                    'year' => $selectStamp['year'],
+                    'is_certified' => $selectStamp['is_certified'],
+                    'country' => $selectStamp['country_id'],
+                    'color' => $selectStamp['color_id'],
+                    'condition' => $selectStamp['condition_id'],
+                ];
 
-                return View::render("stamp/show", ['inputs' => $selectStamp]);
+                return View::render("stamp/edit", [
+                    'inputs' => $inputs,
+                    'listCountries' => $listCountries,
+                    'listColors' => $listColors,
+                    'listConditions' => $listConditions,
+                    'listImages' => $listImages,
+                ]);
             } else {
                 return View::render('error', ['msg' => 'Stamp not found!']);
             }
@@ -245,9 +284,6 @@ class StampController
                 $inputs = $data;
 
                 //récupérer à nouveau les listes pour les Select
-                $stamp = new Stamp;
-                $listStamps = $stamp->select();
-
                 $country = new Country;
                 $listCountries = $country->select();
 
@@ -258,12 +294,11 @@ class StampController
                 $listConditions = $condition->select();
 
                 $image = new Image;
-                $listImages = $image->select();
+                $listImages = $image->select(); //TODO voir pour les images
 
-                return View::render('stamp/create', [
+                return View::render('stamp/edit', [
                     'errors' => $errors,
                     'inputs' => $inputs,
-                    'listStamps' => $listStamps,
                     'listCountries' => $listCountries,
                     'listColors' => $listColors,
                     'listConditions' => $listConditions,

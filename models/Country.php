@@ -6,7 +6,7 @@ use App\Models\CRUD;
 
 class Country extends CRUD
 {
-    protected $table = 'country';
+    protected $table = 'stampee.country';
     protected $primaryKey = 'country_id';
     protected $fillable = ['name'];
 }
