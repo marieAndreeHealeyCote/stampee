@@ -47,6 +47,8 @@ abstract class CRUD extends \PDO
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
+        var_dump($stmt, $sql, $data);
+        die;
         $stmt->execute();
 
         return $this->lastInsertId();

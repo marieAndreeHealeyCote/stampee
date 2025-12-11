@@ -7,7 +7,7 @@ use App\Models\CRUD;
 class User extends CRUD
 {
     protected $table = "stampee.user";
-    protected $primaryKey = "user_id";
+    protected $primaryKey = "id";
     protected $fillable = ['name', 'password', 'email'];
 
     public function hashPassword($password, $cost = 10)
@@ -25,7 +25,7 @@ class User extends CRUD
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 session_regenerate_id();
-                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['fingerPrint'] = md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']);
                 return true;

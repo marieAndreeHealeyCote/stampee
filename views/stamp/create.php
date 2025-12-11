@@ -20,17 +20,9 @@
         <span class="error">{{ errors.year }}</span>
         {% endif %}
 
-        <fieldset class="section__timbre__certification">
-            <legend>Certification :</legend>
-            <div>
-                <label>Is certified
-                    <input type="radio" name="is_certified" value="{{ inputs.is_certified }}">
-                </label>
-            </div>
-            <label>Is not certified
-                <input type="radio" name="is_certified" value="{{ inputs.is_certified }}">
-            </label>
-        </fieldset>
+        <label>Is certified
+            <input type="checkbox" name="is_certified" value="1" {% if is_certified == inputs.is_certified %} checked {% endif %}>
+        </label>
         {% if errors.is_certified is defined %}
         <span class="error">{{ errors.is_certified }}</span>
         {% endif %}
@@ -40,7 +32,7 @@
                 <select name="country_id" id="country_id">
                     <option value="" disabled selected>-- Select --</option>
                     {% for country in listCountries %}
-                    <option value="{{ country_id }}" {% if country_id == inputs.country_id %} selected {% endif %}>
+                    <option value="{{ country.id }}" {% if country.id == inputs.country_id %} selected {% endif %}>
                         {{ country.name }}
                     </option>
                     {% endfor %}
@@ -57,7 +49,7 @@
                 <select name="color_id" id="color_id">
                     <option value="" disabled selected>-- Select --</option>
                     {% for color in listColors %}
-                    <option value="{{ color_id }}" {% if color.id == inputs.color_id %} selected {% endif %}>
+                    <option value="{{ color.id }}" {% if color.id == inputs.color_id %} selected {% endif %}>
                         {{ color.name }}
                     </option>
                     {% endfor %}
@@ -74,7 +66,7 @@
                 <select name="condition_id" id="condition_id">
                     <option value="" disabled selected>-- Select --</option>
                     {% for condition in listConditions %}
-                    <option value="{{ condition_id }}" {% if condition.id == inputs.condition_id %} selected {% endif %}>
+                    <option value="{{ condition.id }}" {% if condition.id == inputs.id %} selected {% endif %}>
                         {{ condition.name }}
                     </option>
                     {% endfor %}

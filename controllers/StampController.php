@@ -129,27 +129,25 @@ class StampController
 
         $validator = new Validator;
         $validator->field('name', $data['name'])->required()->max(100);
-        $validator->field('stamp_id', $data['stamp_id'])->required()->int();
         $validator->field('year', $data['year'])->required()->year();
-        $validator->field('is_certified', $data['is_certified'])->required();
-        $validator->field('country_id', $data['country_id'])->required()->int();
-        $validator->field('color_id', $data['color_id'])->required()->int();
-        $validator->field('condition_id', $data['condition_id'])->required()->int();
+        $validator->field('country_id', $data['country_id'])->required();
+        $validator->field('color_id', $data['color_id'])->required();
+        $validator->field('condition_id', $data['condition_id'])->required();
 
-        if (isset($files['upload'])) {
-            $validator->field('upload', $files['upload'])->image()->fileType(["image/jpeg", "image/png", "image/gif"])->max(500000);
+        if (isset($files['upload1'])) {
+            $validator->field('upload1', $files['upload1'])->image()->fileType(["image/jpeg", "image/png", "image/gif"])->max(500000);
         }
 
         if ($validator->isSuccess()) {
 
             //téléverser l'image
-            if (isset($files['upload'])) {
+            if (isset($files['upload1'])) {
                 $target_dir = __DIR__ . '/../public/uploads/';
-                $target_file = $target_dir . basename($files["upload"]["name"]);
-                if (move_uploaded_file($files["upload"]["tmp_name"], $target_file)) {
+                $target_file = $target_dir . basename($files["upload1"]["name"]);
+                if (move_uploaded_file($files["upload1"]["tmp_name"], $target_file)) {
                     //mettre à jour $data avec le path du fichier
                     $filename = basename($files["upload"]["name"]);
-                    $data['upload'] = "/public/uploads/" . $filename;
+                    $data['upload1'] = "/public/uploads/" . $filename;
                 } else {
                     die('oh no...store');
                     return View::render('error', "Sorry, there was an error with uploading your file");
@@ -159,7 +157,6 @@ class StampController
             //créer un timbre
             $stamp = new Stamp;
             $insert = $stamp->insert($data);
-
             if ($insert) {
                 return View::redirect('stamp/show?id=' . $insert);
             } else {
