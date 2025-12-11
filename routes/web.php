@@ -18,6 +18,7 @@ Route::get('/stamp/edit', 'StampController@edit');
 Route::post('/stamp/edit', 'StampController@update');
 Route::get('/stamp/delete', 'StampController@delete');
 
+Route::get('/profile', 'UserController@index');
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
 
@@ -27,7 +28,6 @@ Route::post('/user/edit', 'UserController@store');
 Route::get('/my-auctions', 'AuctionController@index');
 Route::get('/auctions', 'AuctionController@index');
 Route::get('/auction/show', 'AuctionController@show');
-
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');

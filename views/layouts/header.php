@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link
+        rel="shortcut icon"
+        href="{{ asset }}img/favicon.ico"
+        type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset }}css/style.css">
 </head>
 
@@ -62,7 +66,7 @@
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>
                             <li><a href="#">Public Stamp Auction</a></li>
-                            <li><a href="#">Public Stamp Auction Catalog</a></li>
+                            <li><a href="{{ base }}/auctions">Public Stamp Auction Catalog</a></li>
                             <li><a href="#">Premium Stamp Auction</a></li>
                         </ul>
                     </li>

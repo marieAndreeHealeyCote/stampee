@@ -1,0 +1,23 @@
+.section__profil {
+  padding: 10px 20px;
+}
+.section__profil__timbre {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil__mise {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil__enchere {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil__favoris {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}

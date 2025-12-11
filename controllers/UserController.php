@@ -15,6 +15,13 @@ class UserController
         return View::render('user/create');
     }
 
+    public function index()
+    {
+        // Auth::session();
+
+        return View::render('user/index', ['stamps' => [], 'bids' => [], 'auctions' => [], 'favorites' => []]);
+    }
+
     public function store($data)
     {
         $validator = new Validator;
