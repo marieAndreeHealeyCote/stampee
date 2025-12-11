@@ -19,7 +19,7 @@
     <div class="section__profil">
         <div class="section__profil__timbre">
             <h3>My stamps</h3>
-            {% for stamp in stamps %}
+            {% for stamp in listStamps %}
             <article>
                 <div>
                     {% for image in listImages %}

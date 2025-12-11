@@ -19,7 +19,7 @@
     <div class="section__profil">
         <div class="section__profil__timbre">
             <h3>My stamps</h3>
-            {% for stamp in stamps %}
+            {% for stamp in listStamps %}
             <article>
                 <div>
                     {% for image in listImages %}
@@ -27,12 +27,12 @@
                     {% endfor %}
                 </div>
                 <ul>
-                    <p><strong>Name : </strong>{{ inputs.name }}</p>
-                    <p><strong>Year : </strong>{{ inputs.year }}</p>
-                    <p><strong>Certification : </strong>{{ inputs.is_certified }}</p>
-                    <p><strong>Country : </strong>{{ inputs.country }}</p>
-                    <p><strong>Color : </strong>{{ inputs.color }}</p>
-                    <p><strong>Condition : </strong>{{ inputs.condition }}</p>
+                    <p><strong>Name : </strong>{{ stamp.name }}</p>
+                    <p><strong>Year : </strong>{{ stamp.year }}</p>
+                    <p><strong>Certification : </strong>{{ stamp.is_certified }}</p>
+                    <p><strong>Country : </strong>{{ stamp.country }}</p>
+                    <p><strong>Color : </strong>{{ stamp.color }}</p>
+                    <p><strong>Condition : </strong>{{ stamp.condition }}</p>
                 </ul>
                 <a href="{{ base }}/stamp/edit?id={{stamp.id}}" class="bouton bouton-modifier" onclick="return confirm('Edit your stamp ?')">Edit</a>
                 <a href="{{ base }}/stamp/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Delete your stamp ?')">Delete</a>
