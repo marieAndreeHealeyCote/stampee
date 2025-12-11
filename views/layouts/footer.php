@@ -23,11 +23,11 @@
             <nav>
                 <ul class="section__piedpage__bandeau-or__menu-secondaire">
                     <li>
-                        <h3>Membership</h3>
+                        <h3>About Lord Reginald Stampee III</h3>
                         <ul>
-                            <li><a href="{{base}}/register">Become a member</a></li>
-                            <li><a href="{{base}}/login">Login</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Philately, it's the life&nbsp;!</a></li>
+                            <li><a href="#">Biography</a></li>
+                            <li><a href="#">Family History</a></li>
                         </ul>
                     </li>
                     <li>
@@ -54,14 +54,6 @@
                             <li><a href="#">Canada</a></li>
                             <li><a href="#">United States</a></li>
                             <li><a href="#">Australia</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>About Lord Reginald Stampee III</h3>
-                        <ul>
-                            <li><a href="#">Philately, it's the life&nbsp;!</a></li>
-                            <li><a href="#">Biography</a></li>
-                            <li><a href="#">Family History</a></li>
                         </ul>
                     </li>
                 </ul>

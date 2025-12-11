@@ -11,11 +11,11 @@
 .bouton-rechercher {
   background-color: var(--couleur-secondaire);
   border: none;
-  color: white;
+  color: var(--couleur-texte-inverse);
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
@@ -28,21 +28,23 @@
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
   }
 }
 .bouton-suivre,
-.bouton-login {
-  background-color: white;
-  border: #b22234 1px solid;
+.bouton-login,
+.bouton-ajouter,
+.bouton-modifier {
+  background-color: var(--couleur-texte-inverse);
+  border: var(--couleur-secondaire) 1px solid;
   color: var(--couleur-secondaire);
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
@@ -51,11 +53,11 @@
 .bouton-enchere {
   background-color: var(--couleur-secondaire);
   border: 1px solid white;
-  color: white;
+  color: var(--couleur-texte-inverse);
 
   &:hover {
     background-color: var(--couleur-accent);
-    color: white;
+    color: var(--couleur-texte-inverse);
   }
   &:hover:active {
     background-color: var(--couleur-bouton);

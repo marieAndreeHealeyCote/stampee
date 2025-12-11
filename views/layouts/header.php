@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link
+        rel="shortcut icon"
+        href="{{ asset }}img/favicon.ico"
+        type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset }}css/style.css">
 </head>
 
@@ -38,7 +42,6 @@
                     <ul class="section__nav-principale__connexion">
                         {%if guest %}
                         <li>
-                            <a class="section__nav-principale__connexion__lien" href="{{base}}/register">Register</a>
                             <a class="section__nav-principale__connexion__lien" href="{{base}}/login">Sign in</a>
                         </li>
                         {% else %}
@@ -58,30 +61,21 @@
                         alt="icone menu mobile">
                 </label>
                 <input type="checkbox" class="section__nav-principale__menu-burger-checkbox" id="menu-mobile">
-                <ul class="section__nav-principale__menu__liste" id="menu-deroulant">
+                <ul class="section__nav-principale__menu__list" id="menu-deroulant">
                     <li>
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>
                             <li><a href="#">Public Stamp Auction</a></li>
-                            <li><a href="#">Public Stamp Auction Catalog</a></li>
+                            <li><a href="{{ base }}/auctions">Public Stamp Auction Catalog</a></li>
                             <li><a href="#">Premium Stamp Auction</a></li>
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="pseudo-hyperlien">Membership</button>
+                        <button type="button" class="pseudo-hyperlien">About Lord Reginald Stampee</button>
                         <ul>
-                            <li><a href="{{base}}/register">Become a member</a></li>
-                            <li><a href="{{base}}/login">Login</a></li>
-                            <li><a href="#">Profile</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <button type="button" class="pseudo-hyperlien">How It Works</button>
-                        <ul>
-                            <li><a href="#">Help with "How to create a profile"</a></li>
-                            <li><a href="#">Help with "How to make a bid"</a></li>
-                            <li><a href="#">Help with "How to follow an auction"</a></li>
-                            <li><a href="#">Help with "How to find a bid you want"</a></li>
+                            <li><a href="#">Philately, it's the life !</a></li>
+                            <li><a href="#">Biography</a></li>
+                            <li><a href="#">Family History</a></li>
                         </ul>
                     </li>
                     <li>
@@ -91,6 +85,17 @@
                             <li><a href="#">Auctions</a></li>
                             <li><a href="#">Bridge</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <button type="button" class="pseudo-hyperlien">How It Works</button>
+                        <ul>
+                            <li><a href="#">How to become a member</a></li>
+                            <li><a href="#">How to create a profile</a></li>
+                            <li><a href="#">How to make a bid</a></li>
+                            <li><a href="#">How to follow an auction</a></li>
+                            <li><a href="#">How to find a bid you want</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <button type="button" class="pseudo-hyperlien">Contact</button>
                         <ul>
@@ -101,12 +106,11 @@
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="pseudo-hyperlien">About Lord Reginald Stampee</button>
-                        <ul>
-                            <li><a href="#">Philately, it's the life !</a></li>
-                            <li><a href="#">Biography</a></li>
-                            <li><a href="#">Family History</a></li>
-                        </ul>
+                        {%if guest %}
+                        <a class="bouton bouton-login" href="{{base}}/register">Become a member</a>
+                        {% else %}
+                        <a class="bouton bouton-login" href="{{base}}/profile">My profile</a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,40 @@
+.page-profil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 1em;
+  h2 {
+    flex-basis: 100%;
+  }
+}
+.section__profil__aparte {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil {
+  flex-grow: 1;
+}
+.section__profil__timbre {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil__mise {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil__enchere {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}
+.section__profil__favoris {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+}

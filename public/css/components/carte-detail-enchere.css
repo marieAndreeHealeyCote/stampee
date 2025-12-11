@@ -16,7 +16,7 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
   padding: 2rem;
-  border: 1px solid black;
+  border: 1px solid var(--couleur-primaire);
 
   @media (min-width: 1024px) {
     margin-bottom: 0;
@@ -37,11 +37,11 @@
 }
 /* carte-description */
 .section__detail-enchere__carte-description {
-  border: 1px solid black;
+  border: 1px solid var(--couleur-primaire);
 }
 .section__detail-enchere__carte-description__menu {
   padding: 2rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--couleur-primaire);
 
   ul {
     display: flex;
@@ -71,7 +71,7 @@
   display: block;
 }
 .bordure-au-dessus {
-  border-top: 1px solid black;
+  border-top: 1px solid var(--couleur-primaire);
 }
 
 .section__detail-enchere__carte-description__contenu__montant {
@@ -119,7 +119,7 @@
   }
   .bouton-action {
     padding: 1rem 2.5rem;
-    color: white;
+    color: var(--couleur-texte-inverse);
     text-transform: uppercase;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -128,7 +128,7 @@
   #montant-enchere-courant {
     display: flex;
     flex-basis: 100%;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--couleur-primaire);
     margin-top: 2rem;
     padding-top: 2rem;
   }
@@ -146,7 +146,7 @@
     padding: 1rem 2rem;
     text-transform: uppercase;
     color: var(--couleur-secondaire);
-    border: 1px solid #b22234;
+    border: 1px solid var(--couleur-secondaire);
 
     &:hover {
       background-color: var(--couleur-secondaire);
@@ -166,7 +166,7 @@
 .section__detail-enchere__carte-description__contenu__historique,
 .section__detail-enchere__carte-description__contenu__question {
   h3 {
-    border-bottom: 1px solid #3333;
+    border-bottom: 1px solid var(--couleur-primaire);
     margin-bottom: 1em;
   }
   p {
@@ -178,7 +178,7 @@
 .section__detail-enchere__carte-description__contenu__item-description,
 .section__detail-enchere__carte-description__contenu__item-specifiques {
   h3 {
-    border-bottom: 1px solid #3333;
+    border-bottom: 1px solid var(--couleur-primaire);
     margin-bottom: 1.5em;
   }
   p {

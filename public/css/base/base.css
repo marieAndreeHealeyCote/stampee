@@ -8,6 +8,7 @@ body {
   @media (min-width: 600px) {
     font-size: var(--police-body);
   }
+  color: var(--couleur-texte);
 }
 
 /* Général Fonts */
@@ -19,6 +20,7 @@ h1,
   @media (min-width: 600px) {
     font-size: var(--police-taille-xl);
   }
+  color: inherit;
 }
 h2,
 .h2 {
@@ -27,6 +29,7 @@ h2,
   @media (min-width: 600px) {
     font-size: var(--police-taille-lg);
   }
+  color: inherit;
 }
 h3,
 .h3 {
@@ -36,6 +39,7 @@ h3,
   @media (min-width: 600px) {
     font-size: var(--police-taille-md);
   }
+  color: inherit;
 }
 h4,
 .h4 {
@@ -45,6 +49,7 @@ h4,
   @media (min-width: 600px) {
     font-size: var(--police-taille-sm);
   }
+  color: inherit;
 }
 a,
 p,
@@ -57,8 +62,10 @@ select,
 option {
   font-size: 16px;
   font-family: var(--police-corps);
+  color: inherit;
 }
 
 sup {
   font-family: var(--police-corps);
+  color: inherit;
 }

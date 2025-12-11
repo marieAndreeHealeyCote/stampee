@@ -1,72 +1,131 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
+<div class="section__timbre">
+    <form method="POST" enctype="multipart/form-data" class="section__timbre__form">
+        <h2>Add a new stamp</h2>
+        <div>
+            <label>Name :
+                <input type="text" name="name" id="name" value="{{ inputs.name }}">
+            </label>
+        </div>
+        {% if errors.name is defined %}
+        <span class="error">{{ errors.name }}</span>
+        {% endif %}
 
-<h2>Add a new stamp</h2>
-<form method="POST" enctype="multipart/form-data">
-    <div>
-        <label for="titre">Name :</label>
-        <input type="text" name="name" id="titre" value="{{ inputs.name ?? stamp.name }}">
-    </div>
-    {% if errors.titre is defined %}
-    <span class="error">{{ errors.name }}</span>
-    {% endif %}
-    <div>
-        <label for="stamp_id">Auteur :</label>
-        <select name="auteur_id" id="auteur_id">
-            <option value="" disabled>-- Sélectionner --</option>
-            {% for auteur in listeAuteurs %}
-            <option value="{{ auteur.id }}" {% if auteur.id == inputs.auteur_id %} selected {% endif %}>
-                {{ auteur.nom }}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
-    {% if errors.auteur is defined %}
-    <span class="error">{{ errors.auteur }}</span>
-    {% endif %}
-    <div>
-        <label for="annee_publication">Année de publication :</label>
-        <input type="number" name="annee_publication" id="annee_publication" min="1900" max="2030" value="{{ inputs.annee_publication }}">
-    </div>
-    {% if errors.annee_publication is defined %}
-    <span class="error">{{ errors.annee_publication }}</span>
-    {% endif %}
-    <div>
-        <label for="categorie_id">Catégorie :</label>
-        <select name="categorie_id" id="categorie_id">
-            <option value="" disabled>-- Sélectionner --</option>
-            {% for categorie in listeCategories %}
-            <option value="{{ categorie.id }}" {% if categorie.id == inputs.categorie_id %} selected {% endif %}>
-                {{ categorie.nom }}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
-    {% if errors.categorie_id is defined %}
-    <span class="error">{{ errors.categorie_id }}</span>
-    {% endif %}
-    <div>
-        <label for="editeur_id">Éditeur :</label>
-        <select name="editeur_id" id="editeur_id">
-            <option value="" disabled>-- Sélectionner --</option>
-            {% for editeur in listeEditeurs %}
-            <option value="{{ editeur.id }}" {% if editeur.id == inputs.editeur_id %} selected {% endif %}>
-                {{ editeur.nom }}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
-    {% if errors.editeur_id is defined %}
-    <span class="error">{{ errors.editeur_id }}</span>
-    {% endif %}
-    <div>
-        <label for="upload">Ajouter une image de couverture</label>
-        <input type="file" name="upload" id="upload">
-    </div>
-    {% if errors.upload is defined %}
-    <span class="error">{{ errors.upload }}</span>
-    {% endif %}
-    <button type="submit" class="btn vert">Ajouter</button>
-    <a href="{{base}}/livres" class="btn bleu">Annuler</a>
-</form>
+        <div>
+            <label>Year :
+                <input type="number" name="year" id="year" min="1901" max="2100" value="{{ inputs.year }}">
+            </label>
+        </div>
+        {% if errors.year is defined %}
+        <span class="error">{{ errors.year }}</span>
+        {% endif %}
+
+        <label>Is certified
+            <input type="checkbox" name="is_certified" value="1" {% if is_certified == inputs.is_certified %} checked {% endif %}>
+        </label>
+        {% if errors.is_certified is defined %}
+        <span class="error">{{ errors.is_certified }}</span>
+        {% endif %}
+
+        <div>
+            <label>Country :
+                <select name="country_id" id="country_id">
+                    <option value="" disabled selected>-- Select --</option>
+                    {% for country in listCountries %}
+                    <option value="{{ country.id }}" {% if country.id == inputs.country_id %} selected {% endif %}>
+                        {{ country.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+
+        </div>
+        {% if errors.country_id is defined %}
+        <span class="error">{{ errors.country_id }}</span>
+        {% endif %}
+
+        <div>
+            <label>Color :
+                <select name="color_id" id="color_id">
+                    <option value="" disabled selected>-- Select --</option>
+                    {% for color in listColors %}
+                    <option value="{{ color.id }}" {% if color.id == inputs.color_id %} selected {% endif %}>
+                        {{ color.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+
+        </div>
+        {% if errors.color_id is defined %}
+        <span class="error">{{ errors.color_id }}</span>
+        {% endif %}
+
+        <div>
+            <label>Condition :
+                <select name="condition_id" id="condition_id">
+                    <option value="" disabled selected>-- Select --</option>
+                    {% for condition in listConditions %}
+                    <option value="{{ condition.id }}" {% if condition.id == inputs.condition_id %} selected {% endif %}>
+                        {{ condition.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+
+        </div>
+        {% if errors.condition_id is defined %}
+        <span class="error">{{ errors.condition_id }}</span>
+        {% endif %}
+
+        <div class="section__timbre__upload">
+            <label>1. Upload an image of your stamp
+                <input type="file" name="upload1" id="upload1">
+            </label>
+        </div>
+        {% if errors.upload1 is defined %}
+        <span class="error">{{ errors.upload1 }}</span>
+        {% endif %}
+
+        <div class="section__timbre__upload">
+            <label>2. Upload another image of your stamp
+                <input type="file" name="upload2" id="upload2">
+            </label>
+        </div>
+        {% if errors.upload2 is defined %}
+        <span class="error">{{ errors.upload2 }}</span>
+        {% endif %}
+
+        <div class="section__timbre__upload">
+            <label>3. Upload another image of your stamp
+                <input type="file" name="upload3" id="upload3">
+            </label>
+        </div>
+        {% if errors.upload3 is defined %}
+        <span class="error">{{ errors.upload3 }}</span>
+        {% endif %}
+
+        <div class="section__timbre__upload">
+            <label>4. Upload another image of your stamp
+                <input type="file" name="upload4" id="upload4">
+            </label>
+        </div>
+        {% if errors.upload4 is defined %}
+        <span class="error">{{ errors.upload4 }}</span>
+        {% endif %}
+
+        <div class="section__timbre__upload">
+            <label>5. Upload another image of your stamp
+                <input type="file" name="upload5" id="upload5">
+            </label>
+        </div>
+        {% if errors.upload5 is defined %}
+        <span class="error">{{ errors.upload5 }}</span>
+        {% endif %}
+
+        <button type="submit" class="bouton bouton-ajouter">Add</button>
+        <a href="{{base}}/profile" class="bouton bouton-action">Cancel</a>
+    </form>
+</div>
 
 {{ include('layouts/footer.php') }}

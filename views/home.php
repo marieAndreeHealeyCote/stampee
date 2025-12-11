@@ -8,9 +8,6 @@
     <img src="{{ asset }}img/Denninger.webp" alt="image stamp hero">
 </div>
 <div class="main">
-    {%if guest is empty %}
-    Hi {{ session.user_name }} !
-    {% endif %}
     <h1>{{ data }}</h1>
     <section class="section__mission">
         <div class="section__mission__image">
@@ -18,9 +15,9 @@
         </div>
         <div class="section__mission__description">
             <h2>Mission</h2>
-            <p>The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
+            <p class="h4">The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
 
-            <ul>
+            <ul class="h4">
                 <li>
                     Open up the auctions to the widest possible audience, within a safe and structured framework.
                 </li>
@@ -59,7 +56,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -71,7 +68,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
@@ -97,7 +94,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -109,7 +106,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
@@ -139,7 +136,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -151,7 +148,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
@@ -177,7 +174,7 @@
                         <li>
                             <h4>Period of activity</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Start date: June 1st, 2025</li>
                                 <li>End Date: July, 20, 2025</li>
                             </ul>
@@ -189,7 +186,7 @@
                         <li>
                             <h4>Current Offer</h4>
                             <ul
-                                class="section__catalogue-enchere-archives__grille__carte__liste">
+                                class="section__catalogue-enchere-archives__grille__carte__list">
                                 <li>Price: CAD 1,200</li>
                                 <li>Member Name: Ann-Mary B.</li>
                             </ul>
