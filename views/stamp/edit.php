@@ -127,7 +127,7 @@
         <img src="{{ base }}/{{ image.url }}">
         {% endfor %}
 
-        <button type="submit" class="bouton bouton-modifier">Save</button>
+        <button type="submit" class="bouton bouton-modifier">Update</button>
         <a href="{{base}}/profile" class="bouton bouton-retour">Cancel</a>
     </form>
 </div>
