@@ -15,9 +15,9 @@
         </div>
         <div class="section__mission__description">
             <h2>Mission</h2>
-            <p>The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
+            <p class="h4">The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
 
-            <ul>
+            <ul class="h4">
                 <li>
                     Open up the auctions to the widest possible audience, within a safe and structured framework.
                 </li>
