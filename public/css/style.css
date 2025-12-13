@@ -8,14 +8,16 @@
 /* components */
 @import "components/entete.css";
 @import "components/formulaire.css";
-@import "components/accueil.css";
 @import "components/carte-detail-enchere.css";
-@import "components/erreur404.css";
 @import "components/bouton.css";
 @import "components/piedpage.css";
 @import "components/menu-deroulant.css";
-@import "components/profil.css";
 
 /* layout */
 @import "layout/aparte.css";
 @import "layout/grille.css";
+
+/* pages */
+@import "pages/accueil.css";
+@import "pages/erreur404.css";
+@import "pages/profil.css";
