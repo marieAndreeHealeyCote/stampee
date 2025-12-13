@@ -1,7 +1,7 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
 
 <div class="section__timbre">
-    <form method="post" class="section__timbre__form">
+    <div class="section__timbre__form">
         <h2>Stamp's informations</h2>
         <p><strong>Name : </strong>{{ inputs.name }}</p>
         <p><strong>Year : </strong>{{ inputs.year }}</p>
@@ -11,7 +11,8 @@
         <p><strong>Condition : </strong>{{ inputs.condition }}</p>
         <div>
             {% for image in listImages %}
-            <img src="{{ base }}/{{ image.url }}">
+            <img class="section__timbre__form__image"
+                src="{{ base }}/{{ image.url }}">
             {% endfor %}
         </div>
         {% if isAuctioned == false %}
@@ -20,7 +21,7 @@
         {% endif %}
         <input type="hidden" name="id" value="{{inputs.id}}">
         <a href="{{base}}/profile" class="bouton bouton-retour">Back</a>
-    </form>
+    </div>
 </div>
 
 {{ include ('layouts/footer.php')}}

@@ -1,6 +1,6 @@
 {{ include ('layouts/header.php', {title:'Edit Stamp'})}}
 <div class="section__timbre">
-    <form method="POST" enctype="multipart/form-data" class="section__timbre__form">
+    <form method="POST" enctype="multipart/form-data" class="section__timbre__form" novalidate>
         <h2>Edit stamp</h2>
         <div>
             <label>Name :
@@ -80,17 +80,24 @@
 
         <div class="section__timbre__upload">
             <label>Upload an image of your stamp
-                <input type="file" name="upload[]" multiple required accept="image/png, image/jpeg, image/gif, image/webp">
+                <input type="file" name="upload[]" multiple accept="image/png, image/jpeg, image/gif, image/webp">
             </label>
         </div>
         {% if errors.upload is defined %}
         <span class="error">{{ errors.upload }}</span>
         {% endif %}
 
-        {% for image in listImages %}
-        <img src="{{ base }}/{{ image.url }}">
-        <a href="{{ base} }/image/delete?id={{ image.id }}" class="bouton bouton-supprimer" onclick="return confirm('Delete this image ?')">Delete</a>
-        {% endfor %}
+        <div class="section__timbre__image">
+            {% for image in listImages %}
+            <div class="section__timbre__image__items">
+                <img class="section__timbre__image__item" src="{{ base }}/{{ image.url }}">
+                <a href="{{ base }}/stamp/image-delete?image_id={{ image.id }}&stamp_id={{ inputs.id }}" class="bouton bouton-supprimer" onclick="return confirm('Delete this image ?')">Delete</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% if errors.image is defined %}
+        <span class="error">{{ errors.image }}</span>
+        {% endif %}
 
         <button type="submit" class="bouton bouton-modifier">Update</button>
         <a href="{{base}}/profile" class="bouton bouton-retour">Cancel</a>

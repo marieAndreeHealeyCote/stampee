@@ -79,9 +79,10 @@
         {% endif %}
 
         <div class="section__timbre__upload">
-            <label>Upload an image of your stamp
+            <label>Upload an image of your stamp *
                 <input type="file" name="upload[]" multiple required accept="image/png, image/jpeg, image/gif, image/webp">
             </label>
+            <p>* You need a minimum of 1 image, up to 5 *</p>
         </div>
         {% if errors.upload is defined %}
         <span class="error">{{ errors.upload }}</span>

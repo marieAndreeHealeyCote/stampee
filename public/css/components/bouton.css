@@ -76,3 +76,18 @@
     background-color: var(--couleur-bouton);
   }
 }
+
+.bouton-ajouter {
+  background-color: var(--couleur-texte-inverse);
+  border: var(--couleur-primaire) 1px solid;
+  color: var(--couleur-primaire);
+
+  &:hover {
+    background-color: var(--couleur-accent);
+    border: var(--couleur-texte-inverse) 1px solid;
+    color: var(--couleur-texte-inverse);
+  }
+  &:hover:active {
+    background-color: var(--couleur-bouton);
+  }
+}
