@@ -52,7 +52,7 @@ class StampController
             return View::render("stamp/index", ['listStamps' => $listStamps]);
         }
 
-        return View::render('error');
+        return View::render('error', ['msg' => '404 page not found!']);
     }
 
 
@@ -161,7 +161,7 @@ class StampController
                     'error' => $error[$i],
                     'size' => $size[$i],
                 ];
-                $validator->field('upload', $uploads[$i])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
+                $validator->field('upload', $uploads[$i])->required()->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
             }
         }
 
@@ -190,14 +190,13 @@ class StampController
                         $image = new Image;
                         $image->insert(['url' => $path, 'stamp_id' => $insert]);
                     } else {
-                        die('oh no...store');
-                        return View::render('error', "Sorry, there was an error with uploading your file");
+                        return View::render('error', ['msg' => "Sorry, there was an error with uploading your file !"]);
                     }
                 }
 
                 return View::redirect('stamp/show?id=' . $insert);
             } else {
-                return View::render('error');
+                return View::render('error', ['msg' => 'An error has occurred, stamp could not be created !']);
             }
         } else {
             $errors = $validator->getErrors();
@@ -321,8 +320,7 @@ class StampController
                             $image = new Image;
                             $image->insert(['url' => $path, 'stamp_id' => $get['id']]);
                         } else {
-                            die('oh no...store');
-                            return View::render('error', "Sorry, there was an error with uploading your file");
+                            return View::render('error', ['msg' => "Sorry, there was an error with uploading your file"]);
                         }
                     }
 
@@ -371,10 +369,10 @@ class StampController
             if ($delete) {
                 return View::redirect('stamp/edit?id=' . $data['stamp_id']);
             }
-            return View::render('error', ['msg' => 'Image not found!']);
+            return View::render('error', ['msg' => 'Image not found !']);
         }
 
-        return View::render('error');
+        return View::render('error', ['msg' => 'An error occured !']);
     }
 
     public function delete($data = [])
@@ -394,6 +392,6 @@ class StampController
             }
         }
 
-        return View::render('error');
+        return View::render('error', ['msg' => 'An error occured !']);
     }
 }
