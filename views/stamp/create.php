@@ -1,6 +1,6 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
 <div class="section__timbre">
-    <form method="POST" enctype="multipart/form-data" class="section__timbre__form">
+    <form method="POST" enctype="multipart/form-data" class="section__timbre__form" novalidate>
         <h2>Add a new stamp</h2>
         <div>
             <label>Name :
@@ -80,7 +80,7 @@
 
         <div class="section__timbre__upload">
             <label>Upload an image of your stamp *
-                <input type="file" name="upload[]" multiple required accept="image/png, image/jpeg, image/gif, image/webp">
+                <input type="file" name="upload[]" multiple accept="image/png, image/jpeg, image/gif, image/webp">
             </label>
             <p>* You need a minimum of 1 image, up to 5 *</p>
         </div>

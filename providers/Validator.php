@@ -28,34 +28,75 @@ class Validator
     }
     public function max($length)
     {
-        //dans le cas d'un upload
-        if (is_array($this->value) && isset($this->value['size'])) {
-            if ($this->value['size'] > $length) {
-                $this->errors[$this->key] = "Your file is too large.";
-                return $this;
-            }
-        }
-        //dans le cas d'une valeur textuelle
-        if (strlen($this->value) > $length) {
-            $this->errors[$this->key] = "$this->name must be less than $length characters";
+        switch (gettype($this->value)) {
+            case 'integer':
+                if ($this->value > $length) {
+                    $this->errors[$this->key] = "$this->name must be less than $length";
+                }
+                break;
+            case 'array':
+                if (isset($this->value['size'])) {
+                    if ($this->value['size'] > $length) {
+                        $this->errors[$this->key] = "Your file is too large.";
+                    }
+                }
+                break;
+            case 'string':
+                if (strlen($this->value) > $length) {
+                    $this->errors[$this->key] = "$this->name must be less than $length characters";
+                }
+                break;
         }
         return $this;
     }
     public function min($length)
     {
-        //dans le cas d'un upload
-        if (is_array($this->value) && isset($this->value['size'])) {
-            if ($this->value['size'] < $length) {
-                $this->errors[$this->key] = "Your file is too large.";
-                return $this;
-            }
-        }
-        //dans le cas d'une valeur textuelle
-        if (strlen($this->value) < $length) {
-            $this->errors[$this->key] = "$this->name must be more than $length characters";
+        switch (gettype($this->value)) {
+            case 'integer':
+                if ($this->value < $length) {
+                    $this->errors[$this->key] = "$this->name must be less than $length";
+                }
+                break;
+            case 'array':
+                if (isset($this->value['size'])) {
+                    if ($this->value['size'] < $length) {
+                        $this->errors[$this->key] = "Your file is too large.";
+                    }
+                }
+                break;
+            case 'string':
+                if (strlen($this->value) < $length) {
+                    $this->errors[$this->key] = "$this->name must be more than $length characters";
+                }
+                break;
         }
         return $this;
     }
+
+    public function range($min, $max)
+    {
+        switch (gettype($this->value)) {
+            case 'integer':
+                if ($this->value < $min && $this->value > $max) {
+                    $this->errors[$this->key] = "$this->name must be between $min and $max";
+                }
+                break;
+            case 'array':
+                if (isset($this->value['size'])) {
+                    if ($this->value['size'] < $min && $this->value['size'] > $max) {
+                        $this->errors[$this->key] = "Your file size must be between $min and $max.";
+                    }
+                }
+                break;
+            case 'string':
+                if (strlen($this->value) < $min && strlen($this->value) > $max) {
+                    $this->errors[$this->key] = "$this->name must be between $min and $max";
+                }
+                break;
+        }
+        return $this;
+    }
+
     public function image()
     {
         if (!is_array($this->value) && !isset($this->value['tmp_name'])) {
