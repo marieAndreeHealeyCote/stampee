@@ -74,12 +74,6 @@
   }
 }
 
-span.error {
-  color: var(--couleur-erreur);
-  margin-bottom: 1em;
-  display: inline-block;
-}
-
 form.section__newsletter__contenu__email {
   input[type="text"],
   input[type="email"],
