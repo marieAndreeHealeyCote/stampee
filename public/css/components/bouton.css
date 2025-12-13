@@ -36,7 +36,6 @@
 }
 .bouton-suivre,
 .bouton-login,
-.bouton-ajouter,
 .bouton-modifier {
   background-color: var(--couleur-texte-inverse);
   border: var(--couleur-secondaire) 1px solid;
@@ -48,6 +47,18 @@
   }
   &:hover:active {
     background-color: var(--couleur-bouton);
+  }
+}
+
+.bouton-suivre {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  color: var(--couleur-secondaire);
+  border: 1px solid var(--couleur-secondaire);
+
+  &:hover {
+    background-color: var(--couleur-secondaire);
+    cursor: pointer;
   }
 }
 .bouton-enchere,
