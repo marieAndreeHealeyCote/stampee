@@ -85,34 +85,10 @@
                     name="filepond"
                     multiple
                     required
-                    accept="image/png, image/jpeg, image/gif"
+                    accept="image/png, image/jpeg, image/gif, image/webp"
                     data-max-file-size="3MB"
                     data-max-files="3">
             </label>
-            <script>
-                // Get a reference to the file input element
-                const inputElement = document.querySelector('input[type="file"]');
-                FilePond.registerPlugin(
-                    FilePondPluginFileValidateType,
-                    FilePondPluginImagePreview,
-                    FilePondPluginImageExifOrientation,
-                    FilePondPluginFileValidateSize,
-                    FilePondPluginImageEdit
-                );
-                // Create a FilePond instance
-                const pond = FilePond.create(inputElement, {
-                    labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
-                    imagePreviewHeight: 170,
-                    imageCropAspectRatio: '1:1',
-                    imageResizeTargetWidth: 200,
-                    imageResizeTargetHeight: 200,
-                    stylePanelLayout: 'compact circle',
-                    styleLoadIndicatorPosition: 'center bottom',
-                    styleProgressIndicatorPosition: 'right bottom',
-                    styleButtonRemoveItemPosition: 'left bottom',
-                    styleButtonProcessItemPosition: 'right bottom',
-                });
-            </script>
         </div>
         {% if errors.upload is defined %}
         <span class="error">{{ errors.upload1 }}</span>
