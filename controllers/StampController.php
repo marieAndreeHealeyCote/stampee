@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Color;
 use App\Models\Condition;
 use App\Models\Image;
+use App\Models\Auction;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -44,7 +45,7 @@ class StampController
                     'country_name' => $selectCountry['name'],
                     'color_name' => $selectColor['name'],
                     'condition_name' => $selectCondition['name'],
-                    'listImages' => $listImages,
+                    'image' => $listImages[0],
                 ];
             }
 
@@ -86,9 +87,19 @@ class StampController
                     'condition' => $selectCondition['name'],
                 ];
 
+                //vérifier si stamp est mis en enchère
+                //si oui, ne pas afficher les boutons Edit et Delete
+                $isAuctioned = false;
+                $auction = new Auction;
+                $listAuctions = $auction->selectAllWhere($data['id'], 'stamp_id');
+                if (count($listAuctions) > 0) {
+                    $isAuctioned = true;
+                }
+
                 return View::render("stamp/show", [
                     'inputs' => $inputs,
                     'listImages' => $listImages,
+                    'isAuctioned' => $isAuctioned,
                 ]);
             } else {
                 return View::render('error', ['msg' => 'Stamp not found!']);
@@ -370,7 +381,6 @@ class StampController
                             $image = new Image;
                             $image->insert(['url' => $data['upload1'], 'stamp_id' => $get['id']]);
                         } else {
-                            die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
                         }
                     }
@@ -385,7 +395,6 @@ class StampController
                             $image = new Image;
                             $image->insert(['url' => $data['upload2'], 'stamp_id' => $get['id']]);
                         } else {
-                            die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
                         }
                     }
@@ -400,7 +409,6 @@ class StampController
                             $image = new Image;
                             $image->insert(['url' => $data['upload3'], 'stamp_id' => $get['id']]);
                         } else {
-                            die('oh no...store');
                             return View::render('error', "Sorry, there was an error with uploading your file");
                         }
                     }
@@ -472,11 +480,19 @@ class StampController
     {
         Auth::session();
 
-        $stamp = new Stamp;
-        $delete = $stamp->delete($data['id']);
-        if ($delete) {
-            return View::redirect('stamps');
+        if (isset($data['id']) && $data['id'] != null) {
+            //supprimer les images en premier
+            $image = new Image;
+            $deleteImage = $image->delete($data['id'], 'stamp_id');
+
+            //si succès, on supprime le stamp
+            $stamp = new Stamp;
+            $delete = $stamp->delete($data['id']);
+            if ($delete) {
+                return View::redirect('stamps');
+            }
         }
+
         return View::render('error');
     }
 }
