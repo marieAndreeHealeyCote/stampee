@@ -80,47 +80,42 @@
 
         <div class="section__timbre__upload">
             <label>1. Upload an image of your stamp
-                <input type="file" name="upload1" id="upload1">
+                <input type="file"
+                    class="filepond"
+                    name="filepond"
+                    multiple
+                    required
+                    accept="image/png, image/jpeg, image/gif"
+                    data-max-file-size="3MB"
+                    data-max-files="3">
             </label>
+            <script>
+                // Get a reference to the file input element
+                const inputElement = document.querySelector('input[type="file"]');
+                FilePond.registerPlugin(
+                    FilePondPluginFileValidateType,
+                    FilePondPluginImagePreview,
+                    FilePondPluginImageExifOrientation,
+                    FilePondPluginFileValidateSize,
+                    FilePondPluginImageEdit
+                );
+                // Create a FilePond instance
+                const pond = FilePond.create(inputElement, {
+                    labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
+                    imagePreviewHeight: 170,
+                    imageCropAspectRatio: '1:1',
+                    imageResizeTargetWidth: 200,
+                    imageResizeTargetHeight: 200,
+                    stylePanelLayout: 'compact circle',
+                    styleLoadIndicatorPosition: 'center bottom',
+                    styleProgressIndicatorPosition: 'right bottom',
+                    styleButtonRemoveItemPosition: 'left bottom',
+                    styleButtonProcessItemPosition: 'right bottom',
+                });
+            </script>
         </div>
-        {% if errors.upload1 is defined %}
+        {% if errors.upload is defined %}
         <span class="error">{{ errors.upload1 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>2. Upload another image of your stamp
-                <input type="file" name="upload2" id="upload2">
-            </label>
-        </div>
-        {% if errors.upload2 is defined %}
-        <span class="error">{{ errors.upload2 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>3. Upload another image of your stamp
-                <input type="file" name="upload3" id="upload3">
-            </label>
-        </div>
-        {% if errors.upload3 is defined %}
-        <span class="error">{{ errors.upload3 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>4. Upload another image of your stamp
-                <input type="file" name="upload4" id="upload4">
-            </label>
-        </div>
-        {% if errors.upload4 is defined %}
-        <span class="error">{{ errors.upload4 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>5. Upload another image of your stamp
-                <input type="file" name="upload5" id="upload5">
-            </label>
-        </div>
-        {% if errors.upload5 is defined %}
-        <span class="error">{{ errors.upload5 }}</span>
         {% endif %}
 
         <button type="submit" class="bouton bouton-ajouter">Add</button>

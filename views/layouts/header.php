@@ -10,6 +10,8 @@
         href="{{ asset }}img/favicon.ico"
         type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset }}css/style.css">
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 </head>
 
 <body>

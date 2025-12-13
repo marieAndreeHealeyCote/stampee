@@ -14,8 +14,10 @@
             <img src="{{ base }}/{{ image.url }}">
             {% endfor %}
         </div>
+        {% if isAuctioned == false %}
         <a href="{{base}}/stamp/edit?id={{inputs.id}}" class="bouton bouton-modifier" onclick="return confirm('Edit your stamp ?')">Edit</a>
         <a href="{{base}}/stamp/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Delete your stamp ?')">Delete</a>
+        {% endif %}
         <input type="hidden" name="id" value="{{inputs.id}}">
         <a href="{{base}}/profile" class="bouton bouton-retour">Back</a>
     </form>

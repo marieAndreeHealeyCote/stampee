@@ -1,44 +1,56 @@
-{{ include ('layouts/header.php', {title:'My stamps'})}}
-
-<div class="page-profil">
+{{ include ('layouts/header.php', {title:'Stamp'})}}
+<div class="section__liste-timbres__conteneur">
     <h2>Welcome back, {{ session.user_name }}</h2>
-    <aside class="section__profil__aparte">
+    <aside class="section__liste-timbres__aparte">
         <a href="{{ base }}/my-stamps">
             <h3>My stamps</h3>
         </a>
-        <a href="{{ base }}/user/my-bids">
+        <a href="{{ base }}/my-bids">
             <h3>My bids</h3>
         </a>
-        <a href="{{ base }}/user/my-auctions">
+        <a href="{{ base }}/my-auctions">
             <h3>My auctions</h3>
         </a>
-        <a href="{{ base }}/user/my-favorites">
+        <a href="{{ base }}/my-favorites">
             <h3>My favorites</h3>
         </a>
     </aside>
-    <div class="section__profil">
-        <div class="section__profil__timbre">
-            <h3>My stamps</h3>
-            {% for stamp in listStamps %}
-            <article>
-                <div>
-                    {% for image in listImages %}
-                    <img src="{{ base }}/{{ image.url }}">
-                    {% endfor %}
-                </div>
-                <ul>
-                    <p><strong>Name : </strong>{{ stamp.name }}</p>
-                    <p><strong>Year : </strong>{{ stamp.year }}</p>
-                    <p><strong>Certification : </strong>{{ stamp.is_certified }}</p>
-                    <p><strong>Country : </strong>{{ stamp.country }}</p>
-                    <p><strong>Color : </strong>{{ stamp.color }}</p>
-                    <p><strong>Condition : </strong>{{ stamp.condition }}</p>
-                </ul>
-                <a href="{{ base }}/stamp/edit?id={{stamp.id}}" class="bouton bouton-modifier" onclick="return confirm('Edit your stamp ?')">Edit</a>
-                <a href="{{ base }}/stamp/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Delete your stamp ?')">Delete</a>
-            </article>
-            {% endfor %}
-        </div>
-    </div>
+    <div class="section__liste-timbre__grille">
+        {% for stamp in listStamps %}
+        <article class="section__liste-timbre__grille__carte">
+            <figure class="section__liste-timbre__grille__carte__image">
+                <img
+                    class="section__liste-timbre__grille__carte__image__timbre-petit"
+                    src="{{ base }}/{{ stamp.image.url }}"
+                    alt="petit format timbre">
+            </figure>
+            <div class="section__liste-timbre__grille__carte__item ">
+                <h3>Item Specifics</h3>
+                <h4>Stamp id:</h4>
+                <p>{{ stamp.id }}</p>
 
-    {{ include ('layouts/footer.php')}}
+                <h4>Name:</h4>
+                <p>{{ stamp.name }}</p>
+
+                <h4>Year:</h4>
+                <p>{{ stamp.year }}</p>
+
+                <h4>Certification:</h4>
+                <p>{{ stamp.is_certified }}</p>
+                <div class="section__liste-timbre__grille__carte__item ">
+                    <h3>Item Description</h3>
+                    <h4>Country:</h4>
+                    <p>{{ stamp.country_name }}</p>
+                    <h4>Color:</h4>
+                    <p>{{ stamp.color_name }}</p>
+                    <h4>Condition:</h4>
+                    <p>{{ stamp.condition_name }}</p>
+                </div>
+                <div class="section__liste-timbre__grille__carte__surveiller">
+                    <a class="bouton bouton-suivre" href="{{base}}/stamp/show?id={{ stamp.id }}">Show item</a>
+                </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+{{ include ('layouts/footer.php') }}
