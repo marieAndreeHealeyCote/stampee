@@ -79,19 +79,12 @@
         {% endif %}
 
         <div class="section__timbre__upload">
-            <label>1. Upload an image of your stamp
-                <input type="file"
-                    class="filepond"
-                    name="filepond"
-                    multiple
-                    required
-                    accept="image/png, image/jpeg, image/gif, image/webp"
-                    data-max-file-size="3MB"
-                    data-max-files="3">
+            <label>Upload an image of your stamp
+                <input type="file" name="upload[]" multiple required accept="image/png, image/jpeg, image/gif, image/webp">
             </label>
         </div>
         {% if errors.upload is defined %}
-        <span class="error">{{ errors.upload1 }}</span>
+        <span class="error">{{ errors.upload }}</span>
         {% endif %}
 
         <button type="submit" class="bouton bouton-ajouter">Add</button>
