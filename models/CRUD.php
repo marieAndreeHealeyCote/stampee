@@ -98,12 +98,14 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-    public function delete($value)
+    public function delete($value, $field = null)
     {
-
-        $sql = "DELETE FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
+        if ($field == null) {
+            $field = $this->primaryKey;
+        }
+        $sql = "DELETE FROM $this->table WHERE $field = :$field";
         $stmt = $this->prepare($sql);
-        $stmt->bindValue("$this->primaryKey", $value);
+        $stmt->bindValue(":$field", $value);
         $stmt->execute();
         if ($stmt) {
             return true;
@@ -111,7 +113,6 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-
     public function unique($field, $value)
     {
         $sql = "SELECT * FROM $this->table WHERE $field = :$field";

@@ -1,6 +1,8 @@
 /* carte.css */
 /* carte-image */
 .section__detail-enchere {
+  display: flex;
+  flex-wrap: wrap;
   padding: 2rem 2rem 0 2rem;
 
   @media (min-width: 1024px) {
@@ -141,19 +143,8 @@
 .section__detail-enchere__carte-description__contenu__surveiller {
   display: flex;
   justify-content: flex-end;
-
-  .bouton-suivre {
-    padding: 1rem 2rem;
-    text-transform: uppercase;
-    color: var(--couleur-secondaire);
-    border: 1px solid var(--couleur-secondaire);
-
-    &:hover {
-      background-color: var(--couleur-secondaire);
-      cursor: pointer;
-    }
-  }
 }
+
 .section__detail-enchere__carte-description__contenu__login {
   padding-left: 1em;
   margin-bottom: 1em;

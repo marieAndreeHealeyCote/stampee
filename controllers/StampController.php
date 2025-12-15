@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Color;
 use App\Models\Condition;
 use App\Models\Image;
+use App\Models\Auction;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -34,7 +35,7 @@ class StampController
                 $selectCondition = $condition->selectId($stamp['condition_id']);
 
                 $image = new Image;
-                $selectImage = $image->selectId($stamp['id']);
+                $listImages = $image->selectAllWhere($stamp['id'], 'stamp_id');
 
                 $listStamps[] = [
                     'id' => $stamp['id'],
@@ -44,14 +45,14 @@ class StampController
                     'country_name' => $selectCountry['name'],
                     'color_name' => $selectColor['name'],
                     'condition_name' => $selectCondition['name'],
-                    'images' => $selectImage,
+                    'image' => $listImages[0],
                 ];
             }
 
             return View::render("stamp/index", ['listStamps' => $listStamps]);
         }
 
-        return View::render('error');
+        return View::render('error', ['msg' => '404 page not found!']);
     }
 
 
@@ -86,9 +87,20 @@ class StampController
                     'condition' => $selectCondition['name'],
                 ];
 
+                //vérifier si stamp est mis en enchère
+                //si oui, ne pas afficher les boutons Edit et Delete
+                $isAuctioned = false;
+                $auction = new Auction;
+                $listAuctions = $auction->selectAllWhere($data['id'], 'stamp_id'); //array ou false
+
+                if ($listAuctions != false) {
+                    $isAuctioned = true;
+                }
+
                 return View::render("stamp/show", [
                     'inputs' => $inputs,
                     'listImages' => $listImages,
+                    'isAuctioned' => $isAuctioned,
                 ]);
             } else {
                 return View::render('error', ['msg' => 'Stamp not found!']);
@@ -133,26 +145,26 @@ class StampController
         $validator->field('color_id', $data['color_id'])->required();
         $validator->field('condition_id', $data['condition_id'])->required();
 
-        $upload1_present = isset($files['upload1']) && !empty($files['upload1']['name']);
-        if ($upload1_present) {
-            $validator->field('upload1', $files['upload1'])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
+        $uploads = [];
+        if (isset($files['upload'])) {
+            $name = $files['upload']['name'];
+            $type = $files['upload']['type'];
+            $tmp_name = $files['upload']['tmp_name'];
+            $error = $files['upload']['error'];
+            $size = $files['upload']['size'];
+
+            for ($i = 0; $i < count($name); $i++) {
+                $uploads[$i] = [
+                    'name' => $name[$i],
+                    'type' => $type[$i],
+                    'tmp_name' => $tmp_name[$i],
+                    'error' => $error[$i],
+                    'size' => $size[$i],
+                ];
+                $validator->field('upload', $uploads[$i])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
+            }
         }
-        $upload2_present = isset($files['upload2']) && !empty($files['upload2']['name']);
-        if ($upload2_present) {
-            $validator->field('upload2', $files['upload2'])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
-        }
-        $upload3_present = isset($files['upload3']) && !empty($files['upload3']['name']);
-        if ($upload3_present) {
-            $validator->field('upload3', $files['upload3'])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
-        }
-        $upload4_present = isset($files['upload4']) && !empty($files['upload4']['name']);
-        if ($upload4_present) {
-            $validator->field('upload4', $files['upload4'])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
-        }
-        $upload5_present = isset($files['upload5']) && !empty($files['upload5']['name']);
-        if ($upload5_present) {
-            $validator->field('upload5', $files['upload5'])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
-        }
+        $validator->field('image', count($uploads))->range(1, 5);
 
         if ($validator->isSuccess()) {
             //ajouter / ajuster champs
@@ -166,87 +178,26 @@ class StampController
             $stamp = new Stamp;
             $insert = $stamp->insert($data);
 
-            //téléverser l'image
-            if ($upload1_present) {
-                $target_dir = __DIR__ . '/../public/uploads/';
-                $target_file = $target_dir . basename($files["upload1"]["name"]);
-                if (move_uploaded_file($files["upload1"]["tmp_name"], $target_file)) {
-                    //mettre à jour $data avec le path du fichier
-                    $filename = basename($files["upload1"]["name"]);
-                    $data['upload1'] = "/public/uploads/" . $filename;
-
-                    $image = new Image;
-                    $image->insert(['url' => $data['upload1'], 'stamp_id' => $insert]);
-                } else {
-                    die('oh no...store');
-                    return View::render('error', "Sorry, there was an error with uploading your file");
-                }
-            }
-            if ($upload2_present) {
-                $target_dir = __DIR__ . '/../public/uploads/';
-                $target_file = $target_dir . basename($files["upload2"]["name"]);
-                if (move_uploaded_file($files["upload2"]["tmp_name"], $target_file)) {
-                    //mettre à jour $data avec le path du fichier
-                    $filename = basename($files["upload2"]["name"]);
-                    $data['upload2'] = "/public/uploads/" . $filename;
-
-                    $image = new Image;
-                    $image->insert(['url' => $data['upload2'], 'stamp_id' => $insert]);
-                } else {
-                    die('oh no...store');
-                    return View::render('error', "Sorry, there was an error with uploading your file");
-                }
-            }
-            if ($upload3_present) {
-                $target_dir = __DIR__ . '/../public/uploads/';
-                $target_file = $target_dir . basename($files["upload3"]["name"]);
-                if (move_uploaded_file($files["upload3"]["tmp_name"], $target_file)) {
-                    //mettre à jour $data avec le path du fichier
-                    $filename = basename($files["upload3"]["name"]);
-                    $data['upload3'] = "/public/uploads/" . $filename;
-
-                    $image = new Image;
-                    $image->insert(['url' => $data['upload3'], 'stamp_id' => $insert]);
-                } else {
-                    die('oh no...store');
-                    return View::render('error', "Sorry, there was an error with uploading your file");
-                }
-            }
-            if ($upload4_present) {
-                $target_dir = __DIR__ . '/../public/uploads/';
-                $target_file = $target_dir . basename($files["upload4"]["name"]);
-                if (move_uploaded_file($files["upload4"]["tmp_name"], $target_file)) {
-                    //mettre à jour $data avec le path du fichier
-                    $filename = basename($files["upload4"]["name"]);
-                    $data['upload4'] = "/public/uploads/" . $filename;
-
-                    $image = new Image;
-                    $image->insert(['url' => $data['upload4'], 'stamp_id' => $insert]);
-                } else {
-                    die('oh no...store');
-                    return View::render('error', "Sorry, there was an error with uploading your file");
-                }
-            }
-            if ($upload5_present) {
-                $target_dir = __DIR__ . '/../public/uploads/';
-                $target_file = $target_dir . basename($files["upload5"]["name"]);
-                if (move_uploaded_file($files["upload5"]["tmp_name"], $target_file)) {
-                    //mettre à jour $data avec le path du fichier
-                    $filename = basename($files["upload5"]["name"]);
-                    $data['upload5'] = "/public/uploads/" . $filename;
-
-                    $image = new Image;
-                    $image->insert(['url' => $data['upload5'], 'stamp_id' => $insert]);
-                } else {
-                    die('oh no...store');
-                    return View::render('error', "Sorry, there was an error with uploading your file");
-                }
-            }
-
             if ($insert) {
+                //téléverser l'image
+                foreach ($uploads as $upload) {
+                    $target_dir = __DIR__ . '/../public/uploads/';
+                    $target_file = $target_dir . basename($upload["name"]);
+                    if (move_uploaded_file($upload["tmp_name"], $target_file)) {
+                        //mettre à jour $data avec le path du fichier
+                        $filename = basename($upload["name"]);
+                        $path = "/public/uploads/" . $filename;
+
+                        $image = new Image;
+                        $image->insert(['url' => $path, 'stamp_id' => $insert]);
+                    } else {
+                        return View::render('error', ['msg' => "Sorry, there was an error with uploading your file !"]);
+                    }
+                }
+
                 return View::redirect('stamp/show?id=' . $insert);
             } else {
-                return View::render('error');
+                return View::render('error', ['msg' => 'An error has occurred, stamp could not be created !']);
             }
         } else {
             $errors = $validator->getErrors();
@@ -263,7 +214,7 @@ class StampController
             $listConditions = $condition->select();
 
             $image = new Image;
-            $listImages = $image->select();
+            $listImages = [];
 
             return View::render('stamp/create', [
                 'errors' => $errors,
@@ -297,6 +248,7 @@ class StampController
                 $listImages = $image->selectAllWhere($data['id'], 'stamp_id');
 
                 $inputs = [
+                    'id' => $data['id'],
                     'name' => $selectStamp['name'],
                     'year' => $selectStamp['year'],
                     'is_certified' => $selectStamp['is_certified'],
@@ -305,7 +257,13 @@ class StampController
                     'condition_id' => $selectStamp['condition_id'],
                 ];
 
+                $errors = [];
+                if (isset($data['error_image'])) {
+                    $errors['image'] = $data['error_image'];
+                }
+
                 return View::render("stamp/edit", [
+                    'errors' => $errors,
                     'inputs' => $inputs,
                     'listCountries' => $listCountries,
                     'listColors' => $listColors,
@@ -326,37 +284,58 @@ class StampController
         if (isset($get['id']) && $get['id'] != null) {
             $validator = new Validator;
             $validator->field('name', $data['name'])->required()->max(100);
-            $validator->field('id', $data['id'])->required()->int();
             $validator->field('year', $data['year'])->required()->year();
-            $validator->field('is_certified', $data['is_certified'])->required();
-            $validator->field('country_id', $data['country_id'])->required()->int();
-            $validator->field('color_id', $data['color_id'])->required()->int();
-            $validator->field('condition_id', $data['condition_id'])->required()->int();
+            $validator->field('country_id', $data['country_id'])->required();
+            $validator->field('color_id', $data['color_id'])->required();
+            $validator->field('condition_id', $data['condition_id'])->required();
 
+            $uploads = [];
             if (isset($files['upload'])) {
-                $validator->field('upload', $files['upload'])->image()->fileType(["image/jpeg", "image/png", "image/gif"])->max(500000);
+                $name = $files['upload']['name'];
+                $type = $files['upload']['type'];
+                $tmp_name = $files['upload']['tmp_name'];
+                $error = $files['upload']['error'];
+                $size = $files['upload']['size'];
+
+                for ($i = 0; $i < count($name); $i++) {
+                    if (trim($name[$i]) == '') continue;
+                    $uploads[$i] = [
+                        'name' => $name[$i],
+                        'type' => $type[$i],
+                        'tmp_name' => $tmp_name[$i],
+                        'error' => $error[$i],
+                        'size' => $size[$i],
+                    ];
+                    $validator->field('upload', $uploads[$i])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
+                }
             }
+            $image = new Image;
+            $listImages = $image->selectAllWhere($get['id'], 'stamp_id');
+            $totalWithBd = count($uploads) + count($listImages);
+            $validator->field('image', $totalWithBd)->range(1, 5); //le total ne pas dépasser 5
 
             if ($validator->isSuccess()) {
-
-                //téléverser l'image
-                if (isset($files['upload'])) {
-                    $target_dir = __DIR__ . '/../public/uploads/';
-                    $target_file = $target_dir . basename($files["upload"]["name"]);
-                    if (move_uploaded_file($files["upload"]["tmp_name"], $target_file)) {
-                        //mettre à jour $data avec le path du fichier
-                        $filename = basename($files["upload"]["name"]);
-                        $data['upload'] = "/public/uploads/" . $filename;
-                    } else {
-                        die('oh no...update');
-                        return View::render('error', "Sorry, there was an error uploading your file");
-                    }
-                }
 
                 //modifier le timbre
                 $stamp = new Stamp;
                 $insert = $stamp->update($data, $get['id']);
                 if ($insert) {
+                    //téléverser l'image
+                    foreach ($uploads as $upload) {
+                        $target_dir = __DIR__ . '/../public/uploads/';
+                        $target_file = $target_dir . basename($upload["name"]);
+                        if (move_uploaded_file($upload["tmp_name"], $target_file)) {
+                            //mettre à jour $data avec le path du fichier
+                            $filename = basename($upload["name"]);
+                            $path = "/public/uploads/" . $filename;
+
+                            $image = new Image;
+                            $image->insert(['url' => $path, 'stamp_id' => $get['id']]);
+                        } else {
+                            return View::render('error', ['msg' => "Sorry, there was an error with uploading your file"]);
+                        }
+                    }
+
                     return View::redirect('stamp/show?id=' . $get['id']);
                 } else {
                     return View::render('error');
@@ -376,7 +355,7 @@ class StampController
                 $listConditions = $condition->select();
 
                 $image = new Image;
-                $listImages = $image->select(); //TODO voir pour les images
+                $listImages = $image->selectAllWhere($get['id'], 'stamp_id');
 
                 return View::render('stamp/edit', [
                     'errors' => $errors,
@@ -391,15 +370,49 @@ class StampController
         return View::render('error');
     }
 
+    public function deleteImage($data = [])
+    {
+        Auth::session();
+        if (isset($data['image_id']) && $data['image_id'] != null) {
+            //s'assurer qu'il restera au moins un livre après le delete
+            $image = new Image;
+            $listImages = $image->selectAllWhere($data['stamp_id'], 'stamp_id');
+            $totalWithBd = count($listImages) - 1;
+
+            $validator = new Validator;
+            $validator->field('image', $totalWithBd)->range(1, 5);
+            $errors = $validator->getErrors();
+            if (isset($errors['image'])) {
+                return View::redirect('stamp/edit?id=' . $data['stamp_id'] . '&error_image=' . $errors['image']);
+            }
+
+            $delete = $image->delete($data['image_id']);
+            if ($delete) {
+                return View::redirect('stamp/edit?id=' . $data['stamp_id']);
+            }
+            return View::render('error', ['msg' => 'Image not found !']);
+        }
+
+        return View::render('error', ['msg' => 'An error occured !']);
+    }
+
     public function delete($data = [])
     {
         Auth::session();
 
-        $stamp = new Stamp;
-        $delete = $stamp->delete($data['id']);
-        if ($delete) {
-            return View::redirect('stamps');
+        if (isset($data['id']) && $data['id'] != null) {
+            //supprimer les images en premier
+            $image = new Image;
+            $deleteImage = $image->delete($data['id'], 'stamp_id');
+
+            //si succès, on supprime le stamp
+            $stamp = new Stamp;
+            $delete = $stamp->delete($data['id']);
+            if ($delete) {
+                return View::redirect('stamps');
+            }
         }
-        return View::render('error');
+
+        return View::render('error', ['msg' => 'An error occured !']);
     }
 }

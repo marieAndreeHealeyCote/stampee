@@ -1,6 +1,6 @@
 {{ include ('layouts/header.php', {title:'Edit Stamp'})}}
 <div class="section__timbre">
-    <form method="POST" enctype="multipart/form-data" class="section__timbre__form">
+    <form method="POST" enctype="multipart/form-data" class="section__timbre__form" novalidate>
         <h2>Edit stamp</h2>
         <div>
             <label>Name :
@@ -79,56 +79,29 @@
         {% endif %}
 
         <div class="section__timbre__upload">
-            <label>1. Upload an image of your stamp
-                <input type="file" name="upload1" id="upload1">
+            <label>Upload an image of your stamp *
+                <input type="file" name="upload[]" multiple accept="image/png, image/jpeg, image/gif, image/webp">
             </label>
+            <p>* You need a minimum of 1 image, up to 5 images *</p>
         </div>
-        {% if errors.upload1 is defined %}
-        <span class="error">{{ errors.upload1 }}</span>
+        {% if errors.upload is defined %}
+        <span class="error">{{ errors.upload }}</span>
         {% endif %}
 
-        <div class="section__timbre__upload">
-            <label>2. Upload another image of your stamp
-                <input type="file" name="upload2" id="upload2">
-            </label>
+        <div class="section__timbre__image">
+            {% for image in listImages %}
+            <div class="section__timbre__image__items">
+                <img class="section__timbre__image__item" src="{{ base }}/{{ image.url }}">
+                <a href="{{ base }}/stamp/image-delete?image_id={{ image.id }}&stamp_id={{ inputs.id }}" class="bouton bouton-supprimer" onclick="return confirm('Delete this image ?')">Delete</a>
+            </div>
+            {% endfor %}
         </div>
-        {% if errors.upload2 is defined %}
-        <span class="error">{{ errors.upload2 }}</span>
+        {% if errors.image is defined %}
+        <span class="error">{{ errors.image }}</span>
         {% endif %}
 
-        <div class="section__timbre__upload">
-            <label>3. Upload another image of your stamp
-                <input type="file" name="upload3" id="upload3">
-            </label>
-        </div>
-        {% if errors.upload3 is defined %}
-        <span class="error">{{ errors.upload3 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>4. Upload another image of your stamp
-                <input type="file" name="upload4" id="upload4">
-            </label>
-        </div>
-        {% if errors.upload4 is defined %}
-        <span class="error">{{ errors.upload4 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>5. Upload another image of your stamp
-                <input type="file" name="upload5" id="upload5">
-            </label>
-        </div>
-        {% if errors.upload5 is defined %}
-        <span class="error">{{ errors.upload5 }}</span>
-        {% endif %}
-
-        {% for image in listImages %}
-        <img src="{{ base }}/{{ image.url }}">
-        {% endfor %}
-
-        <button type="submit" class="bouton bouton-modifier">Edit</button>
-        <a href="{{base}}/profile" class="bouton bouton-action">Cancel</a>
+        <button type="submit" class="bouton bouton-modifier">Update</button>
+        <a href="{{base}}/profile" class="bouton bouton-retour">Cancel</a>
     </form>
 </div>
 

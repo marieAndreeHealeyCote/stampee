@@ -17,7 +17,7 @@ class UserController
 
     public function index()
     {
-        // Auth::session();
+        Auth::session();
 
         return View::render('user/index', ['stamps' => [], 'bids' => [], 'auctions' => [], 'favorites' => []]);
     }

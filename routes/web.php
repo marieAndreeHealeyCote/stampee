@@ -5,6 +5,7 @@ use App\Controllers\HomeController;
 use App\Controllers\StampController;
 use App\Controllers\UserController;
 use App\Controllers\AuthController;
+use App\Controllers\AuctionController;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
@@ -17,6 +18,7 @@ Route::post('/stamp/create', 'StampController@store');
 Route::get('/stamp/edit', 'StampController@edit');
 Route::post('/stamp/edit', 'StampController@update');
 Route::get('/stamp/delete', 'StampController@delete');
+Route::get('/stamp/image-delete', 'StampController@deleteImage');
 
 Route::get('/profile', 'UserController@index');
 Route::get('/register', 'UserController@create');

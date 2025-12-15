@@ -1,4 +1,4 @@
-/* aparté */
+/* filtre de recherche */
 .section__aparte {
   form {
     label {
@@ -51,4 +51,26 @@
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+}
+
+/* profil */
+
+.section__profil__aparte,
+.section__liste-timbres__aparte {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-inverse);
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }

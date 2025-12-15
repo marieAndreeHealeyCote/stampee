@@ -1,6 +1,6 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
 <div class="section__timbre">
-    <form method="POST" enctype="multipart/form-data" class="section__timbre__form">
+    <form method="POST" enctype="multipart/form-data" class="section__timbre__form" novalidate>
         <h2>Add a new stamp</h2>
         <div>
             <label>Name :
@@ -79,52 +79,20 @@
         {% endif %}
 
         <div class="section__timbre__upload">
-            <label>1. Upload an image of your stamp
-                <input type="file" name="upload1" id="upload1">
+            <label>Upload an image of your stamp *
+                <input type="file" name="upload[]" multiple accept="image/png, image/jpeg, image/gif, image/webp">
             </label>
+            <p>* You need a minimum of 1 image, up to 5 *</p>
         </div>
-        {% if errors.upload1 is defined %}
-        <span class="error">{{ errors.upload1 }}</span>
+        {% if errors.upload is defined %}
+        <span class="error">{{ errors.upload }}</span>
         {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>2. Upload another image of your stamp
-                <input type="file" name="upload2" id="upload2">
-            </label>
-        </div>
-        {% if errors.upload2 is defined %}
-        <span class="error">{{ errors.upload2 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>3. Upload another image of your stamp
-                <input type="file" name="upload3" id="upload3">
-            </label>
-        </div>
-        {% if errors.upload3 is defined %}
-        <span class="error">{{ errors.upload3 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>4. Upload another image of your stamp
-                <input type="file" name="upload4" id="upload4">
-            </label>
-        </div>
-        {% if errors.upload4 is defined %}
-        <span class="error">{{ errors.upload4 }}</span>
-        {% endif %}
-
-        <div class="section__timbre__upload">
-            <label>5. Upload another image of your stamp
-                <input type="file" name="upload5" id="upload5">
-            </label>
-        </div>
-        {% if errors.upload5 is defined %}
-        <span class="error">{{ errors.upload5 }}</span>
+        {% if errors.image is defined %}
+        <span class="error">{{ errors.image }}</span>
         {% endif %}
 
         <button type="submit" class="bouton bouton-ajouter">Add</button>
-        <a href="{{base}}/profile" class="bouton bouton-action">Cancel</a>
+        <a href="{{base}}/profile" class="bouton bouton-retour">Cancel</a>
     </form>
 </div>
 

@@ -15,29 +15,29 @@
         </div>
         <div class="section__mission__description">
             <h2>Mission</h2>
-            <p class="h4">The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
+            <p class="h4">The Stampee platform's mission is to offer the philatelic world a prestigious, reliable, and accessible digital space where the passion for rare stamps meets modernity. The mission is to :</p>
 
-            <ul class="h4">
+            <ul class="">
                 <li>
                     Open up the auctions to the widest possible audience, within a safe and structured framework.
                 </li>
                 <li>
-                    To allow users to quickly find the desired auctions, whether they are active or archived.
+                    Allow users to quickly find the desired auctions, whether they are active or archived.
                 </li>
                 <li>
                     Ensure universal accessibility across all devices.
                 </li>
                 <li>
-                    To showcase exceptional pieces.
+                    Showcase exceptional pieces.
                 </li>
                 <li>
-                    To offer a visual immersion that faithfully meets the expectations of philatelists.
+                    Offer a visual immersion that faithfully meets the expectations of philatelists.
                 </li>
                 <li>
-                    To preserve and document philatelic history.
+                    Preserve and document philatelic history.
                 </li>
                 <li>
-                    To provide a cohesive, elegant environment worthy of Lord Stampee's prestige.
+                    Provide a cohesive, elegant environment worthy of Lord Stampee's prestige.
                 </li>
             </ul>
         </div>
@@ -210,11 +210,13 @@
         </div>
         <div class="section__lord__description">
             <h2>Lord Reginald Stampee III</h2>
-            <p class="h3">From his early childhood in the mid-1950s, Lord Reginald Stampee, Duke of Worcesseshear, nurtured an unwavering passion for philately. A learned collector, a discreet but influential figure among great enthusiasts of rare stamps, he dedicated his life to gathering, studying and showcasing the most precious pieces of postal history.</p>
+            <p class="h4">From his early childhood in the mid-1950s, Lord Reginald Stampee, Duke of Worcesseshear, nurtured an unwavering passion for philately. A learned collector, a discreet but influential figure among great enthusiasts of rare stamps, he dedicated his life to gathering, studying and showcasing the most precious pieces of postal history.</p>
 
-            <p class="h3">Renowned throughout the United Kingdom for its exclusive auctions, which attract the world's most prestigious philatelists every year, Lord Stampee now wishes to take a new step: to offer the global market a modern, elegant and accessible digital platform, in order to extend its legacy far beyond British borders.</p>
+            <p class="h4">Renowned throughout the United Kingdom for its exclusive auctions, which attract the world's most prestigious philatelists every year, Lord Stampee now wishes to take a new step: to offer the global market a modern, elegant and accessible digital platform, in order to extend its legacy far beyond British borders.</p>
 
-            <p class="h3">With this in mind, he personally chose you to oversee the design and development of this ambitious auction platform, reflecting his expertise, refinement and vision.</p>
+            <p class="h4">With this in mind, he personally chose you to oversee the design and development of this ambitious auction platform, reflecting his expertise, refinement and vision.</p>
+
+            <p class="h4">Faithful to the vision of Lord Reginald Stampee, Duke of Worcestershire, it aims to extend the excellence and refinement of his renowned auctions online, making them available to collectors worldwide.</p>
         </div>
     </section>
     <section class="section__newsletter">
