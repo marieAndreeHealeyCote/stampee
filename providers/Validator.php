@@ -77,19 +77,19 @@ class Validator
     {
         switch (gettype($this->value)) {
             case 'integer':
-                if ($this->value < $min && $this->value > $max) {
+                if ($this->value < $min || $this->value > $max) {
                     $this->errors[$this->key] = "$this->name must be between $min and $max";
                 }
                 break;
             case 'array':
                 if (isset($this->value['size'])) {
-                    if ($this->value['size'] < $min && $this->value['size'] > $max) {
+                    if ($this->value['size'] < $min || $this->value['size'] > $max) {
                         $this->errors[$this->key] = "Your file size must be between $min and $max.";
                     }
                 }
                 break;
             case 'string':
-                if (strlen($this->value) < $min && strlen($this->value) > $max) {
+                if (strlen($this->value) < $min || strlen($this->value) > $max) {
                     $this->errors[$this->key] = "$this->name must be between $min and $max";
                 }
                 break;

@@ -87,6 +87,9 @@
         {% if errors.upload is defined %}
         <span class="error">{{ errors.upload }}</span>
         {% endif %}
+        {% if errors.image is defined %}
+        <span class="error">{{ errors.image }}</span>
+        {% endif %}
 
         <button type="submit" class="bouton bouton-ajouter">Add</button>
         <a href="{{base}}/profile" class="bouton bouton-retour">Cancel</a>

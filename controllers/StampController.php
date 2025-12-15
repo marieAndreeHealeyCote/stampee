@@ -161,9 +161,10 @@ class StampController
                     'error' => $error[$i],
                     'size' => $size[$i],
                 ];
-                $validator->field('upload', $uploads[$i])->required()->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
+                $validator->field('upload', $uploads[$i])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
             }
         }
+        $validator->field('image', count($uploads))->range(1, 5);
 
         if ($validator->isSuccess()) {
             //ajouter / ajuster champs
@@ -256,7 +257,13 @@ class StampController
                     'condition_id' => $selectStamp['condition_id'],
                 ];
 
+                $errors = [];
+                if (isset($data['error_image'])) {
+                    $errors['image'] = $data['error_image'];
+                }
+
                 return View::render("stamp/edit", [
+                    'errors' => $errors,
                     'inputs' => $inputs,
                     'listCountries' => $listCountries,
                     'listColors' => $listColors,
@@ -301,6 +308,10 @@ class StampController
                     $validator->field('upload', $uploads[$i])->image()->fileType(["image/jpg", "image/jpeg", "image/png", "image/gif", "image/webp"])->max(500000);
                 }
             }
+            $image = new Image;
+            $listImages = $image->selectAllWhere($get['id'], 'stamp_id');
+            $totalWithBd = count($uploads) + count($listImages);
+            $validator->field('image', $totalWithBd)->range(1, 5); //le total ne pas dépasser 5
 
             if ($validator->isSuccess()) {
 
@@ -362,10 +373,19 @@ class StampController
     {
         Auth::session();
         if (isset($data['image_id']) && $data['image_id'] != null) {
-            //supprimer les images en premier
+            //s'assurer qu'il restera au moins un livre après le delete
             $image = new Image;
-            $delete = $image->delete($data['image_id']);
+            $listImages = $image->selectAllWhere($data['stamp_id'], 'stamp_id');
+            $totalWithBd = count($listImages) - 1;
 
+            $validator = new Validator;
+            $validator->field('image', $totalWithBd)->range(1, 5);
+            $errors = $validator->getErrors();
+            if (isset($errors['image'])) {
+                return View::redirect('stamp/edit?id=' . $data['stamp_id'] . '&error_image=' . $errors['image']);
+            }
+
+            $delete = $image->delete($data['image_id']);
             if ($delete) {
                 return View::redirect('stamp/edit?id=' . $data['stamp_id']);
             }
