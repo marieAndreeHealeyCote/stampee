@@ -1,5 +1,5 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
-{{ include ('layouts/aside-timbre.php')}}
+{{ include ('layouts/aside-stamp.php')}}
 <div class="section__liste-timbre__grille">
     {% for stamp in listStamps %}
     <article class="section__liste-timbre__grille__carte">
