@@ -10,8 +10,8 @@ class Magnifier {
     #w;
     #h;
 
-    constructor(imgID, zoom) {
-        this.#img = document.getElementById(imgID);
+    constructor(img, zoom) {
+        this.#img = img;
         this.#zoom = zoom;
 
         this.magnify();
