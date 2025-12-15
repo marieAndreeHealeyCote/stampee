@@ -26,7 +26,11 @@
   }
 
   .section__timbre__form__image {
-    width: 150px;
+    width: 125px;
+
+    @media (min-width: 600px) {
+      width: 150px;
+    }
   }
 
   .section__timbre__certification {
@@ -105,5 +109,9 @@ form.section__newsletter__contenu__email {
 }
 
 .section__timbre__image__petit {
-  width: 150px;
+  width: 120px;
+
+  @media (min-width: 600px) {
+    width: 150px;
+  }
 }

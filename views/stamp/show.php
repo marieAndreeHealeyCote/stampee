@@ -2,7 +2,7 @@
 
 <div class="section__timbre">
     <div class="section__timbre__form">
-        <h2>Stamp's informations</h2>
+        <h2>Stamp</h2>
         <p><strong>Name : </strong>{{ inputs.name }}</p>
         <p><strong>Year : </strong>{{ inputs.year }}</p>
         <p><strong>Certification : </strong>{{ inputs.is_certified }}</p>

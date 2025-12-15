@@ -8,9 +8,6 @@
         <a href="{{ base }}/my-bids">
             <h3>My bids</h3>
         </a>
-        <a href="{{ base }}/my-auctions">
-            <h3>My auctions</h3>
-        </a>
         <a href="{{ base }}/my-favorites">
             <h3>My favorites</h3>
         </a>

@@ -37,10 +37,6 @@ class Magnifier {
         /* Execute a function when someone moves the magnifier glass over the image: */
         this.#glass.addEventListener("mousemove", this.#moveMagnifier.bind(this));
         this.#img.addEventListener("mousemove", this.#moveMagnifier.bind(this));
-
-        /*and also for touch screens:*/
-        this.#glass.addEventListener("touchmove", this.#moveMagnifier.bind(this));
-        this.#img.addEventListener("touchmove", this.#moveMagnifier.bind(this));
     }
 
     #moveMagnifier(event) {

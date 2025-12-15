@@ -1,4 +1,4 @@
-{{ include ('layouts/header.php', {title:'My auctions'})}}
+{{ include ('layouts/header.php', {title:'My favorites'})}}
 
 {{ include ('layouts/aside-profil.php')}}
 

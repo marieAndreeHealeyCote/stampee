@@ -2,8 +2,15 @@
 .bouton {
   padding: 1rem;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
+
 .bouton-loupe {
   padding: 0.4rem 1rem;
   font-size: 1.2em;
@@ -45,6 +52,7 @@
     background-color: var(--couleur-accent);
     color: var(--couleur-texte-inverse);
   }
+
   &:hover:active {
     background-color: var(--couleur-bouton);
   }
@@ -52,14 +60,15 @@
 
 .bouton-suivre {
   padding: 1rem 2rem;
-  text-decoration: none;
+
   color: var(--couleur-secondaire);
   border: 1px solid var(--couleur-secondaire);
 
   &:hover {
     background-color: var(--couleur-secondaire);
-    text-decoration: underline;
-    cursor: pointer;
+  }
+  &:hover:active {
+    background-color: var(--couleur-bouton);
   }
 }
 .bouton-enchere,
@@ -73,6 +82,7 @@
     background-color: var(--couleur-accent);
     color: var(--couleur-texte-inverse);
   }
+
   &:hover:active {
     background-color: var(--couleur-bouton);
   }
@@ -88,6 +98,7 @@
     border: var(--couleur-texte-inverse) 1px solid;
     color: var(--couleur-texte-inverse);
   }
+
   &:hover:active {
     background-color: var(--couleur-bouton);
   }

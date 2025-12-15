@@ -1,5 +1,14 @@
 /* filtre de recherche */
 .section__aparte {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-inverse);
+
   form {
     label {
       display: flex;
