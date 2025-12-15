@@ -93,6 +93,17 @@ form.section__newsletter__contenu__email {
   gap: 1em;
 }
 
-.section__timbre__image__item {
+.section__timbre__image__large {
+  display: block;
+
+  margin-bottom: 2rem;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 500px;
+  }
+}
+
+.section__timbre__image__petit {
   width: 150px;
 }

@@ -52,12 +52,13 @@
 
 .bouton-suivre {
   padding: 1rem 2rem;
-  text-transform: uppercase;
+  text-decoration: none;
   color: var(--couleur-secondaire);
   border: 1px solid var(--couleur-secondaire);
 
   &:hover {
     background-color: var(--couleur-secondaire);
+    text-decoration: underline;
     cursor: pointer;
   }
 }

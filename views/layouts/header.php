@@ -10,6 +10,7 @@
         href="{{ asset }}img/favicon.ico"
         type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset }}css/style.css">
+    <script type="module" src="{{ asset }}js/index.js"></script>
 </head>
 
 <body>

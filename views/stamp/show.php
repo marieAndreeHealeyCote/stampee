@@ -11,6 +11,11 @@
         <p><strong>Condition : </strong>{{ inputs.condition }}</p>
         <div>
             {% for image in listImages %}
+            {% if loop.first %}
+            <div class="img-magnifier-container">
+                <img id="zoom-stamp" class="section__timbre__image__large" src="{{ base }}/{{ image.url }}">
+            </div>
+            {% endif %}
             <img class="section__timbre__form__image"
                 src="{{ base }}/{{ image.url }}">
             {% endfor %}

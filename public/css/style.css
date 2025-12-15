@@ -12,6 +12,7 @@
 @import "components/bouton.css";
 @import "components/piedpage.css";
 @import "components/menu-deroulant.css";
+@import "components/magnifier.css";
 
 /* layout */
 @import "layout/aparte.css";
