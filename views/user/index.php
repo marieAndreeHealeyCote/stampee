@@ -1,6 +1,6 @@
 {{ include ('layouts/header.php', {title:'Profile'})}}
 
-{{ include ('layouts/aside-timbre.php')}}
+{{ include ('layouts/aside-stamp.php')}}
 
 <div class="section__profil">
     <div class="section__profil__timbre">
