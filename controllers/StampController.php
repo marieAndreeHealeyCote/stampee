@@ -298,6 +298,7 @@ class StampController
                 $size = $files['upload']['size'];
 
                 for ($i = 0; $i < count($name); $i++) {
+                    if (trim($name[$i]) == '') continue;
                     $uploads[$i] = [
                         'name' => $name[$i],
                         'type' => $type[$i],
