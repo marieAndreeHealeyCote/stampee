@@ -33,8 +33,7 @@
 }
 .bouton-suivre,
 .bouton-login,
-.bouton-modifier,
-.bouton-rechercher {
+.bouton-modifier {
   background-color: var(--couleur-texte-inverse);
   border: var(--couleur-secondaire) 1px solid;
   color: var(--couleur-secondaire);
@@ -48,12 +47,40 @@
     background-color: var(--couleur-bouton);
   }
 }
+.bouton-rechercher {
+  padding: 1rem 2rem;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-accent);
+  border: 1px solid var(--couleur-primaire);
+
+  &:hover {
+    background-color: var(--couleur-texte-inverse);
+    color: var(--couleur-primaire);
+  }
+  &:hover:active {
+    background-color: var(--couleur-bouton);
+  }
+}
+
+.bouton-reset {
+  padding: 1rem 2rem;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
+
+  &:hover {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-primaire);
+  }
+  &:hover:active {
+    background-color: var(--couleur-bouton);
+  }
+}
 
 .bouton-suivre {
   padding: 1rem 2rem;
-
   color: var(--couleur-secondaire);
   border: 1px solid var(--couleur-secondaire);
+  border: 1px solid var(--couleur-primaire);
 
   &:hover {
     background-color: var(--couleur-secondaire);

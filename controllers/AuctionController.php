@@ -17,9 +17,18 @@ class AuctionController
     public function index($data = [])
     {
         Auth::session();
-
+        var_dump($data);
         $auction = new Auction;
         $selectAuction = $auction->select();
+
+        $country = new Country;
+        $selectCountry = $country->select();
+
+        $color = new Color;
+        $selectColor = $color->select();
+
+        $condition = new Condition;
+        $selectCondition = $condition->select();
 
         if ($selectAuction) {
             $listAuctions = [];
@@ -29,7 +38,7 @@ class AuctionController
                 $stamp = new Stamp;
                 $selectStamp = $stamp->selectId($auction['stamp_id']);
 
-                if ($this->doesMatchFilter($stamp, $data) == false) {
+                if ($this->doesMatchFilter($selectStamp, $data) == false) {
                     continue;
                 }
 
@@ -48,27 +57,34 @@ class AuctionController
                     'stamp_image' => $listImages[0],
                 ];
             }
-
-            return View::render('auction/index', ['listAuctions' => $listAuctions]);
+            return View::render('auction/index', [
+                'listAuctions' => $listAuctions,
+                'listFilters' => [
+                    'countries' => $selectCountry,
+                    'colors' => $selectColor,
+                    'conditions' => $selectCondition,
+                ],
+                'userFilters' => $data,
+            ]);
         }
 
         return View::render('error', ['msg' => '404 page not found!']);
     }
 
-    private function doesMatchFilter($stamp, $data = [])
+    private function doesMatchFilter($selectStamp, $data = [])
     {
-        //$data['certified'][1]         <input name="certified[]" type="checkbox">
-        //$data['colors'][1,2,3,4]      <input name="colors[]" type="checkbox">
-        //$data['countries'][1,2,3,4]   <input name="countries[]" type="checkbox">
-        //$data['conditions'][1,2,3,4]  <input name="conditions[]" type="checkbox">
-        //$data['date-start']  <input name="date_start[]" type="">
-        //$data['date-end']  <input name="date_end[]" type="">
-        //$data['prix'] =   <input name="price[]" type="">
+        //["certified"]=> [ [0]=> "1" ] 
+        //["conditions"]=>[ [0]=> "perfect" [1]=> "excellent" ]
+        //["colors"]=> [ [0]=> "gold" ]
+        //["countries"]=> "all" 
+        //["date-start"]=> "1800" 
+        //["date-end"]=> "1800" 
+        //["price"]=> "10" 
         if (isset($data['certified'])) {
-            // valider 
-            // return false;
+            if ($selectStamp['is_certified'] != 1) return false;
         }
         if (isset($data['colors'])) {
+            if ($selectStamp['is_certified'] != 1) return false;
             // return false;
         }
         if (isset($data['countries'])) {
@@ -77,16 +93,19 @@ class AuctionController
         if (isset($data['conditions'])) {
             // return false;
         }
-        return true;
-        if (isset($data['date'])) {
+        if (isset($data['date-start'])) {
             // date enchère
             // return false;
         }
-        return true;
-        if (isset($data['prix'])) {
+        if (isset($data['date-end'])) {
+            // date enchère
+            // return false;
+        }
+        if (isset($data['price'])) {
             // prix enchère
             // return false;
         }
+
         return true;
     }
 }

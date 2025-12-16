@@ -1,7 +1,7 @@
 {{ include ('layouts/header.php', {title:'Auction'})}}
 
 <div class="section__catalogue__conteneur">
-    {{ include ('layouts/aside-auction.php')}}
+    {{ include ('layouts/aside-auction.php') }}
     <div class="section__catalogue__contenu">
         <section class="section__catalogue-enchere-en-cours">
             <h2>Current Auctions</h2>
