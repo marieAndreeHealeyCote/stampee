@@ -47,21 +47,8 @@
     background-color: var(--couleur-bouton);
   }
 }
-.bouton-rechercher {
-  padding: 1rem 2rem;
-  color: var(--couleur-primaire);
-  background-color: var(--couleur-accent);
-  border: 1px solid var(--couleur-primaire);
 
-  &:hover {
-    background-color: var(--couleur-texte-inverse);
-    color: var(--couleur-primaire);
-  }
-  &:hover:active {
-    background-color: var(--couleur-bouton);
-  }
-}
-
+.bouton-rechercher,
 .bouton-reset {
   padding: 1rem 2rem;
   color: var(--couleur-primaire);
