@@ -49,10 +49,10 @@ class AuctionController
                 ];
             }
 
-            return View::redirect('auction/index', ['listAuctions' => $listAuctions]);
+            return View::render('auction/index', ['listAuctions' => $listAuctions]);
         }
 
-        return View::render('error');
+        return View::render('error', ['msg' => '404 page not found!']);
     }
 
     private function doesMatchFilter($stamp, $data = [])
