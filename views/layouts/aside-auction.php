@@ -30,7 +30,7 @@
             <h3>BY COUNTRY</h3>
             <label for="countries">Select Country</label>
             <select name="countries" id="countries">
-                <option value="all">All Countries</option>
+                <option value="any">Any country</option>
                 {% for country in listFilters.countries %}
                 <option value="{{ country.id }}">{{ country.name | capitalize }}</option>
                 {% endfor %}
@@ -38,17 +38,17 @@
         </section>
         <section class="section__aparte__date">
             <h3>BY YEAR</h3>
-            <label for="date-start">Select starting year</label>
-            <select name="date-start" id="date-start">
-                <option value="any">Any</option>
+            <label for="year-start">Select starting year</label>
+            <select name="year-start" id="year-start">
+                <option value="any">Any year</option>
                 <option value="1800">1800</option>
                 <option value="1850">1850</option>
                 <option value="1900">1900</option>
                 <option value="1950">1950</option>
             </select>
-            <label for="date-end">Select ending year</label>
-            <select name="date-end" id="date-end">
-                <option value="any">Any</option>
+            <label for="year-end">Select ending year</label>
+            <select name="year-end" id="year-end">
+                <option value="any">Any year</option>
                 <option value="1850">1850</option>
                 <option value="1900">1900</option>
                 <option value="1950">1950</option>
@@ -59,24 +59,24 @@
             <h3>BY PRICE</h3>
             <label for="start-price">Select starting price</label>
             <select name="start-price" id="start-price">
-                <option value="any">Any</option>
-                <option value="0">0</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
+                <option value="any">Any price</option>
+                <option value="0">CA$0</option>
+                <option value="50">CA$50</option>
+                <option value="100">CA$100</option>
+                <option value="150">CA$150</option>
             </select>
             <label for="end-price">Select ending price</label>
             <select name="end-price" id="end-price">
-                <option value="any">Any</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
-                <option value="200">200</option>
+                <option value="any">Any price</option>
+                <option value="50">CA$50</option>
+                <option value="100">CA$100</option>
+                <option value="150">CA$150</option>
+                <option value="200">CA$200</option>
             </select>
         </section>
         <div class="section__aparte__bouton">
             <button type="submit" class="bouton bouton-rechercher">SEARCH</button>
-            <button type="reset" class="bouton bouton-reset">RESET</button>
+            <a href="{{ base }}/auctions" class="bouton bouton-reset">RESET</a>
         </div>
     </form>
 </aside>
