@@ -12,12 +12,10 @@
     cursor: pointer;
   }
 }
-
 .bouton-loupe {
   padding: 0.4rem 1rem;
   font-size: 1.2em;
 }
-
 .bouton-action {
   background-color: var(--couleur-secondaire);
   border: none;
@@ -47,7 +45,6 @@
     background-color: var(--couleur-bouton);
   }
 }
-
 .bouton-rechercher,
 .bouton-reset {
   padding: 1rem 2rem;
@@ -62,7 +59,6 @@
     background-color: var(--couleur-bouton);
   }
 }
-
 .bouton-suivre {
   padding: 1rem 2rem;
   color: var(--couleur-secondaire);
@@ -92,7 +88,6 @@
     background-color: var(--couleur-bouton);
   }
 }
-
 .bouton-ajouter {
   background-color: var(--couleur-texte-inverse);
   border: var(--couleur-primaire) 1px solid;
