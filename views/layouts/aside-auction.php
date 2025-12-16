@@ -3,10 +3,11 @@
         <h2>Filters</h2>
         <section class="section__aparte__certification">
             <h3>BY CERTIFICATION</h3>
-            <label for="certified">
-                <span>Certified</span>
-                <input type="checkbox" name="certified[]" value="1" />
-            </label>
+            <label for="is_certified">Select a status</label>
+            <select name="is_certified">
+                <option value="1" {% if 1 == listFilters.is_certified %} selected {% endif %}>Certified</option>
+                <option value="0" {% if 0 == listFilters.is_certified %} selected {% endif %}>Not certified</option>
+            </select>
         </section>
         <section class="section__aparte__condition">
             <h3>BY CONDITION</h3>
@@ -60,18 +61,18 @@
             <label for="start-price">Select starting price</label>
             <select name="start-price" id="start-price">
                 <option value="any">Any price</option>
-                <option value="0">CA$0</option>
-                <option value="50">CA$50</option>
-                <option value="100">CA$100</option>
-                <option value="150">CA$150</option>
+                <option value="0">CAD 0</option>
+                <option value="50">CAD 50</option>
+                <option value="100">CAD 100</option>
+                <option value="150">CAD 150</option>
             </select>
             <label for="end-price">Select ending price</label>
             <select name="end-price" id="end-price">
                 <option value="any">Any price</option>
-                <option value="50">CA$50</option>
-                <option value="100">CA$100</option>
-                <option value="150">CA$150</option>
-                <option value="200">CA$200</option>
+                <option value="50">CAD 50</option>
+                <option value="100">CAD 100</option>
+                <option value="150">CAD 150</option>
+                <option value="200">CAD 200</option>
             </select>
         </section>
         <div class="section__aparte__bouton">

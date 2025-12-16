@@ -8,8 +8,8 @@ use App\Models\Color;
 use App\Models\Condition;
 use App\Models\Image;
 use App\Models\Auction;
+use App\Models\Bid;
 use App\Providers\View;
-use App\Providers\Validator;
 use App\Providers\Auth;
 
 class AuctionController
@@ -17,7 +17,7 @@ class AuctionController
     public function index($data = [])
     {
         Auth::session();
-        var_dump($data);
+
         $auction = new Auction;
         $selectAuction = $auction->select();
 
@@ -38,7 +38,7 @@ class AuctionController
                 $stamp = new Stamp;
                 $selectStamp = $stamp->selectId($auction['stamp_id']);
 
-                if ($this->doesMatchFilter($selectStamp, $data) == false) {
+                if ($this->doesMatchFilter($selectStamp, $auction, $data) == false) {
                     continue;
                 }
 
@@ -71,39 +71,50 @@ class AuctionController
         return View::render('error', ['msg' => '404 page not found!']);
     }
 
-    private function doesMatchFilter($selectStamp, $data = [])
+    private function doesMatchFilter($selectStamp, $auction, $data = [])
     {
-        //["certified"]=> [ [0]=> "1" ] 
-        //["conditions"]=>[ [0]=> "perfect" [1]=> "excellent" ]
-        //["colors"]=> [ [0]=> "gold" ]
-        //["countries"]=> "all" 
-        //["date-start"]=> "1800" 
-        //["date-end"]=> "1800" 
-        //["price"]=> "10" 
-        if (isset($data['certified'])) {
+        if (isset($data['is_certified'])) {
             if ($selectStamp['is_certified'] != 1) return false;
         }
         if (isset($data['colors'])) {
-            if ($selectStamp['is_certified'] != 1) return false;
-            // return false;
-        }
-        if (isset($data['countries'])) {
-            // return false;
+            if (!in_array($selectStamp['color_id'], $data['conditions'])) return false;
         }
         if (isset($data['conditions'])) {
-            // return false;
+            if (!in_array($selectStamp['condition_id'], $data['conditions'])) return false;
         }
-        if (isset($data['date-start'])) {
-            // date enchère
-            // return false;
+        if (isset($data['countries']) && $data['countries'] != 'any') {
+            if ($selectStamp['country_id'] != $data['countries']) return false;
         }
-        if (isset($data['date-end'])) {
-            // date enchère
-            // return false;
+        if (isset($data['year-start']) && $data['year-start'] != 'any') {
+            if ((int)$selectStamp['year'] < (int)$data['year-start']) return false;
         }
-        if (isset($data['price'])) {
-            // prix enchère
-            // return false;
+        if (isset($data['year-end']) && $data['year-end'] != 'any') {
+            if ((int)$selectStamp['year'] > (int)$data['year-end']) return false;
+        }
+
+        //comparer le range de prix avec le bid le plus élevé
+        //sinon, on compare avec le floor_price de l'enchère
+        $bid = new Bid();
+        $listBids = $bid->selectAllWhere($auction['id'], 'auction_id');
+
+        if (count($listBids) > 0) {
+            $highestBid = array_column($listBids, 'bid'); //récupérer que "bid"
+            asort($highestBid, SORT_NUMERIC); //mettre en ordre croissant
+            $highestBid = (int)array_pop($highestBid); //récupérer la dernière valeur et forcer (int)
+
+            if (isset($data['price-start']) && $data['price-start'] != 'any') {
+                if ($highestBid < (int)$data['price-start']) return false;
+            }
+            if (isset($data['price-end']) && $data['price-end'] != 'any') {
+                if ($highestBid > (int)$data['price-end']) return false;
+            }
+        } else {
+            if (isset($data['price-start']) && $data['price-start'] != 'any') {
+                if ((int)$auction['floor_price'] < (int)$data['price-start']) return false;
+            }
+            if (isset($data['price-end']) && $data['price-end'] != 'any') {
+                if ((int)$auction['floor_price'] > (int)$data['price-end']) return false;
+            }
         }
 
         return true;

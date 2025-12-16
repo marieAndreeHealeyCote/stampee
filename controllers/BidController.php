@@ -16,8 +16,37 @@ use App\Providers\Auth;
 
 class BidController
 {
-    public function index()
+    public function index() //my-bids
     {
         Auth::session();
+        $user_id = $_SESSION['user_id'];
+
+        $bid = new Bid;
+        $selectBids = $bid->selectAllWhere($user_id, 'user_id');
+
+        $listBids = [];
+        foreach ($selectBids as $bid) {
+            $auction = new Auction;
+            $selectAuction = $auction->selectId($bid['auction_id']);
+
+            $stamp = new Stamp;
+            $selectStamp = $stamp->selectId($selectAuction['stamp_id']);
+
+            $image = new Image;
+            $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
+
+            $listBids[] = [
+                'id' => $bid['id'],
+                'bid' => $bid['bid'],
+                'date' => $bid['date'],
+                'selectAuction' => $selectAuction,
+                'selectStamp' => $selectStamp,
+                'selectImage' => $listImages[0],
+            ];
+        }
+
+        return View::render("user/my-bids", [
+            'listBids' => $listBids,
+        ]);
     }
 }

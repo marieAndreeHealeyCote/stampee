@@ -1,6 +1,6 @@
 {{ include ('layouts/header.php', {title:'My bids'})}}
 
-{{ include ('layouts/aside-profil.php')}}
+{{ include ('layouts/aside-stamp.php')}}
 
 <div class="section__liste-timbre__grille">
     {% for bid in listBids %}
@@ -8,7 +8,7 @@
         <figure class="section__liste-timbre__grille__carte__image">
             <img
                 class="section__liste-timbre__grille__carte__image__timbre-petit"
-                src="{{ base }}/{{ stamp.image.url }}"
+                src="{{ base }}/{{ bid.selectImage.url }}"
                 alt="petit format timbre">
         </figure>
         <div class="section__liste-timbre__grille__carte__item ">
@@ -16,30 +16,29 @@
             <h4>Bid id:</h4>
             <p>{{ bid.id }}</p>
             <h4>Bid:</h4>
-            <p>{{ bid.bid }}</p>
+            <p>CAD {{ bid.bid }}</p>
             <h4>Date:</h4>
             <p>{{ bid.date }}</p>
-
             <div class="section__liste-timbre__grille__carte__item ">
                 <h3>Item Description</h3>
-                <h4>Stamp id:</h4>
-                <p>{{ stamp.id }}</p>
                 <h4>Name:</h4>
-                <p>{{ stamp.name }}</p>
+                <p>{{ bid.selectStamp.name }}</p>
                 <h4>Year:</h4>
-                <p>{{ stamp.year }}</p>
+                <p>{{ bid.selectStamp.year }}</p>
                 <h4>Certification:</h4>
-                <p>{{ stamp.is_certified ? "certified" : "not certified" }}</p>
-                <h4>Country:</h4>
-                <p>{{ stamp.country_name }}</p>
-                <h4>Color:</h4>
-                <p>{{ stamp.color_name }}</p>
-                <h4>Condition:</h4>
-                <p>{{ stamp.condition_name }}</p>
+                <p>{{ bid.selectStamp.is_certified ? "Certified" : "Not certified" }}</p>
+                <div class="section__liste-timbre__grille__carte__item ">
+                    <h3>Auction's information</h3>
+                    <h4>Duration:</h4>
+                    <p>{{ bid.selectAuction.date_start }} - {{ bid.selectAuction.date_end }}</p>
+                    <h4>Price floor:</h4>
+                    <p>CAD {{ bid.selectAuction.price_floor }}</p>
+                </div>
             </div>
-            <div class="section__liste-timbre__grille__carte__surveiller">
-                <a class="bouton bouton-suivre" href="{{base}}/bid/show?id={{ bid.id }}">Show item</a>
-            </div>
+        </div>
+        <div class="section__liste-timbre__grille__carte__surveiller">
+            <a class="bouton bouton-suivre" href="{{base}}/bid/show?id={{ bid.id }}">Show item</a>
+        </div>
     </article>
     {% endfor %}
 </div>
