@@ -71,6 +71,9 @@
 .section__detail-enchere__carte-description__contenu {
   padding: 2rem;
   display: block;
+  h2 {
+    text-transform: uppercase;
+  }
 }
 .bordure-au-dessus {
   border-top: 1px solid var(--couleur-primaire);
@@ -151,7 +154,10 @@
 }
 
 .section__detail-enchere__carte-description__menu__lien-actif {
-  font-weight: bold;
+  a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 .section__detail-enchere__carte-description__contenu__plus,
 .section__detail-enchere__carte-description__contenu__historique,

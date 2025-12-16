@@ -1,6 +1,6 @@
 <aside class="section__aparte">
     <form action="get">
-        <h2>Filter Results</h2>
+        <h2>Filters</h2>
         <section class="section__aparte__certification">
             <h3>BY CERTIFICATION</h3>
             <label for="certified">

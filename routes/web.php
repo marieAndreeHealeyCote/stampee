@@ -30,6 +30,7 @@ Route::post('/user/edit', 'UserController@store');
 Route::get('/auctions', 'AuctionController@index');
 Route::get('/auction/show', 'AuctionController@show');
 Route::get('/my-favorites', 'AuctionController@addFavorites');
+Route::get('/my-bids', 'AuctionController@addBids');
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');

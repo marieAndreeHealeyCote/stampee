@@ -5,7 +5,7 @@
         <h2>Stamp</h2>
         <p><strong>Name : </strong>{{ inputs.name }}</p>
         <p><strong>Year : </strong>{{ inputs.year }}</p>
-        <p><strong>Certification : </strong>{{ inputs.is_certified }}</p>
+        <p><strong>Certification : </strong>{{ inputs.is_certified ?  "certified" : "not certified"}}</p>
         <p><strong>Country : </strong>{{ inputs.country }}</p>
         <p><strong>Color : </strong>{{ inputs.color }}</p>
         <p><strong>Condition : </strong>{{ inputs.condition }}</p>
