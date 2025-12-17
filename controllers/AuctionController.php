@@ -179,6 +179,16 @@ class AuctionController
                 $image = new Image;
                 $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
 
+                $isFavorite = false;
+
+                if (isset($_SESSION['user_id'])) {
+                    $favoriteModel = new Favorite();
+                    $isFavorite = $favoriteModel->selectAllWhere([
+                        'user_id' => $_SESSION['user_id'],
+                        'auction_id' => $selectAuction['id']
+                    ]) ? true : false;
+                }
+
                 $listAuctions = [
                     'id' => $selectAuction['id'],
                     'highest_bid' => $highestBid,
@@ -186,6 +196,7 @@ class AuctionController
                     'date_end' => $selectAuction['date_end'],
                     'floor_price' => $selectAuction['floor_price'],
                     'lord_favorite' => $selectAuction['lord_favorite'],
+                    'is_favorite' => $isFavorite,
                 ];
 
                 return View::render("auction/show", [
@@ -259,24 +270,28 @@ class AuctionController
     {
         Auth::session();
 
-        if (!isset($_SESSION['user_id']) || !isset($data['auction_id'])) {
-            return View::render('error', ['msg' => 'Missing parameters']);
+        if (!isset($_SESSION['user_id'])) {
+            return View::render('error', ['msg' => 'Unauthorized']);
         }
 
-        $favoriteModel = new Favorite();
-
-        // Vérifier si déjà ajouté
-        $exists = $favoriteModel->selectAllWhere($_SESSION['user_id'], 'user_id');
-        foreach ($exists as $fav) {
-            if ($fav['auction_id'] == $data['auction_id']) {
-                return View::render("user/my-favorites"); //déjà
-            }
+        if (!isset($data['auction_id'])) {
+            return View::render('error', ['msg' => 'Auction ID missing']);
         }
 
-        $favoriteModel->insert([
+        $favorite = new Favorite();
+
+        // éviter les doublons
+        $exists = $favorite->selectAllWhere([
             'user_id' => $_SESSION['user_id'],
             'auction_id' => $data['auction_id']
         ]);
+
+        if (!$exists) {
+            $favorite->insert([
+                'user_id' => $_SESSION['user_id'],
+                'auction_id' => $data['auction_id']
+            ]);
+        }
 
         return View::render("user/my-favorites");
     }
@@ -285,16 +300,20 @@ class AuctionController
     {
         Auth::session();
 
-        if (!isset($_SESSION['user_id']) || !isset($data['auction_id'])) {
-            return View::render('error', ['msg' => 'Missing parameters']);
+        if (!isset($_SESSION['user_id'])) {
+            return View::render('error', ['msg' => 'Unauthorized']);
         }
 
-        $favoriteModel = new Favorite();
-        $favoriteModel->deleteWhere([
+        if (!isset($data['auction_id'])) {
+            return View::render('error', ['msg' => 'Auction ID missing']);
+        }
+
+        $favorite = new Favorite();
+
+        $favorite->deleteWhere([
             'user_id' => $_SESSION['user_id'],
             'auction_id' => $data['auction_id']
         ]);
-
         return View::render("user/my-favorites");
     }
 
