@@ -10,7 +10,7 @@
                     <img id="zoom-stamp" class="section__timbre__image__large" src="{{ base }}/{{ image.url }}">
                 </div>
                 {% endif %}
-                <img class="section__timbre__form__image"
+                <img class="section__timbre__image__petit"
                     src="{{ base }}/{{ image.url }}">
                 {% endfor %}
             </figure>

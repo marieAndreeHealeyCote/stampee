@@ -4,15 +4,13 @@
     <article>
         <div class="section__detail-enchere__carte-image">
             <figure class="section__detail-enchere__carte-image__timbre">
-                {% for image in listImages %}
-                {% if loop.first %}
                 <div class="img-magnifier-container">
-                    <img id="zoom-stamp" class="section__timbre__image__large" src="{{ base }}/{{ image.url }}">
+                    <img id="zoom-stamp" class="section__timbre__image__large" src="{{asset}}/img/britishLevantP.webp">
                 </div>
-                {% endif %}
-                <img class="section__timbre__form__image"
-                    src="{{ base }}/{{ image.url }}">
-                {% endfor %}
+                <img class="section__timbre__image__petit"
+                    src="{{asset}}/img/britishLevantP.webp">
+                <img class="section__timbre__image__petit"
+                    src="{{asset}}/img/britishLevantP.webp">
             </figure>
         </div>
         <div class="section__detail-enchere__carte-description">
@@ -26,10 +24,8 @@
             </div>
             <div class="section__detail-enchere__carte-description__contenu">
                 <div class="section__detail-enchere__carte-description__contenu__historique">
-                    {% for bid in listBids %}
                     <h3>Bids History</h3>
-                    <p>{bid.bid} </p>
-                    {% endfor %}
+                    <p>No bid for now... </p>
                 </div>
                 <div class="section__detail-enchere__carte-description__contenu__plus">
                     <h3>More Items from Lord Reginald Stampee</h3>

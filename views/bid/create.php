@@ -11,7 +11,7 @@
                     <img id="zoom-stamp" class="section__timbre__image__large" src="{{ base }}/{{ image.url }}">
                 </div>
                 {% endif %}
-                <img class="section__timbre__form__image"
+                <img class="section__timbre__image__petit"
                     src="{{ base }}/{{ image.url }}">
                 {% endfor %}
             </figure>
@@ -22,7 +22,7 @@
                     <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/bid/create?auction_id={{ auction_id }}">Listing</a></li>
                     <li><a href="{{base}}/auction/show?auction_id={{ auction_id }}">Details</a></li>
                     <li><a href="{{base}}/auction/history?auction_id={{ auction_id }}">History</a></li>
-                    <li><a href="{{base}}/bid/question?auction_id={{ auction_id }}">Question</a></li>
+                    <li><a href="{{base}}/auction/question?auction_id={{ auction_id }}">Question</a></li>
                 </ul>
             </div>
             <div class="section__detail-enchere__carte-description__contenu">

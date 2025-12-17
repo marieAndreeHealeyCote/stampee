@@ -66,9 +66,9 @@
                     <li>
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>
-                            <li><a href="#">Public Stamp Auction</a></li>
-                            <li><a href="{{ base }}/auctions">Public Stamp Auction Catalog</a></li>
-                            <li><a href="#">Premium Stamp Auction</a></li>
+                            <li><a href="#"><s>Public Stamp Auction</s></a></li>
+                            <li><a href="{{ base }}/auctions"><strong>Public Stamp Auction Catalog</strong></a></li>
+                            <li><a href="#"><s>Premium Stamp Auction</s></a></li>
                         </ul>
                     </li>
                     <li>
