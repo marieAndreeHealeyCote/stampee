@@ -34,6 +34,23 @@ abstract class CRUD extends \PDO
         }
     }
 
+    final public function selectAllWhere($value, $field = null)
+    {
+        if ($field == null) {
+            $field = $this->primaryKey;
+        }
+        $sql = "SELECT * FROM $this->table WHERE $field = :$field";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":$field", $value);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+        if ($count > 0) {
+            return $stmt->fetchAll();
+        } else {
+            return false;
+        }
+    }
+
     final public function insert($data)
     {
 
@@ -48,7 +65,6 @@ abstract class CRUD extends \PDO
             $stmt->bindValue(":$key", $value);
         }
         $stmt->execute();
-
         return $this->lastInsertId();
     }
 
@@ -82,12 +98,14 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-    public function delete($value)
+    public function delete($value, $field = null)
     {
-
-        $sql = "DELETE FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
+        if ($field == null) {
+            $field = $this->primaryKey;
+        }
+        $sql = "DELETE FROM $this->table WHERE $field = :$field";
         $stmt = $this->prepare($sql);
-        $stmt->bindValue("$this->primaryKey", $value);
+        $stmt->bindValue(":$field", $value);
         $stmt->execute();
         if ($stmt) {
             return true;
@@ -95,7 +113,6 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-
     public function unique($field, $value)
     {
         $sql = "SELECT * FROM $this->table WHERE $field = :$field";

@@ -1,18 +1,32 @@
 {{ include ('layouts/header.php', {title:'Stamp'})}}
-<h1>Stamp created</h1>
 
-<div class="conteneur">
-    <img src="{{ base }}/{{ inputs.upload }}">
-    <form method="post">
-        <p><strong>Name: </strong>{{ inputs.name }}</p>
-        <p><strong>Year: </strong>{{ inputs.year }}</p>
-        <p><strong>Is certified: </strong>{{ inputs.is_certified }}</p>
-        <p><strong>Country: </strong>{{ inputs.country }}</p>
-        <p><strong>Color: </strong>{{ inputs.color }}</p>
-        <p><strong>Condition: </strong>{{ inputs.color }}</p>
-        <a href="{{ base }}/stamp/edit?id={{inputs.id}}" class="btn vert">Edit</a>
-        <input type="hidden" name="id" value="{{ stamp.id }}">
-        <a href="{{ base }}/livres" class="btn bleu">Back</a>
-    </form>
+<div class="section__timbre">
+    <div class="section__timbre__form">
+        <h2>Stamp</h2>
+        <p><strong>Name : </strong>{{ inputs.name }}</p>
+        <p><strong>Year : </strong>{{ inputs.year }}</p>
+        <p><strong>Certification : </strong>{{ inputs.is_certified ?  "certified" : "not certified"}}</p>
+        <p><strong>Country : </strong>{{ inputs.country }}</p>
+        <p><strong>Color : </strong>{{ inputs.color }}</p>
+        <p><strong>Condition : </strong>{{ inputs.condition }}</p>
+        <div>
+            {% for image in listImages %}
+            {% if loop.first %}
+            <div class="img-magnifier-container">
+                <img id="zoom-stamp" class="section__timbre__image__large" src="{{ base }}/{{ image.url }}">
+            </div>
+            {% endif %}
+            <img class="section__timbre__form__image"
+                src="{{ base }}/{{ image.url }}">
+            {% endfor %}
+        </div>
+        {% if isAuctioned == false %}
+        <a href="{{base}}/stamp/edit?id={{inputs.id}}" class="bouton bouton-modifier" onclick="return confirm('Edit your stamp ?')">Edit</a>
+        <a href="{{base}}/stamp/delete?id={{inputs.id}}" class="bouton bouton-supprimer" onclick="return confirm('Delete your stamp ?')">Delete</a>
+        {% endif %}
+        <input type="hidden" name="id" value="{{inputs.id}}">
+        <a href="{{base}}/profile" class="bouton bouton-retour">Back</a>
+    </div>
 </div>
+
 {{ include ('layouts/footer.php')}}

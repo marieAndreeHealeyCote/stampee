@@ -1,67 +1,72 @@
-#menu-deroulant, #menu-deroulant ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
-    background-color: white;
+#menu-deroulant,
+#menu-deroulant ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  background-color: white;
 }
+
 #menu-deroulant {
-    ul, li, a, .pseudo-hyperlien{
-        display: block;
-    }
+  ul,
+  li,
+  a,
+  .pseudo-hyperlien {
+    display: block;
+  }
 }
 
 #menu-deroulant > li {
-    display: inline-block;
-    position: relative;
-    a, .pseudo-hyperlien {
-        padding : 1em 2em;
-    }
+  display: inline-block;
+  position: relative;
+  a,
+  .pseudo-hyperlien {
+    padding: 1em 2em;
+  }
 }
 
-.pseudo-hyperlien{
-    
-    border: none;
-    background-color: transparent;
+.pseudo-hyperlien {
+  border: none;
+  background-color: transparent;
 
-    &:hover{
-        cursor: pointer;
-        text-decoration: underline;
-    }
-    
-    &:focus{
-        text-decoration: underline;
-    }
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 #menu-deroulant ul {
-    position: absolute;
-    z-index: 1000;
-    min-width: 15ch;
-    max-height: 0;
-    left: 0;
-    right: 0;
-    overflow:hidden;
-    transition: .8s all .3s;
+  position: absolute;
+  z-index: 1000;
+  min-width: 15ch;
+  max-height: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  transition: 0.8s all 0.3s;
 }
 
-#menu-deroulant li:hover ul{
-    max-height:30em;
+#menu-deroulant li:hover ul {
+  max-height: 30em;
 }
 
 @media (max-width: 1023px) {
-    #menu-mobile:checked + #menu-deroulant {
-        .pseudo-hyperlien {
-            width: 100%;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        ul {
-            position: relative;
-            min-width: unset;
-            max-height: unset;
-            overflow: auto;
-            margin-bottom: 2rem;
-        }
+  #menu-mobile:checked + #menu-deroulant {
+    .pseudo-hyperlien {
+      width: 100%;
+      font-weight: bold;
+      text-decoration: underline;
     }
+    ul {
+      position: relative;
+      min-width: unset;
+      max-height: unset;
+      overflow: auto;
+      margin-bottom: 2rem;
+    }
+  }
 }

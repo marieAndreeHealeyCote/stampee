@@ -1,0 +1,55 @@
+.page-profil,
+.section__liste-timbres__conteneur {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 1em;
+  h2 {
+    flex-basis: 100%;
+  }
+}
+
+.section__profil,
+.section__liste-timbres__conteneur {
+  flex-grow: 1;
+}
+.section__profil__timbre {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
+}
+.section__profil__mise {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
+}
+.section__profil__enchere {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
+}
+.section__profil__favoris {
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-texte-inverse);
+
+  a:hover {
+    background-color: var(--couleur-accent);
+  }
+}

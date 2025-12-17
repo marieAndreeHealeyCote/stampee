@@ -4,11 +4,14 @@ use App\Routes\Route;
 use App\Controllers\HomeController;
 use App\Controllers\StampController;
 use App\Controllers\UserController;
+use App\Controllers\AuctionController;
+use App\Controllers\BidController;
 use App\Controllers\AuthController;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
+Route::get('/my-stamps', 'StampController@index');
 Route::get('/stamps', 'StampController@index');
 Route::get('/stamp/show', 'StampController@show');
 Route::get('/stamp/create', 'StampController@create');
@@ -16,12 +19,26 @@ Route::post('/stamp/create', 'StampController@store');
 Route::get('/stamp/edit', 'StampController@edit');
 Route::post('/stamp/edit', 'StampController@update');
 Route::get('/stamp/delete', 'StampController@delete');
+Route::get('/stamp/image-delete', 'StampController@deleteImage');
 
+Route::get('/profile', 'UserController@index');
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
 
 Route::get('/user/edit', 'UserController@show');
 Route::post('/user/edit', 'UserController@store');
+
+Route::get('/auctions', 'AuctionController@index');
+Route::get('/my-favorites', 'AuctionController@indexFavorites');
+Route::get('/my-bids', 'BidController@index');
+Route::get('/user/add-favorite', 'AuctionController@addFavorite');
+Route::get('/user/remove-favorite', 'AuctionController@removeFavorite');
+Route::get('/auction/show', 'AuctionController@show');
+Route::get('/auction/history', 'AuctionController@history');
+Route::get('/auction/question', 'AuctionController@question');
+
+Route::get('/bid/create', 'BidController@create');
+Route::post('/bid/create', 'BidController@store');
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');

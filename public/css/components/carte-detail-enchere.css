@@ -1,6 +1,8 @@
 /* carte.css */
 /* carte-image */
 .section__detail-enchere {
+  display: flex;
+  flex-wrap: wrap;
   padding: 2rem 2rem 0 2rem;
 
   @media (min-width: 1024px) {
@@ -16,7 +18,7 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
   padding: 2rem;
-  border: 1px solid black;
+  border: 1px solid var(--couleur-primaire);
 
   @media (min-width: 1024px) {
     margin-bottom: 0;
@@ -37,11 +39,11 @@
 }
 /* carte-description */
 .section__detail-enchere__carte-description {
-  border: 1px solid black;
+  border: 1px solid var(--couleur-primaire);
 }
 .section__detail-enchere__carte-description__menu {
   padding: 2rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--couleur-primaire);
 
   ul {
     display: flex;
@@ -69,9 +71,12 @@
 .section__detail-enchere__carte-description__contenu {
   padding: 2rem;
   display: block;
+  h2 {
+    text-transform: uppercase;
+  }
 }
 .bordure-au-dessus {
-  border-top: 1px solid black;
+  border-top: 1px solid var(--couleur-primaire);
 }
 
 .section__detail-enchere__carte-description__contenu__montant {
@@ -113,13 +118,13 @@
     }
     #montant-enchere {
       padding: 1rem;
-      width: 6ch;
+      width: 15ch;
       margin-bottom: 1rem;
     }
   }
   .bouton-action {
     padding: 1rem 2.5rem;
-    color: white;
+    color: var(--couleur-texte-inverse);
     text-transform: uppercase;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -128,7 +133,7 @@
   #montant-enchere-courant {
     display: flex;
     flex-basis: 100%;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--couleur-primaire);
     margin-top: 2rem;
     padding-top: 2rem;
   }
@@ -141,32 +146,24 @@
 .section__detail-enchere__carte-description__contenu__surveiller {
   display: flex;
   justify-content: flex-end;
-
-  .bouton-suivre {
-    padding: 1rem 2rem;
-    text-transform: uppercase;
-    color: var(--couleur-secondaire);
-    border: 1px solid #b22234;
-
-    &:hover {
-      background-color: var(--couleur-secondaire);
-      cursor: pointer;
-    }
-  }
 }
+
 .section__detail-enchere__carte-description__contenu__login {
   padding-left: 1em;
   margin-bottom: 1em;
 }
 
 .section__detail-enchere__carte-description__menu__lien-actif {
-  font-weight: bold;
+  a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 .section__detail-enchere__carte-description__contenu__plus,
 .section__detail-enchere__carte-description__contenu__historique,
 .section__detail-enchere__carte-description__contenu__question {
   h3 {
-    border-bottom: 1px solid #3333;
+    border-bottom: 1px solid var(--couleur-primaire);
     margin-bottom: 1em;
   }
   p {
@@ -178,7 +175,7 @@
 .section__detail-enchere__carte-description__contenu__item-description,
 .section__detail-enchere__carte-description__contenu__item-specifiques {
   h3 {
-    border-bottom: 1px solid #3333;
+    border-bottom: 1px solid var(--couleur-primaire);
     margin-bottom: 1.5em;
   }
   p {

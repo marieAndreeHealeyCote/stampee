@@ -1,0 +1,13 @@
+.conteneur {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+span.error {
+  width: 100%;
+  text-align: center;
+  color: var(--couleur-erreur);
+  margin-bottom: 1em;
+}

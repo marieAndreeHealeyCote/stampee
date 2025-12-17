@@ -1,10 +1,31 @@
+.section__catalogue__conteneur {
+  display: block;
+  margin: 2em 1em;
+
+  h2 {
+    flex-basis: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    margin: 3em 2em;
+  }
+}
+.section__catalogue__contenu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
 .section__catalogue-enchere-en-cours,
 .section__catalogue-enchere-archives {
-  margin-top: 2rem;
+  flex-basis: 100%;
+  margin-top: 0;
   padding: 0 2rem;
 }
+
 .section__catalogue-enchere-en-cours__grille,
-.section__catalogue-enchere-archives__grille {
+.section__catalogue-enchere-archives__grille,
+.section__liste-timbre__grille {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
@@ -13,30 +34,65 @@
     list-style-type: none;
   }
 }
-.section__catalogue-enchere-en-cours__grille__carte {
-  border: 1px solid black;
+
+.section__liste-timbre__grille {
+  flex-grow: 1;
+}
+.section__catalogue-enchere-en-cours__grille__carte,
+.section__liste-timbre__grille__carte {
+  border: 1px solid var(--couleur-primaire);
   padding: 2rem;
   line-height: 2rem;
   background-color: white;
 }
-.section__catalogue-enchere-en-cours__grille__carte__liste {
+.section__catalogue-enchere-en-cours__grille__carte__list {
   li {
     padding-left: 1rem;
   }
 }
 
 .section__catalogue-enchere-archives__grille__carte {
-  border: 1px solid grey;
+  border: 1px solid var(--couleur-primaire);
   padding: 2rem;
   line-height: 2rem;
   background-color: white;
 }
-.section__catalogue-enchere-archives__grille__carte__liste {
+.section__catalogue-enchere-archives__grille__carte__list {
   li {
     padding-left: 1rem;
   }
 }
-.section__catalogue-enchere-archives__grille__carte__image {
+
+.section__catalogue-enchere-archives__grille__carte__detail {
+  h3 {
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+.section__catalogue-enchere-archives__grille__carte__image,
+.section__liste-timbre__grille__carte__image {
   display: flex;
   width: 100%;
+}
+
+.section__liste-timbre__grille__carte__image__timbre-petit {
+  display: block;
+  width: 150px;
+}
+
+.section__liste-timbre__grille__carte__item {
+  h3 {
+    border-bottom: 1px solid var(--couleur-primaire);
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+  }
+  p {
+    line-height: 1.5em;
+    padding-left: 1em;
+
+    &:last-child {
+      padding-bottom: 3em;
+    }
+  }
 }

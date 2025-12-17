@@ -1,25 +1,51 @@
 /* formulaire.css */
-/* Login */
-.section__login {
+
+.section__login,
+.section__timbre {
   margin: 4em auto;
   display: flex;
   justify-content: center;
 }
 
-.section__login__form {
+.section__login__form,
+.section__timbre__form {
   display: flex;
   flex-direction: column;
   gap: 2em;
   text-align: center;
-  width: 40vw;
   padding: 1em;
-  border: 1px solid black;
+  border: 1px solid var(--couleur-primaire);
   font-size: 1.2rem;
+
+  @media (min-width: 1024px) {
+    width: 40vw;
+  }
 
   input,
   label,
-  textarea {
+  textarea,
+  select {
     font-size: inherit;
+  }
+
+  .section__timbre__form__image {
+    width: 125px;
+
+    @media (min-width: 600px) {
+      width: 150px;
+    }
+  }
+
+  .section__timbre__certification {
+    padding: 1em;
+  }
+
+  .section__timbre__upload {
+    padding: 1em;
+    button {
+      padding: 0.4rem 1rem;
+      font-size: 1.2em;
+    }
   }
 
   label {
@@ -29,7 +55,9 @@
   }
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
+  input[type="number"],
+  input[type="password"],
+  select {
     padding: 0.5em;
   }
 
@@ -58,5 +86,35 @@ form.section__newsletter__contenu__email {
   input[type="email"],
   input[type="password"] {
     padding: 0.5em;
+  }
+}
+.section__timbre__image {
+  display: flex;
+  gap: 1em;
+}
+
+.section__timbre__image__items {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  gap: 1em;
+}
+
+.section__timbre__image__large {
+  display: block;
+
+  margin-bottom: 2rem;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: 500px;
+  }
+}
+
+.section__timbre__image__petit {
+  width: 120px;
+
+  @media (min-width: 600px) {
+    width: 150px;
   }
 }

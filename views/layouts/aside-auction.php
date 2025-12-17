@@ -1,0 +1,83 @@
+<aside class="section__aparte">
+    <form method="get">
+        <h2>Filters</h2>
+        <section class="section__aparte__certification">
+            <h3>BY CERTIFICATION</h3>
+            <label for="is_certified">Select a status</label>
+            <select name="is_certified">
+                <option value="1" {% if 1 == listFilters.is_certified %} selected {% endif %}>Certified</option>
+                <option value="0" {% if 0 == listFilters.is_certified %} selected {% endif %}>Not certified</option>
+            </select>
+        </section>
+        <section class="section__aparte__condition">
+            <h3>BY CONDITION</h3>
+            {% for condition in listFilters.conditions %}
+            <label for="{{ condition.name }}">
+                <span>{{ condition.name | capitalize }}</span>
+                <input type="checkbox" name="conditions[]" value="{{ condition.id }}" />
+            </label>
+            {% endfor %}
+        </section>
+        <section class="section__aparte__couleur">
+            <h3>BY COLOR</h3>
+            {% for color in listFilters.colors %}
+            <label for="{{ color.name }}">
+                <span>{{ color.name | capitalize }}</span>
+                <input type="checkbox" name="colors[]" value="{{ color.id }}" />
+            </label>
+            {% endfor %}
+        </section>
+        <section class="section__aparte__pays">
+            <h3>BY COUNTRY</h3>
+            <label for="countries">Select Country</label>
+            <select name="countries" id="countries">
+                <option value="any">Any country</option>
+                {% for country in listFilters.countries %}
+                <option value="{{ country.id }}">{{ country.name | capitalize }}</option>
+                {% endfor %}
+            </select>
+        </section>
+        <section class="section__aparte__date">
+            <h3>BY YEAR</h3>
+            <label for="year-start">Select starting year</label>
+            <select name="year-start" id="year-start">
+                <option value="any">Any year</option>
+                <option value="1800">1800</option>
+                <option value="1850">1850</option>
+                <option value="1900">1900</option>
+                <option value="1950">1950</option>
+            </select>
+            <label for="year-end">Select ending year</label>
+            <select name="year-end" id="year-end">
+                <option value="any">Any year</option>
+                <option value="1850">1850</option>
+                <option value="1900">1900</option>
+                <option value="1950">1950</option>
+                <option value="2000">2000</option>
+            </select>
+        </section>
+        <section class="section__aparte__prix">
+            <h3>BY PRICE</h3>
+            <label for="start-price">Select starting price</label>
+            <select name="start-price" id="start-price">
+                <option value="any">Any price</option>
+                <option value="0">CAD 0</option>
+                <option value="50">CAD 50</option>
+                <option value="100">CAD 100</option>
+                <option value="150">CAD 150</option>
+            </select>
+            <label for="end-price">Select ending price</label>
+            <select name="end-price" id="end-price">
+                <option value="any">Any price</option>
+                <option value="50">CAD 50</option>
+                <option value="100">CAD 100</option>
+                <option value="150">CAD 150</option>
+                <option value="200">CAD 200</option>
+            </select>
+        </section>
+        <div class="section__aparte__bouton">
+            <button type="submit" class="bouton bouton-rechercher">SEARCH</button>
+            <a href="{{ base }}/auctions" class="bouton bouton-reset">RESET</a>
+        </div>
+    </form>
+</aside>

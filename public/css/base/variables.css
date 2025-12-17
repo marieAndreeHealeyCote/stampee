@@ -24,11 +24,16 @@
   --couleur-accent: #c2b280;
   --couleur-favoris: #002147;
 
+  --couleur-favoris-inverse: #156193;
+
   --couleur-texte: #333333;
   --couleur-texte-inverse: #f9f5ef;
   --couleur-succes: #56b64e;
+  --couleur-succes-fond: #c6f3c2;
+  --couleur-succes-fond-hover: #1aa052;
   --couleur-erreur: #b22234;
   --couleur-erreur-fond: #fde1e4;
+  --couleur-erreur-fond-hover: #a70e3c;
 
   --couleur-bouton: #685d3b;
 }
