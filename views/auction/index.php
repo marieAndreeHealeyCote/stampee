@@ -11,7 +11,7 @@
                     <img
                         class="section__catalogue-enchere-archives__grille__carte__image"
                         src="{{ base }}/{{ auction.stamp_image.url }}"
-                        alt="image timbre carte" />
+                        alt="{{ auction.stamp_name }}" />
                     <div class="section__catalogue-enchere-archives__grille__carte__detail">
                         <h3>
                             {{ auction.stamp_name }}

@@ -31,15 +31,15 @@
                     <h3>More Items from Lord Reginald Stampee</h3>
                     <div class="section__detail-enchere__carte-description__contenu__plus__liens">
                         <div class="section__detail-enchere__carte-description__contenu__plus__lien">
-                            <a href="#"><img src="{{asset}}/img/falklandStamp.webp" alt="image timbre"></a>
+                            <a href="#"><img src="{{asset}}/img/falklandStamp.webp" alt="{{ stamp_name }}"></a>
                             <a href="#">Falkland Islands Qeii Sg434, 1982 10p Siskin WMK Uprig...</a>
                         </div>
                         <div class="section__detail-enchere__carte-description__contenu__plus__lien">
-                            <a href="#"><img src="{{asset}}/img/falklandStamp.webp" alt="image timbre"></a>
+                            <a href="#"><img src="{{asset}}/img/falklandStamp.webp" alt="{{ stamp_name }}"></a>
                             <a href="#">Falkland Islands Qeii Sg434, 1982 10p Siskin WMK Uprig...</a>
                         </div>
                         <div class="section__detail-enchere__carte-description__contenu__plus__lien">
-                            <a href="#"><img src="{{asset}}/img/falklandStamp.webp" alt="image timbre"></a>
+                            <a href="#"><img src="{{asset}}/img/falklandStamp.webp" alt="{{ stamp_name }}"></a>
                             <a href="#">Falkland Islands Qeii Sg434, 1982 10p Siskin WMK Uprig...</a>
                         </div>
                     </div>

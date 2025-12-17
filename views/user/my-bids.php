@@ -9,7 +9,7 @@
             <img
                 class="section__liste-timbre__grille__carte__image__timbre-petit"
                 src="{{ base }}/{{ bid.selectImage.url }}"
-                alt="petit format timbre">
+                alt="{{ stamp_name }}">
         </figure>
         <div class="section__liste-timbre__grille__carte__item ">
             <h3>Item Specifics</h3>
