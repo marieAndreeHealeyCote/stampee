@@ -19,31 +19,35 @@
         <div class="section__detail-enchere__carte-description">
             <div class="section__detail-enchere__carte-description__menu">
                 <ul>
-                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/bid/create">Listing</a></li>
-                    <li><a href="{{base}}/auction/details">Details</a></li>
-                    <li><a href="{{base}}/auction/history">History</a></li>
-                    <li><a href="{{base}}/bid/question">Question</a></li>
+                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/bid/create?auction_id={{ auction_id }}">Listing</a></li>
+                    <li><a href="{{base}}/auction/show?auction_id={{ auction_id }}">Details</a></li>
+                    <li><a href="{{base}}/auction/history?auction_id={{ auction_id }}">History</a></li>
+                    <li><a href="{{base}}/bid/question?auction_id={{ auction_id }}">Question</a></li>
                 </ul>
             </div>
             <div class="section__detail-enchere__carte-description__contenu">
                 <h2>
-                    {{ stamp.name }}, {{ stamp.year }}, {{ stamp.country_name }}, {{ stamp.condition_name }}.
-                    At CAD {auction.floor_price}. {{ stamp.is_certified ? "Certified" : "Not certified" }}
+                    {{ selectStamp.name }}, {{ selectStamp.year }}, {{ selectStamp.country_name }}, {{ selectStamp.condition_name }}.
+                    At CAD {{selectAuction.floor_price}}. {{ selectStamp.is_certified ? "Certified" : "Not certified" }}
                 </h2>
                 <div class="section__detail-enchere__carte-description__contenu__montant">
                     <div class="section__detail-enchere__carte-description__contenu__montant__limite">
-                        <h3>CAD {{ bid.bid }}</h3>
-                        <h4>Close at : {{ auction.date_end }}</h4>
+                        <h3>CAD {{ selectAuction.floor_price }}</h3>
+                        <h4>Close at : {{ selectAuction.date_end }}</h4>
                     </div>
-                    <div class="section__detail-enchere__carte-description__contenu__montant__saisie">
+                    <form method="POST" class="section__detail-enchere__carte-description__contenu__montant__saisie">
                         <div>
-                            <label for="montant-enchere">Place Bid</label>
-                            <input type="text" id="montant-enchere">
-                            <sup id="montant-enchere-minimum">Minimum CAD {auction.floor_price}</sup>
+                            <label for="montant-enchere">Place bid</label>
+                            <input type="number" name="bid" id="montant-enchere">
+                            <sup id="montant-enchere-minimum">Minimum CAD {{ selectAuction.floor_price }}</sup>
                         </div>
-                        <button class="bouton-action">Place Bid</button>
-                        <sup id="montant-enchere-courant" class="bordure-au-dessus">Current Bid CAD {{ bid.bid }}</sup>
-                    </div>
+                        <button type="submit" class="bouton bouton-action">Place Bid</button>
+                        <input type="hidden" name="auction_id" value="{{ auction_id }}">
+                        <sup id="montant-enchere-courant" class="bordure-au-dessus">Current Bid CAD {{ selectAuction.highest_bid.bid }}</sup>
+                    </form>
+                    {% if errors.bid is defined %}
+                    <span class="error">{{ errors.bid }}</span>
+                    {% endif %}
                 </div>
                 <div class="section__detail-enchere__carte-description__contenu__avertissement">
                     <p>

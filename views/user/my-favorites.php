@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="section__liste-timbre__grille__carte__surveiller">
-            <a class="bouton bouton-suivre" href="{{base}}/bid/show?id={{ bid.id }}">Show item</a>
+            <a class="bouton bouton-suivre" href="{{base}}/bid/show?auction_id={{ bid.auction_id }}">Show item</a>
         </div>
     </article>
     {% endfor %}

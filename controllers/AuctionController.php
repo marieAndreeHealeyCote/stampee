@@ -123,9 +123,10 @@ class AuctionController
     public function show($data = [])
     {
 
-        if (isset($data['id']) && $data['id'] != null) {
+        if (isset($data['auction_id']) && $data['auction_id'] != null) {
             $auction = new Auction;
-            $selectAuction = $auction->selectId($data['id']);
+            $selectAuction = $auction->selectId($data['auction_id']);
+
             if ($selectAuction) {
 
                 $highestBid = (new Auction)->getHighestBid($selectAuction['id']);
@@ -148,7 +149,7 @@ class AuctionController
                 $image = new Image;
                 $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
 
-                $listAuctions[] = [
+                $listAuctions = [
                     'id' => $selectAuction['id'],
                     'highest_bid' => $highestBid,
                     'date_start' => $selectAuction['date_start'],
@@ -158,6 +159,7 @@ class AuctionController
                 ];
 
                 return View::render("auction/show", [
+                    'auction_id' => $data['auction_id'],
                     'listAuctions' => $listAuctions,
                     'selectStamp' => $selectStamp,
                     'listImages' => $listImages,
@@ -175,13 +177,13 @@ class AuctionController
         return View::render("user/my-favorites");
     }
 
-    public function history()
+    public function history($data = [])
     {
-        return View::render("auction/history");
+        return View::render("auction/history", ['auction_id' => $data['auction_id']]);
     }
 
-    public function question()
+    public function question($data = [])
     {
-        return View::render("auction/question");
+        return View::render("auction/question", ['auction_id' => $data['auction_id']]);
     }
 }
