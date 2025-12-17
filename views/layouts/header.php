@@ -37,7 +37,7 @@
                 <h1>Lord Reginald Stampee</h1>
                 <form class="section__nav-principale__formulaire" action="#" role="search">
                     <input type="search" id="search" placeholder="Search..." aria-label="champ recherche">
-                    <button class="bouton bouton-loupe">&#x1F50E;&#xFE0E;</button>
+                    <button class="bouton-loupe">&#x1F50E;&#xFE0E;</button>
                 </form>
                 <div>
                     <ul class="section__nav-principale__connexion">
