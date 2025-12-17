@@ -29,11 +29,16 @@ Route::get('/user/edit', 'UserController@show');
 Route::post('/user/edit', 'UserController@store');
 
 Route::get('/auctions', 'AuctionController@index');
-Route::get('/my-favorites', 'AuctionController@addFavorites');
+Route::get('/my-favorites', 'AuctionController@indexFavorites');
 Route::get('/my-bids', 'BidController@index');
+Route::get('/auction/add-favorite', 'AuctionController@addFavorites');
+Route::get('/auction/remove-favorite', 'AuctionController@addFavorites');
 Route::get('/auction/show', 'AuctionController@show');
-Route::get('/auction/create', 'BidController@create');
-Route::post('/auction/create', 'BidController@create');
+Route::get('/auction/history', 'AuctionController@history');
+Route::get('/auction/question', 'AuctionController@question');
+
+Route::get('/bid/create', 'BidController@create');
+Route::post('/bid/create', 'BidController@store');
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');

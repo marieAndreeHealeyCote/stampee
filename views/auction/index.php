@@ -41,7 +41,7 @@
                                 <p>{{ auction.lord_favorite ? "Selected" : "Not selected" }}</p>
                             </li>
                         </ul>
-                        <a href="{{base}}/auction/show?id={{ auction.id }}" class=" bouton bouton-enchere">BID NOW</a>
+                        <a href="{{base}}/bid/create?id={{ auction.id }}" class=" bouton bouton-enchere">BID NOW</a>
                     </div>
                 </article>
                 {% endfor %}

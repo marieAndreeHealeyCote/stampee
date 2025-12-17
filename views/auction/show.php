@@ -25,34 +25,32 @@
                 </ul>
             </div>
             <div class="section__detail-enchere__carte-description__contenu">
-                {% for auction in listAuctions %}
                 <div class="section__detail-enchere__carte-description__contenu__item-specifiques">
                     <h3>Item Specifics</h3>
                     <h4>Auction id: </h4>
-                    <p>{{ auction.id }}</p>
+                    <p>{{ listAuctions.id }}</p>
                     <h4>Current offer:</h4>
-                    <p>Price : CAD {{ auction.highest_bid.bid}}</p>
+                    <p>Price : CAD {{ listAuctions.highest_bid.bid}}</p>
                     <h4>Floor price:</h4>
-                    <p>CAD {{ auction.floor_price }}</p>
+                    <p>CAD {{ listAuctions.floor_price }}</p>
                     <h4>Close at :</h4>
-                    <p>{{ auction.date_end }}</p>
+                    <p>{{ listAuctions.date_end }}</p>
                 </div>
                 <div class="section__detail-enchere__carte-description__contenu__item-description">
                     <h3>Item Description</h3>
                     <h4>Name :</h4>
-                    <p>{{ auction.stamp_name }}</p>
+                    <p>{{ selectStamp.name }}</p>
                     <h4>Year:</h4>
-                    <p>{{ auction.year }}</p>
+                    <p>{{ selectStamp.year }}</p>
                     <h4>Certification :</h4>
-                    <p>{{ auction.is_certified }}</p>
+                    <p>{{ selectStamp.is_certified }}</p>
                     <h4>Country :</h4>
-                    <p>{{ auction.country_name }}</p>
+                    <p>{{ selectStamp.country_name }}</p>
                     <h4>Color :</h4>
-                    <p>{{ auction.color_name }}</p>
+                    <p>{{ selectStamp.color_name }}</p>
                     <h4>Condition :</h4>
-                    <p>{{ auction.condition_name }}</p>
+                    <p>{{ selectStamp.condition_name }}</p>
                 </div>
-                {% endfor %}
                 <div class="section__detail-enchere__carte-description__contenu__avertissement">
                     <p>
                         Please have a good look through our catalog.
@@ -63,9 +61,9 @@
                 </div>
                 <div class="section__detail-enchere__carte-description__contenu__surveiller">
                     {% if is_favorite %}
-                    <a href="{{base}}/auction/remove-favorite?id={{ auction.id }}" class="bouton bouton-suivre" onclick="return confirm('Remove to your favorites ?')">Remove from favorites</a>
+                    <a href="{{base}}/remove-favorite?id={{ listAuctions.id }}" class="bouton bouton-suivre" onclick="return confirm('Remove to your favorites ?')">Remove from favorites</a>
                     {% else %}
-                    <a href="{{base}}/auction/add-favorite?id={{ auction.id }}" class="bouton bouton-suivre" onclick="return confirm('Add to your favorites ?')">Add to favorites</a>
+                    <a href="{{base}}/add-favorite?id={{ listAuctions.id }}" class="bouton bouton-suivre" onclick="return confirm('Add to your favorites ?')">Add to favorites</a>
                     {% endif %}
                 </div>
             </div>
