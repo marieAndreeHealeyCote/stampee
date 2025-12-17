@@ -1,5 +1,14 @@
 /* filtre de recherche */
 .section__aparte {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: 1px solid var(--couleur-primaire);
+  padding: 2em;
+  margin-bottom: 1em;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-inverse);
+
   form {
     label {
       display: flex;
@@ -10,47 +19,53 @@
   input {
     margin-left: 3em;
   }
-  h2 {
-    margin-top: 0.7em;
-  }
-}
-.section__aparte__conteneur {
-  display: block;
-
-  @media (min-width: 1024px) {
-    display: flex;
-    margin-left: 1em;
-  }
 }
 .section__aparte__certification {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
 }
 .section__aparte__condition {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
 }
 .section__aparte__couleur {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
 }
 .section__aparte__pays {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
 }
 .section__aparte__date {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
 }
 .section__aparte__prix {
   border: 1px solid var(--couleur-primaire);
   padding: 2em;
   margin-bottom: 1em;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
+}
+
+.section__aparte__bouton {
+  display: flex;
+  gap: 1em;
 }
 
 /* profil */

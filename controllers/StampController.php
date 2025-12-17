@@ -17,8 +17,10 @@ class StampController
 
     public function index()
     {
+        Auth::session();
+
         $stamp = new Stamp;
-        $selectStamp = $stamp->select();
+        $selectStamp = $stamp->selectAllWhere($_SESSION['user_id'], 'user_id');
 
         if ($selectStamp) {
             $listStamps = [];
@@ -58,6 +60,8 @@ class StampController
 
     public function show($data = [])
     {
+        Auth::session();
+
         if (isset($data['id']) && $data['id'] != null) {
 
             $stamp = new Stamp;

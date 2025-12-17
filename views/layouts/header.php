@@ -37,7 +37,7 @@
                 <h1>Lord Reginald Stampee</h1>
                 <form class="section__nav-principale__formulaire" action="#" role="search">
                     <input type="search" id="search" placeholder="Search..." aria-label="champ recherche">
-                    <button class="bouton bouton-loupe">&#x1F50E;&#xFE0E;</button>
+                    <button class="bouton-loupe">&#x1F50E;&#xFE0E;</button>
                 </form>
                 <div>
                     <ul class="section__nav-principale__connexion">
@@ -66,9 +66,9 @@
                     <li>
                         <button type="button" class="pseudo-hyperlien">Auction</button>
                         <ul>
-                            <li><a href="#">Public Stamp Auction</a></li>
-                            <li><a href="{{ base }}/auctions">Public Stamp Auction Catalog</a></li>
-                            <li><a href="#">Premium Stamp Auction</a></li>
+                            <li><a href="#"><s>Public Stamp Auction</s></a></li>
+                            <li><a href="{{ base }}/auctions"><strong>Public Stamp Auction Catalog</strong></a></li>
+                            <li><a href="#"><s>Premium Stamp Auction</s></a></li>
                         </ul>
                     </li>
                     <li>

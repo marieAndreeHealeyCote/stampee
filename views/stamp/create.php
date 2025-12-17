@@ -20,12 +20,18 @@
         <span class="error">{{ errors.year }}</span>
         {% endif %}
 
-        <label>Is certified
-            <input type="checkbox" name="is_certified" value="1" {% if is_certified == inputs.is_certified %} checked {% endif %}>
-        </label>
+        <div>
+            <label>Certification :
+                <select name="is_certified">
+                    <option value="1" {% if 1 == inputs.is_certified %} selected {% endif %}>Certified</option>
+                    <option value="0" {% if 0 == inputs.is_certified %} selected {% endif %}>Not certified</option>
+                </select>
+            </label>
+        </div>
         {% if errors.is_certified is defined %}
         <span class="error">{{ errors.is_certified }}</span>
         {% endif %}
+
 
         <div>
             <label>Country :
@@ -38,7 +44,6 @@
                     {% endfor %}
                 </select>
             </label>
-
         </div>
         {% if errors.country_id is defined %}
         <span class="error">{{ errors.country_id }}</span>

@@ -4,8 +4,9 @@ use App\Routes\Route;
 use App\Controllers\HomeController;
 use App\Controllers\StampController;
 use App\Controllers\UserController;
-use App\Controllers\AuthController;
 use App\Controllers\AuctionController;
+use App\Controllers\BidController;
+use App\Controllers\AuthController;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
@@ -27,9 +28,17 @@ Route::post('/register', 'UserController@store');
 Route::get('/user/edit', 'UserController@show');
 Route::post('/user/edit', 'UserController@store');
 
-Route::get('/my-auctions', 'AuctionController@index');
 Route::get('/auctions', 'AuctionController@index');
+Route::get('/my-favorites', 'AuctionController@indexFavorites');
+Route::get('/my-bids', 'BidController@index');
+Route::get('/user/add-favorite', 'AuctionController@addFavorite');
+Route::get('/user/remove-favorite', 'AuctionController@removeFavorite');
 Route::get('/auction/show', 'AuctionController@show');
+Route::get('/auction/history', 'AuctionController@history');
+Route::get('/auction/question', 'AuctionController@question');
+
+Route::get('/bid/create', 'BidController@create');
+Route::post('/bid/create', 'BidController@store');
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');

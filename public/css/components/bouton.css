@@ -1,25 +1,20 @@
 /* bouton.css */
 .bouton {
+  display: block;
   padding: 1rem;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 .bouton-loupe {
   padding: 0.4rem 1rem;
   font-size: 1.2em;
-}
-.bouton-rechercher {
-  background-color: var(--couleur-secondaire);
-  border: none;
-  color: var(--couleur-texte-inverse);
-
-  &:hover {
-    background-color: var(--couleur-accent);
-    color: var(--couleur-texte-inverse);
-  }
-  &:hover:active {
-    background-color: var(--couleur-bouton);
-  }
 }
 .bouton-action {
   background-color: var(--couleur-secondaire);
@@ -45,21 +40,36 @@
     background-color: var(--couleur-accent);
     color: var(--couleur-texte-inverse);
   }
+
   &:hover:active {
     background-color: var(--couleur-bouton);
   }
 }
+.bouton-rechercher,
+.bouton-reset {
+  padding: 1rem 2rem;
+  color: var(--couleur-primaire);
+  background-color: var(--couleur-texte-inverse);
 
+  &:hover {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-primaire);
+  }
+  &:hover:active {
+    background-color: var(--couleur-bouton);
+  }
+}
 .bouton-suivre {
   padding: 1rem 2rem;
-  text-decoration: none;
   color: var(--couleur-secondaire);
   border: 1px solid var(--couleur-secondaire);
+  border: 1px solid var(--couleur-primaire);
 
   &:hover {
     background-color: var(--couleur-secondaire);
-    text-decoration: underline;
-    cursor: pointer;
+  }
+  &:hover:active {
+    background-color: var(--couleur-bouton);
   }
 }
 .bouton-enchere,
@@ -73,11 +83,11 @@
     background-color: var(--couleur-accent);
     color: var(--couleur-texte-inverse);
   }
+
   &:hover:active {
     background-color: var(--couleur-bouton);
   }
 }
-
 .bouton-ajouter {
   background-color: var(--couleur-texte-inverse);
   border: var(--couleur-primaire) 1px solid;
@@ -88,6 +98,7 @@
     border: var(--couleur-texte-inverse) 1px solid;
     color: var(--couleur-texte-inverse);
   }
+
   &:hover:active {
     background-color: var(--couleur-bouton);
   }

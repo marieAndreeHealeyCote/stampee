@@ -1,10 +1,29 @@
+.section__catalogue__conteneur {
+  display: block;
+  margin: 2em 1em;
+
+  h2 {
+    flex-basis: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    margin: 3em 2em;
+  }
+}
+.section__catalogue__contenu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
 .section__catalogue-enchere-en-cours,
 .section__catalogue-enchere-archives {
-  margin-top: 2rem;
+  flex-basis: 100%;
+  margin-top: 0;
   padding: 0 2rem;
 }
 
-.section__liste .section__catalogue-enchere-en-cours__grille,
+.section__catalogue-enchere-en-cours__grille,
 .section__catalogue-enchere-archives__grille,
 .section__liste-timbre__grille {
   display: grid;
@@ -43,6 +62,14 @@
     padding-left: 1rem;
   }
 }
+
+.section__catalogue-enchere-archives__grille__carte__detail {
+  h3 {
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+}
+
 .section__catalogue-enchere-archives__grille__carte__image,
 .section__liste-timbre__grille__carte__image {
   display: flex;
