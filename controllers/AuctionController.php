@@ -9,6 +9,7 @@ use App\Models\Condition;
 use App\Models\Image;
 use App\Models\Auction;
 use App\Models\Bid;
+use App\Models\Favorite;
 use App\Providers\View;
 use App\Providers\Auth;
 
@@ -174,8 +175,73 @@ class AuctionController
 
     public function indexFavorites()
     {
-        return View::render("user/my-favorites");
+        Auth::session();
+
+        $favorite = new Favorite;
+        $listFavorites = $favorite->selectAllWhere($_SESSION['user_id'], 'user_id');
+
+        $listFavorites = [];
+        foreach ($listFavorites as $favorite) {
+
+            $auction = new Auction;
+            $selectAuction = $auction->selectId($favorite['auction_id']);
+
+            $stamp = new Stamp;
+            $selectStamp = $stamp->selectId($favorite['stamp_id']);
+
+            $image = new Image;
+            $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
+
+
+            $listFavorites[] = [
+                'id' => $favorite['id'],
+                'auction_id' => $favorite['auction_id'],
+                'date_start' => $favorite['date_start'],
+                'date_end' => $favorite['date_end'],
+                'floor_price' => $favorite['floor_price'],
+                'lord_favorite' => $favorite['lord_favorite'],
+                'selectAuction' => $selectAuction,
+                'selectStamp' => $selectStamp,
+                'selectImage' => $listImages[0],
+            ];
+        }
+
+        $auction = new Auction;
+        $selectAuction = $auction->selectId($auction['auction_id']);
+
+        if ($selectAuction) {
+            $listAuctions = [];
+
+            foreach ($selectAuction as $auction) {
+
+                $stamp = new Stamp;
+                $selectStamp = $stamp->selectId($auction['stamp_id']);
+
+                $image = new Image;
+                $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
+
+
+                $listAuctions[] = [
+                    'id' => $auction['id'],
+                    'date_start' => $auction['date_start'],
+                    'date_end' => $auction['date_end'],
+                    'floor_price' => $auction['floor_price'],
+                    'lord_favorite' => $auction['lord_favorite'],
+                    'stamp_id' => $auction['stamp_id'],
+                    'stamp_name' => $selectStamp['name'],
+                    'stamp_image' => $listImages[0],
+                ];
+            }
+            return View::render("user/my-favorites", [
+                'listAuctions' => $listAuctions,
+                'listFavorites' => $listFavorites,
+            ]);
+        }
+
+        return View::render('error', ['msg' => '404 page not found!']);
     }
+
+
 
     public function history($data = [])
     {

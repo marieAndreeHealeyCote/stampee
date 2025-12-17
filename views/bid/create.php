@@ -32,7 +32,7 @@
                 </h2>
                 <div class="section__detail-enchere__carte-description__contenu__montant">
                     <div class="section__detail-enchere__carte-description__contenu__montant__limite">
-                        <h3>CAD {{ selectAuction.floor_price }}</h3>
+                        <h3>CAD {{ selectAuction.highest_bid.bid }}</h3>
                         <h4>Close at : {{ selectAuction.date_end }}</h4>
                     </div>
                     <form method="POST" class="section__detail-enchere__carte-description__contenu__montant__saisie">
