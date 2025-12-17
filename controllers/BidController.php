@@ -37,6 +37,7 @@ class BidController
 
             $listBids[] = [
                 'id' => $bid['id'],
+                'auction_id' => $bid['auction_id'],
                 'bid' => $bid['bid'],
                 'date' => $bid['date'],
                 'selectAuction' => $selectAuction,
