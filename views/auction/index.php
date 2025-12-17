@@ -34,7 +34,7 @@
                             </li>
                             <li>
                                 <h4>Bet Quantity</h4>
-                                <p>{{ auction.bid }}</p>
+                                <p>{{ auction.total_bids }}</p>
                             </li>
                             <li>
                                 <h4>Lord's Favorite</h4>
@@ -64,8 +64,7 @@
                         <ul>
                             <li>
                                 <h4>Period of activity</h4>
-                                <ul
-                                    class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <ul>
                                     <li>Start date : {{ auction.date_start }}</li>
                                     <li>End Date : {{ auction.date_end }}</li>
                                 </ul>
@@ -76,21 +75,18 @@
                             </li>
                             <li>
                                 <h4>Current Offer</h4>
-                                <ul
-                                    class="section__catalogue-enchere-archives__grille__carte__liste">
-                                    <li>Price : CAD {{ bid.bid }}</li>
-                                    <li>Member Name : {{ user.name }}</li>
-                                </ul>
+                                <p>Price : CAD {{ auction.highest_bid.bid}}</p>
                             </li>
                             <li>
                                 <h4>Bet Quantity</h4>
-                                <p>{{ auction.bid }}</p>
+                                <p>{{ auction.total_bids }}</p>
                             </li>
                             <li>
                                 <h4>Lord's Favorite</h4>
                                 <p>{{ auction.lord_favorite ? "Selected" : "Not selected" }}</p>
                             </li>
                         </ul>
+                        <p class="h3">CLOSED</p>
                     </div>
                 </article>
                 {% endfor %}

@@ -20,9 +20,14 @@ class AuctionController
         Auth::session();
 
         // Charger les filtres une seule fois
-        $country = (new Country())->select();
-        $color = (new Color())->select();
-        $condition = (new Condition())->select();
+        $country = new Country;
+        $selectCountry = $country->select();
+
+        $color = new Color;
+        $selectColor = $color->select();
+
+        $condition = new Condition;
+        $selectCondition = $condition->select();
 
         // Enchères actives
         $listAuctionsActive = [];
@@ -31,12 +36,19 @@ class AuctionController
             $stamp = (new Stamp())->selectId($auction['stamp_id']);
             if (!$stamp) continue;
 
+            $highestBid = (new Auction)->getHighestBid($auction['id']);
+
+            $bids = new Bid();
+            $totalBids = count($bids->selectAllWhere($auction['id'], 'auction_id'));
+
             if (!$this->doesMatchFilter($stamp, $auction, $data)) continue;
 
             $images = (new Image())->selectAllWhere($stamp['id'], 'stamp_id');
 
             $listAuctionsActive[] = [
                 'id' => $auction['id'],
+                'total_bids' => $totalBids,
+                'highest_bid' => $highestBid,
                 'date_start' => $auction['date_start'],
                 'date_end' => $auction['date_end'],
                 'floor_price' => $auction['floor_price'],
@@ -54,12 +66,19 @@ class AuctionController
             $stamp = (new Stamp())->selectId($auction['stamp_id']);
             if (!$stamp) continue;
 
+            $highestBid = (new Auction)->getHighestBid($auction['id']);
+
+            $bids = new Bid();
+            $totalBids = count($bids->selectAllWhere($auction['id'], 'auction_id'));
+
             if (!$this->doesMatchFilter($stamp, $auction, $data)) continue;
 
             $images = (new Image())->selectAllWhere($stamp['id'], 'stamp_id');
 
             $listAuctionsExpired[] = [
                 'id' => $auction['id'],
+                'total_bids' => $totalBids,
+                'highest_bid' => $highestBid,
                 'date_start' => $auction['date_start'],
                 'date_end' => $auction['date_end'],
                 'floor_price' => $auction['floor_price'],
@@ -74,9 +93,9 @@ class AuctionController
             'listAuctionsActive' => $listAuctionsActive,
             'listAuctionsExpired' => $listAuctionsExpired,
             'listFilters' => [
-                'countries' => $country,
-                'colors' => $color,
-                'conditions' => $condition,
+                'countries' => $selectCountry,
+                'colors' => $selectColor,
+                'conditions' => $selectCondition,
             ],
             'userFilters' => $data,
         ]);
@@ -250,7 +269,7 @@ class AuctionController
         $exists = $favoriteModel->selectAllWhere($_SESSION['user_id'], 'user_id');
         foreach ($exists as $fav) {
             if ($fav['auction_id'] == $data['auction_id']) {
-                return View::render("user/my-favorites"); //déjà ajouté
+                return View::render("user/my-favorites"); //déjà
             }
         }
 
