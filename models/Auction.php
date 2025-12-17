@@ -26,4 +26,23 @@ class Auction extends CRUD
         $stmt = $this->query($sql);
         return $stmt->fetch();
     }
+
+    public function selectActive(): array
+    {
+        $sql = "SELECT * FROM auction WHERE date_end > NOW() ORDER BY date_end ASC";
+        $stmt = $this->query($sql);
+        return $stmt->fetchAll();
+    }
+
+    public function selectExpired(): array
+    {
+        $sql = "SELECT * FROM auction WHERE date_end <= NOW() ORDER BY date_end DESC";
+        $stmt = $this->query($sql);
+        return $stmt->fetchAll();
+    }
+
+    public function isExpired(array $auction): bool
+    {
+        return strtotime($auction['date_end']) <= time();
+    }
 }

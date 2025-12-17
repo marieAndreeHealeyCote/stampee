@@ -19,57 +19,67 @@ class AuctionController
     {
         Auth::session();
 
-        $auction = new Auction;
-        $selectAuction = $auction->select();
+        // Charger les filtres une seule fois
+        $country = (new Country())->select();
+        $color = (new Color())->select();
+        $condition = (new Condition())->select();
 
-        $country = new Country;
-        $selectCountry = $country->select();
+        // Enchères actives
+        $listAuctionsActive = [];
+        $selectAuctionActive = (new Auction())->selectActive();
+        foreach ($selectAuctionActive as $auction) {
+            $stamp = (new Stamp())->selectId($auction['stamp_id']);
+            if (!$stamp) continue;
 
-        $color = new Color;
-        $selectColor = $color->select();
+            if (!$this->doesMatchFilter($stamp, $auction, $data)) continue;
 
-        $condition = new Condition;
-        $selectCondition = $condition->select();
+            $images = (new Image())->selectAllWhere($stamp['id'], 'stamp_id');
 
-        if ($selectAuction) {
-            $listAuctions = [];
-
-            foreach ($selectAuction as $auction) {
-
-                $stamp = new Stamp;
-                $selectStamp = $stamp->selectId($auction['stamp_id']);
-
-                if ($this->doesMatchFilter($selectStamp, $auction, $data) == false) {
-                    continue;
-                }
-
-                $image = new Image;
-                $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
-
-
-                $listAuctions[] = [
-                    'id' => $auction['id'],
-                    'date_start' => $auction['date_start'],
-                    'date_end' => $auction['date_end'],
-                    'floor_price' => $auction['floor_price'],
-                    'lord_favorite' => $auction['lord_favorite'],
-                    'stamp_id' => $auction['stamp_id'],
-                    'stamp_name' => $selectStamp['name'],
-                    'stamp_image' => $listImages[0],
-                ];
-            }
-            return View::render('auction/index', [
-                'listAuctions' => $listAuctions,
-                'listFilters' => [
-                    'countries' => $selectCountry,
-                    'colors' => $selectColor,
-                    'conditions' => $selectCondition,
-                ],
-                'userFilters' => $data,
-            ]);
+            $listAuctionsActive[] = [
+                'id' => $auction['id'],
+                'date_start' => $auction['date_start'],
+                'date_end' => $auction['date_end'],
+                'floor_price' => $auction['floor_price'],
+                'lord_favorite' => $auction['lord_favorite'],
+                'stamp_id' => $stamp['id'],
+                'stamp_name' => $stamp['name'],
+                'stamp_image' => $images[0] ?? null,
+            ];
         }
 
-        return View::render('error', ['msg' => '404 page not found!']);
+        // Enchères échues
+        $listAuctionsExpired = [];
+        $selectAuctionExpired = (new Auction())->selectExpired();
+        foreach ($selectAuctionExpired as $auction) {
+            $stamp = (new Stamp())->selectId($auction['stamp_id']);
+            if (!$stamp) continue;
+
+            if (!$this->doesMatchFilter($stamp, $auction, $data)) continue;
+
+            $images = (new Image())->selectAllWhere($stamp['id'], 'stamp_id');
+
+            $listAuctionsExpired[] = [
+                'id' => $auction['id'],
+                'date_start' => $auction['date_start'],
+                'date_end' => $auction['date_end'],
+                'floor_price' => $auction['floor_price'],
+                'lord_favorite' => $auction['lord_favorite'],
+                'stamp_id' => $stamp['id'],
+                'stamp_name' => $stamp['name'],
+                'stamp_image' => $images[0] ?? null,
+            ];
+        }
+
+        return View::render('auction/index', [
+            'listAuctionsActive' => $listAuctionsActive,
+            'listAuctionsExpired' => $listAuctionsExpired,
+            'listFilters' => [
+                'countries' => $country,
+                'colors' => $color,
+                'conditions' => $condition,
+            ],
+            'userFilters' => $data,
+        ]);
     }
 
     private function doesMatchFilter($selectStamp, $auction, $data = [])
@@ -177,71 +187,97 @@ class AuctionController
     {
         Auth::session();
 
-        $favorite = new Favorite;
-        $listFavorites = $favorite->selectAllWhere($_SESSION['user_id'], 'user_id');
+        if (!isset($_SESSION['user_id'])) {
+            return View::render('error', ['msg' => 'User not authenticated']);
+        }
+
+        $favoriteModel = new Favorite();
+        $favorites = $favoriteModel->selectAllWhere($_SESSION['user_id'], 'user_id');
 
         $listFavorites = [];
-        foreach ($listFavorites as $favorite) {
 
-            $auction = new Auction;
-            $selectAuction = $auction->selectId($favorite['auction_id']);
+        foreach ($favorites as $fav) {
 
-            $stamp = new Stamp;
-            $selectStamp = $stamp->selectId($favorite['stamp_id']);
+            // Enchère liée au favori
+            $auctionModel = new Auction();
+            $auction = $auctionModel->selectId($fav['auction_id']);
 
-            $image = new Image;
-            $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
+            if (!$auction) {
+                continue;
+            }
 
+            // Timbre lié à l’enchère
+            $stampModel = new Stamp();
+            $stamp = $stampModel->selectId($auction['stamp_id']);
+
+            if (!$stamp) {
+                continue;
+            }
+
+            // Images du timbre
+            $imageModel = new Image();
+            $images = $imageModel->selectAllWhere($stamp['id'], 'stamp_id');
 
             $listFavorites[] = [
-                'id' => $favorite['id'],
-                'auction_id' => $favorite['auction_id'],
-                'date_start' => $favorite['date_start'],
-                'date_end' => $favorite['date_end'],
-                'floor_price' => $favorite['floor_price'],
-                'lord_favorite' => $favorite['lord_favorite'],
-                'selectAuction' => $selectAuction,
-                'selectStamp' => $selectStamp,
-                'selectImage' => $listImages[0],
+                'favorite_id' => $fav['id'],
+                'auction_id' => $auction['id'],
+                'date_start' => $auction['date_start'],
+                'date_end' => $auction['date_end'],
+                'floor_price' => $auction['floor_price'],
+                'lord_favorite' => $auction['lord_favorite'],
+                'stamp_id' => $stamp['id'],
+                'stamp_name' => $stamp['name'],
+                'stamp_image' => $images[0] ?? null,
             ];
         }
 
-        $auction = new Auction;
-        $selectAuction = $auction->selectId($auction['auction_id']);
-
-        if ($selectAuction) {
-            $listAuctions = [];
-
-            foreach ($selectAuction as $auction) {
-
-                $stamp = new Stamp;
-                $selectStamp = $stamp->selectId($auction['stamp_id']);
-
-                $image = new Image;
-                $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
-
-
-                $listAuctions[] = [
-                    'id' => $auction['id'],
-                    'date_start' => $auction['date_start'],
-                    'date_end' => $auction['date_end'],
-                    'floor_price' => $auction['floor_price'],
-                    'lord_favorite' => $auction['lord_favorite'],
-                    'stamp_id' => $auction['stamp_id'],
-                    'stamp_name' => $selectStamp['name'],
-                    'stamp_image' => $listImages[0],
-                ];
-            }
-            return View::render("user/my-favorites", [
-                'listAuctions' => $listAuctions,
-                'listFavorites' => $listFavorites,
-            ]);
-        }
-
-        return View::render('error', ['msg' => '404 page not found!']);
+        return View::render("user/my-favorites", [
+            'listFavorites' => $listFavorites
+        ]);
     }
 
+    public function addFavorite($data = [])
+    {
+        Auth::session();
 
+        if (!isset($_SESSION['user_id']) || !isset($data['auction_id'])) {
+            return View::render('error', ['msg' => 'Missing parameters']);
+        }
+
+        $favoriteModel = new Favorite();
+
+        // Vérifier si déjà ajouté
+        $exists = $favoriteModel->selectAllWhere($_SESSION['user_id'], 'user_id');
+        foreach ($exists as $fav) {
+            if ($fav['auction_id'] == $data['auction_id']) {
+                return View::render("user/my-favorites"); //déjà ajouté
+            }
+        }
+
+        $favoriteModel->insert([
+            'user_id' => $_SESSION['user_id'],
+            'auction_id' => $data['auction_id']
+        ]);
+
+        return View::render("user/my-favorites");
+    }
+
+    public function removeFavorite($data = [])
+    {
+        Auth::session();
+
+        if (!isset($_SESSION['user_id']) || !isset($data['auction_id'])) {
+            return View::render('error', ['msg' => 'Missing parameters']);
+        }
+
+        $favoriteModel = new Favorite();
+        $favoriteModel->deleteWhere([
+            'user_id' => $_SESSION['user_id'],
+            'auction_id' => $data['auction_id']
+        ]);
+
+        return View::render("user/my-favorites");
+    }
 
     public function history($data = [])
     {

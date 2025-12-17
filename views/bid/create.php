@@ -58,7 +58,19 @@
                     </p>
                 </div>
                 <div class="section__detail-enchere__carte-description__contenu__surveiller">
-                    <button href="{{base}}/user/my-bids" class="bouton bouton-suivre">Add to favorites</button>
+                    {% if is_favorite %}
+                    <a href="{{ base }}/user/remove-favorite?auction_id={{ auction_id }}"
+                        class="bouton bouton-suivre"
+                        onclick="return confirm('Remove from your favorites?')">
+                        Remove from favorites
+                    </a>
+                    {% else %}
+                    <a href="{{ base }}/user/add-favorite?auction_id={{ auction_id }}"
+                        class="bouton bouton-suivre"
+                        onclick="return confirm('Add to your favorites?')">
+                        Add to favorites
+                    </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

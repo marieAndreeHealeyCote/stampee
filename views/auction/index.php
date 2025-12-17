@@ -6,7 +6,7 @@
         <section class="section__catalogue-enchere-en-cours">
             <h2>Current Auctions</h2>
             <div class="section__catalogue-enchere-en-cours__grille">
-                {% for auction in listAuctions %}
+                {% for auction in listAuctionsActive %}
                 <article class="section__catalogue-enchere-archives__grille__carte">
                     <img
                         class="section__catalogue-enchere-archives__grille__carte__image"
@@ -51,7 +51,7 @@
         <section class="section__catalogue-enchere-archives">
             <h2>Past Auctions</h2>
             <div class="section__catalogue-enchere-archives__grille">
-                {% for auction in listAuctions %}
+                {% for auction in listAuctionsExpired %}
                 <article class="section__catalogue-enchere-archives__grille__carte">
                     <img
                         class="section__catalogue-enchere-archives__grille__carte__image"
@@ -91,7 +91,6 @@
                                 <p>{{ auction.lord_favorite ? "Selected" : "Not selected" }}</p>
                             </li>
                         </ul>
-                        <button class="bouton bouton-enchere">COMMENTS</button>
                     </div>
                 </article>
                 {% endfor %}
