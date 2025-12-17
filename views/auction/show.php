@@ -19,9 +19,9 @@
             <div class="section__detail-enchere__carte-description__menu">
                 <ul>
                     <li><a href="{{base}}/bid/create">Listing</a></li>
-                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/bid/show">Details</a></li>
-                    <li><a href="{{base}}/bid/history">History</a></li>
-                    <li><a href="{{base}}/bid/question">Question</a></li>
+                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/auction/show">Details</a></li>
+                    <li><a href="{{base}}/auction/history">History</a></li>
+                    <li><a href="{{base}}/auction/question">Question</a></li>
                 </ul>
             </div>
             <div class="section__detail-enchere__carte-description__contenu">
@@ -29,28 +29,28 @@
                 <div class="section__detail-enchere__carte-description__contenu__item-specifiques">
                     <h3>Item Specifics</h3>
                     <h4>Auction id: </h4>
-                    <p>{auction.id}</p>
+                    <p>{{ auction.id }}</p>
                     <h4>Current offer:</h4>
-                    <p>{bid.bid}</p>
+                    <p>Price : CAD {{ auction.highest_bid.bid}}</p>
                     <h4>Floor price:</h4>
-                    <p>{auction.floor_price}</p>
+                    <p>CAD {{ auction.floor_price }}</p>
                     <h4>Close at :</h4>
-                    <p>{auction.date_end}</p>
+                    <p>{{ auction.date_end }}</p>
                 </div>
                 <div class="section__detail-enchere__carte-description__contenu__item-description">
                     <h3>Item Description</h3>
                     <h4>Name :</h4>
-                    <p>{stamp.name}</p>
+                    <p>{{ auction.stamp_name }}</p>
                     <h4>Year:</h4>
-                    <p>{stamp.year}</p>
+                    <p>{{ auction.year }}</p>
                     <h4>Certification :</h4>
-                    <p>{stamp.is_certified}</p>
+                    <p>{{ auction.is_certified }}</p>
                     <h4>Country :</h4>
-                    <p>{stamp.country_name}</p>
+                    <p>{{ auction.country_name }}</p>
                     <h4>Color :</h4>
-                    <p>{stamp.color_name}</p>
+                    <p>{{ auction.color_name }}</p>
                     <h4>Condition :</h4>
-                    <p>{stamp.condition_name}</p>
+                    <p>{{ auction.condition_name }}</p>
                 </div>
                 {% endfor %}
                 <div class="section__detail-enchere__carte-description__contenu__avertissement">

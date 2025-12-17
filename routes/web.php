@@ -31,9 +31,9 @@ Route::post('/user/edit', 'UserController@store');
 Route::get('/auctions', 'AuctionController@index');
 Route::get('/my-favorites', 'AuctionController@addFavorites');
 Route::get('/my-bids', 'BidController@index');
-Route::get('/bid/details', 'BidController@show');
-Route::get('/bid/listing', 'BidController@create');
-Route::post('/bid/listing', 'BidController@create');
+Route::get('/auction/show', 'AuctionController@show');
+Route::get('/auction/create', 'BidController@create');
+Route::post('/auction/create', 'BidController@create');
 
 Route::get('/upload', 'UploadController@create');
 Route::post('/upload', 'UploadController@index');

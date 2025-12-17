@@ -19,8 +19,7 @@
                         <ul>
                             <li>
                                 <h4>Period of activity</h4>
-                                <ul
-                                    class="section__catalogue-enchere-archives__grille__carte__liste">
+                                <ul>
                                     <li>Start date : {{ auction.date_start }}</li>
                                     <li>End Date : {{ auction.date_end }}</li>
                                 </ul>
@@ -31,11 +30,7 @@
                             </li>
                             <li>
                                 <h4>Current Offer</h4>
-                                <ul
-                                    class="section__catalogue-enchere-archives__grille__carte__liste">
-                                    <li>Price : CAD {{ bid.bid }}</li>
-                                    <li>Member Name : {{ user.name }}</li>
-                                </ul>
+                                <p>Price : CAD {{ auction.highest_bid.bid}}</p>
                             </li>
                             <li>
                                 <h4>Bet Quantity</h4>
@@ -46,7 +41,7 @@
                                 <p>{{ auction.lord_favorite ? "Selected" : "Not selected" }}</p>
                             </li>
                         </ul>
-                        <a href="{{base}}/bid/show" class=" bouton bouton-enchere">BID NOW</a>
+                        <a href="{{base}}/auction/show?id={{ auction.id }}" class=" bouton bouton-enchere">BID NOW</a>
                     </div>
                 </article>
                 {% endfor %}

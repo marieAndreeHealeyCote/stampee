@@ -19,4 +19,11 @@ class Auction extends CRUD
         $stmt = $this->query($sql);
         return $stmt->fetchAll();
     }
+
+    public function getHighestBid($value)
+    {
+        $sql  = "SELECT * FROM stampee.bid WHERE auction_id = $value ORDER BY bid DESC";
+        $stmt = $this->query($sql);
+        return $stmt->fetch();
+    }
 }

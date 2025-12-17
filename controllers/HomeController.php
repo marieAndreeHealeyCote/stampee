@@ -25,6 +25,7 @@ class HomeController
             $listAuctions = [];
 
             foreach ($selectAuction as $auction) {
+                $highestBid = (new Auction)->getHighestBid($auction['id']);
 
                 $stamp = new Stamp;
                 $selectStamp = $stamp->selectId($auction['stamp_id']);
@@ -35,6 +36,7 @@ class HomeController
                 $listAuctions[] = [
                     'id' => $auction['id'],
                     'total_bids' => $auction['total'],
+                    'highest_bid' => $highestBid,
                     'date_start' => $auction['date_start'],
                     'date_end' => $auction['date_end'],
                     'floor_price' => $auction['floor_price'],

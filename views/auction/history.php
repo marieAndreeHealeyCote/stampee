@@ -19,9 +19,9 @@
             <div class="section__detail-enchere__carte-description__menu">
                 <ul>
                     <li><a href="{{base}}/bid/create">Listing</a></li>
-                    <li><a href="{{base}}/bid/show">Details</a></li>
-                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/bid/history">History</a></li>
-                    <li><a href="{{base}}/bid/question">Question</a></li>
+                    <li><a href="{{base}}/auction/show">Details</a></li>
+                    <li><a class="section__detail-enchere__carte-description__menu__lien-actif" href="{{base}}/auction/history">History</a></li>
+                    <li><a href="{{base}}/auction/question">Question</a></li>
                 </ul>
             </div>
             <div class="section__detail-enchere__carte-description__contenu">

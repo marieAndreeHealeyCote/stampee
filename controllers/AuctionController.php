@@ -119,4 +119,69 @@ class AuctionController
 
         return true;
     }
+
+    public function show($data = [])
+    {
+        if (isset($data['id']) && $data['id'] != null) {
+            $auction = new Auction;
+            $selectAuction = $auction->selectId($data['id']);
+            if ($selectAuction) {
+                $highestBid = (new Auction)->getHighestBid($auction['id']);
+
+                $stamp = new Stamp;
+                $selectStamp = $stamp->selectId($selectAuction['stamp_id']);
+
+                $image = new Image;
+                $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
+
+                $listAuctions[] = [
+                    'id' => $selectAuction['id'],
+                    'date_start' => $selectAuction['date_start'],
+                    'date_end' => $selectAuction['date_end'],
+                    'floor_price' => $selectAuction['floor_price'],
+                    'lord_favorite' => $selectAuction['lord_favorite'],
+                    'stamp_id' => $selectAuction['stamp_id'],
+                    'stamp_name' => $selectStamp['name'],
+                    'stamp_image' => $listImages[0],
+                    'highest_bid' => $highestBid,
+                ];
+
+                $stamp = new Stamp;
+                $selectStamp = $stamp->selectId($auction['stamp_id']);
+
+                $country = new Country;
+                $selectCountry = $country->selectId($stamp['country_id']);
+                $selectStamp['country_name'] = $selectCountry['name'];
+
+                $color = new Color;
+                $selectColor = $color->selectId($stamp['color_id']);
+                $selectStamp['color_name'] = $selectColor['name'];
+
+                $condition = new Condition;
+                $selectCondition = $condition->selectId($stamp['condition_id']);
+                $selectStamp['condition_name'] = $selectCondition['name'];
+
+                $image = new Image;
+                $listImages = $image->selectAllWhere($selectStamp['id'], 'stamp_id');
+
+                $listAuctions[] = [
+                    'id' => $auction['id'],
+                    'total_bids' => $auction['total'],
+                    'highest_bid' => $highestBid,
+                    'date_start' => $auction['date_start'],
+                    'date_end' => $auction['date_end'],
+                    'floor_price' => $auction['floor_price'],
+                    'lord_favorite' => $auction['lord_favorite'],
+                    'stamp' => $stamp,
+                    'stamp_image' => $listImages[0],
+                ];
+
+                return View::render("auction/show", ['listAuctions' => $listAuctions]);
+            } else {
+                return View::render('error', ['msg' => 'Auction not found!']);
+            }
+        } else {
+            return View::render('error', ['msg' => '404 page not found!']);
+        }
+    }
 }

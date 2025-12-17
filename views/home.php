@@ -44,7 +44,7 @@
     </section>
     <div class="section__enchere">
         <section class="section__catalogue-enchere-en-cours">
-            <h2>Current Auctions</h2>
+            <h2>Featured auctions</h2>
             <div class="section__catalogue-enchere-en-cours__grille">
                 {% for auction in listAuctions %}
                 <article class="section__catalogue-enchere-archives__grille__carte">
@@ -57,8 +57,7 @@
                     <ul>
                         <li>
                             <h4>Period of activity</h4>
-                            <ul
-                                class="section__catalogue-enchere-archives__grille__carte__list">
+                            <ul>
                                 <li>Start date: {{ auction.date_start }}</li>
                                 <li>End Date: {{ auction.date_end }}</li>
                             </ul>
@@ -69,11 +68,7 @@
                         </li>
                         <li>
                             <h4>Current Offer</h4>
-                            <ul
-                                class="section__catalogue-enchere-archives__grille__carte__list">
-                                <li>Price: CAD {{ bid.bid }}</li>
-                                <li>Member Name: {{ user.name }}</li>
-                            </ul>
+                            <p>Price: CAD {{ auction.highest_bid.bid }}</p>
                         </li>
                         <li>
                             <h4>Bet Quantity</h4>
@@ -84,7 +79,7 @@
                             <p>{{ auction.lord_favorite ? "Selected" : "Not selected" }}</p>
                         </li>
                     </ul>
-                    <a href="{{base}}/bid/show" class="bouton bouton-enchere">BID NOW</a>
+                    <a href="{{base}}/auction/show?id={{ auction.id }}" class="bouton bouton-enchere">BID NOW</a>
                 </article>
                 {% endfor %}
             </div>
